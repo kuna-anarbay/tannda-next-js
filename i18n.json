@@ -1,0 +1,9 @@
+{
+  "locales": ["ru", "kz", "en"],
+  "defaultLocale": "ru",
+  "pages": {
+    "*": ["common"],
+    "/": ["landing"],
+    "/become-partner": ["features"]
+  }
+}

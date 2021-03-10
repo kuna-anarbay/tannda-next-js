@@ -1,0 +1,26 @@
+{
+  "content": {
+    "title": "Reliable content",
+    "description": "Information about educational centers and courses are reviewed by our editors. Everything will be easy for customers to understand"
+  },
+  "marketing.title": {
+    "title": "We'll handle marketing for you",
+    "description": "We provide you with ready clients. We will increase your popularity through our platform"
+  },
+  "requests": {
+    "title": "Online applications",
+    "description": "Your customers will be able to apply to your courses and track the status of their applications"
+  },
+  "multilanguage": {
+    "title": "Available in 3 languages",
+    "description": "Platform will be available in kazakh, english and russian. All of the content will be translated and reviewed carefully"
+  },
+  "images": {
+    "title": "Best quality images",
+    "description": "High quality images will be taken by professional photographers to accurately represent your center"
+  },
+  "online": {
+    "title": "Online 24/7",
+    "description": "Your center will be available to your customers 24/7. No need to launch your own website"
+  }
+}
