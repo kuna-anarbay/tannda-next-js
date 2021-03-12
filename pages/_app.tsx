@@ -1,0 +1,35 @@
+import '../styles/globals.css'
+import Navigation from "../components/common/navigation";
+import { Provider } from "react-redux";
+import store from "../store/store";
+import Head from "next/head";
+import useTranslation from "next-translate/useTranslation";
+
+function MyApp({ Component, pageProps }) {
+    const {t} = useTranslation();
+
+    return (
+      <Provider store={store}>
+          <div>
+              <Head>
+                  <title>Tañda</title>
+                  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"   />
+                  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"   />
+                  <link rel="apple-touch-icon" href="/apple-touch-icon.png"  />
+                  <link rel="icon" href="/favicon.ico" />
+
+                  <meta name="description" content={t("common:headData.description")} />
+                  <meta property="og:title" content={t("common:headData.title")} />
+                  <meta property="og:description" content={t("common:headData.description")}   />
+                  <meta property="og:image" content="/android-chrome-192x192.png"  />
+                  <meta property="og:image:width" content="100" />
+                  <meta property="og:image:height" content="100"    />
+              </Head>
+              <Navigation />
+              <Component {...pageProps} />
+          </div>
+      </Provider>
+    )
+}
+
+export default MyApp;

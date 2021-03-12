@@ -1,10 +1,20 @@
 {
   "button": {
-    "becomePartner": "Become partner"
+    "becomePartner": "Become partner",
+    "submit": "Submit"
+  },
+  "navigation": {
+    "language": "Language"
   },
   "header": {
     "title": "A whole new vision of",
     "subtitle": "your business",
     "description": "Platform that presents your businesses, values and services in a whole new way. The best way for customers to find and apply to your courses"
+  },
+  "headData": {
+    "title": "Tañda | A whole new vision of your business",
+    "description": "Platform that presents your businesses, values and services in a whole new way. The best way for customers to find and apply to your courses",
+    "ogUrl": "https://tannda.kz/en",
+    "ogLocale": "en-US"
   }
 }

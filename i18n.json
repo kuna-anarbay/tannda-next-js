@@ -3,7 +3,7 @@
   "defaultLocale": "ru",
   "pages": {
     "*": ["common"],
-    "/": ["landing"],
+    "/": ["landing", "features"],
     "/become-partner": ["features"]
   }
 }

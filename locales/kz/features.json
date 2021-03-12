@@ -1,26 +1,31 @@
 {
-  "content": {
-    "title": "Reliable content",
-    "description": "Information about educational centers and courses are reviewed by our editors. Everything will be easy for customers to understand"
+  "header": {
+    "title": "Ерекшеліктер",
+    "subtitle": "Өзіңізді ерекше таныстырыңыз",
+    "description": "Миссияңызға ғана назар аударыңыз. Қалғанының бәрін біз реттейміз. Біздің ерекшеліктеріміздің арқасында сіздің бизнесіңіз көптің арасында ерекше көзге түседі"
   },
-  "marketing.title": {
-    "title": "We'll handle marketing for you",
-    "description": "We provide you with ready clients. We will increase your popularity through our platform"
+  "content": {
+    "title": "Сенімді ақпарат",
+    "description": "Оқу орталықтары мен курстар туралы ақпаратты біздің редакторлар дұрыс формаға келтіреді. Клиенттердің түсінуіне өте оңай болады"
+  },
+  "marketing": {
+    "title": "Біз сіз үшін маркетингпен айналысамыз",
+    "description": "Сіздерді дайын клиенттермен қамтамасыз етеміз. Біздің платформа арқылы сіздердің танымалдылықтарыңызды арттырамыз"
   },
   "requests": {
-    "title": "Online applications",
-    "description": "Your customers will be able to apply to your courses and track the status of their applications"
+    "title": "Онлайн тіркелу",
+    "description": "Сіздің клиенттеріңіз сіздің курстарыңызға онлайн тіркеле алады және олардың өтінімдерінің cтатусын бақылай алады"
   },
   "multilanguage": {
-    "title": "Available in 3 languages",
-    "description": "Platform will be available in kazakh, english and russian. All of the content will be translated and reviewed carefully"
+    "title": "3 тілде қол жетімді",
+    "description": "Платформа қазақ, ағылшын және орыс тілдерінде қол жетімді болады. Барлық ақпарат аударылып, мұқият тексерістен өтеді"
   },
   "images": {
-    "title": "Best quality images",
-    "description": "High quality images will be taken by professional photographers to accurately represent your center"
+    "title": "Орталығыңыздың тартымды көрінісі",
+    "description": "Кәсіби фотографтар сіздің орталығыңызды дәл көрсету үшін жоғары сапалы суреттерді түсіреді"
   },
   "online": {
-    "title": "Online 24/7",
-    "description": "Your center will be available to your customers 24/7. No need to launch your own website"
+    "title": "Онлайн режимінде 24/7",
+    "description": "Сіздің орталығыңыз сіздің клиенттеріңізге тәулік бойы қызмет етеді. Өз веб-сайтыңызды ашудың қажеті жоқ"
   }
 }

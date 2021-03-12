@@ -1,0 +1,29 @@
+import {Language} from "./Language";
+import {Subject} from "./Subject";
+import {Branch} from "./Branch";
+import {Timestamp} from "./Timestamp";
+import {Translatable} from "./Translatable";
+
+export interface Course {
+    id: number | null;
+    title: Translatable | null;
+    tagline: Translatable | null;
+    description: Translatable | null;
+    outcomes: Translatable | null;
+    image: String | null;
+    instructionLanguage: Language | null;
+    gradeMin: number | null;
+    gradeMax: number | null;
+    lessonDuration: number | null;
+    trialLessonCost: number | null;
+    registrationDeadline: number | null;
+    subjects: Array<Subject> | null;
+    branch: Branch | null;
+    timestamp: Timestamp | null;
+    totalDurationFrom: number | null;
+    totalDurationTo: number | null;
+    totalPriceFrom: number | null;
+    totalPriceTo: number | null;
+    isRequested: Boolean | null;
+    acceptedStudentsCount: number | null;
+}
