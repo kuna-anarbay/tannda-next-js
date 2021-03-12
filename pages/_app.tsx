@@ -13,6 +13,9 @@ function MyApp({ Component, pageProps }) {
           <div>
               <Head>
                   <title>Tañda</title>
+                  <link rel="canonical" href="https://tannda.kz/"   />
+                  <link rel="alternate" href="https://tannda.kz/en" hrefLang="en-US"    />
+                  <link rel="alternate" href="https://tannda.kz/kz" hrefLang="kz-KZ"    />
                   <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"   />
                   <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"   />
                   <link rel="apple-touch-icon" href="/apple-touch-icon.png"  />
@@ -24,6 +27,9 @@ function MyApp({ Component, pageProps }) {
                   <meta property="og:image" content="/android-chrome-192x192.png"  />
                   <meta property="og:image:width" content="100" />
                   <meta property="og:image:height" content="100"    />
+                  <meta property="og:type" content="website" />
+                  <meta property="og:site_name" content="Tañda" />
+                  <meta property="og:locale" content={t("common:headData.ogLocale")} />
               </Head>
               <Navigation />
               <Component {...pageProps} />
