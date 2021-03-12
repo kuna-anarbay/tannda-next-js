@@ -1,5 +1,5 @@
 import React from "react";
-import data from "../public/static";
+import {features} from "../public/static/features";
 import useTranslation from "next-translate/useTranslation";
 import {connect} from "react-redux";
 import {BecomePartner} from "../models/BecomePartner";
@@ -37,7 +37,7 @@ function BecomePartnerPage(props: GenericProps<any, BecomePartner>) {
                             </p>
                         </h3>
                         <ul className="mt-6">
-                            {data.features.map(feature => (
+                            {features.map(feature => (
                                 <li>
                                     <div className="flex flex-col md:flex-row md:space-x-4 mt-4">
                                         <div className="p-2 bg-yellow-400 rounded-lg h-10 w-10">
