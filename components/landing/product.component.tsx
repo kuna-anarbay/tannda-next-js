@@ -7,7 +7,7 @@ export default function Product() {
     const {t} = useTranslation();
 
     return (
-        <div className="bg-secondaryBackground py-16">
+        <div className="py-16">
             <div className="container mx-auto px-4 md:px-0">
                 <div className="grid grid-cols-1 md:grid-cols-2 md:grid-flow-col gap-4">
                     <div className="flex flex-wrap content-center">

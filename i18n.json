@@ -2,7 +2,7 @@
   "locales": ["ru", "kz", "en"],
   "defaultLocale": "ru",
   "pages": {
-    "*": ["common"],
+    "*": ["common", "form"],
     "/": ["landing", "features"],
     "/become-partner": ["features"]
   }

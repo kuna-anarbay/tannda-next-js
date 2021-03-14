@@ -1,6 +1,7 @@
 import React from "react";
 import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
 
@@ -19,7 +20,7 @@ export default function Header() {
                                 {t("common:header.subtitle")}
                             </div>
                         </h1>
-                        <h2 className="text-md md:text-lg md:font-medium text-gray-500 mt-4">
+                        <h2 className="text-md md:text-lg text-gray-500 mt-4">
                             {t("common:header.description")}
                         </h2>
                         <Link href="/become-partner">

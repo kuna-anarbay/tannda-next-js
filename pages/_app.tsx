@@ -1,9 +1,10 @@
 import '../styles/globals.css'
-import Navigation from "../components/common/navigation";
+import NavigationComponent from "../components/common/navigation.component";
 import { Provider } from "react-redux";
 import store from "../store/store";
 import Head from "next/head";
 import useTranslation from "next-translate/useTranslation";
+import Footer from "../components/common/footer.component";
 
 function MyApp({ Component, pageProps }) {
     const {t} = useTranslation();
@@ -30,9 +31,12 @@ function MyApp({ Component, pageProps }) {
                   <meta property="og:type" content="website" />
                   <meta property="og:site_name" content="Tañda" />
                   <meta property="og:locale" content={t("common:headData.ogLocale")} />
+
+                  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
               </Head>
-              <Navigation />
+              <NavigationComponent />
               <Component {...pageProps} />
+              <Footer />
           </div>
       </Provider>
     )

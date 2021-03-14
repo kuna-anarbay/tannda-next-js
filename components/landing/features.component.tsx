@@ -1,12 +1,12 @@
 import React from "react";
-import {features} from "../../public/static/features";
+import {features} from "../../public/static/features.data";
 import useTranslation from "next-translate/useTranslation";
 
 export default function Features() {
 
     const {t} = useTranslation();
     return (
-        <div className="py-16 bg-gray-50">
+        <div className="bg-blue-50 py-12 md:py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="lg:text-center">
                     <h2 className="text-base text-main font-semibold tracking-wide uppercase">
@@ -33,7 +33,7 @@ export default function Features() {
                                     <dt className="text-lg leading-6 font-medium text-gray-900">
                                         {t(feature.title)}
                                     </dt>
-                                    <dd className="mt-2 text-base text-gray-500">
+                                    <dd className="mt-2 text-base text-gray-700">
                                         {t(feature.description)}
                                     </dd>
                                 </div>

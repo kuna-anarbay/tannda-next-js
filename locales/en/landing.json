@@ -1,3 +1,11 @@
 {
-
+  "cta": {
+    "title": "Ready to dive in?",
+    "subtitle": "Reintroduce your business today"
+  },
+  "contacts": {
+    "title": "Contacts",
+    "subtitle": "Have a question? Contact us",
+    "socialMedia": "We are in social media"
+  }
 }

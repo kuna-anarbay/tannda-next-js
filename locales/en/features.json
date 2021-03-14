@@ -1,14 +1,14 @@
 {
   "header": {
-    "title": "Ерекшеліктер",
-    "subtitle": "Өзіңізді ерекше таныстырыңыз",
-    "description": "Миссияңызға ғана назар аударыңыз. Қалғанының бәрін біз реттейміз. Біздің ерекшеліктеріміздің арқасында сіздің бизнесіңіз көптің арасында ерекше көзге түседі"
+    "title": "Features",
+    "subtitle": "Introduce yourself uniquely",
+    "description": "Focus on your mission. Let us take care of everything else. Thanks to our features your business will stand out among thousands of others"
   },
   "content": {
     "title": "Reliable content",
     "description": "Information about educational centers and courses are reviewed by our editors. Everything will be easy for customers to understand"
   },
-  "marketing.title": {
+  "marketing": {
     "title": "We'll handle marketing for you",
     "description": "We provide you with ready clients. We will increase your popularity through our platform"
   },

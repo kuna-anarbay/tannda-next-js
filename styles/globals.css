@@ -19,6 +19,10 @@ a {
   box-sizing: border-box;
 }
 
+.fas, .fab, .far {
+  line-height: unset;
+}
+
 .field-required::before {
   display: inline-block;
   margin-right: 4px;
