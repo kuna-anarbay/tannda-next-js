@@ -1,15 +1,17 @@
-import axios, { AxiosInstance, AxiosResponse } from "axios";
+import axios, {AxiosInstance, AxiosResponse} from "axios";
 import {Constants} from "../../public/Constants";
 import LocalDatabase from "../localDatabase";
 
 declare module "axios" {
-    interface AxiosResponse<T = any> extends Promise<T> {}
+    interface AxiosResponse<T = any> extends Promise<T> {
+    }
 }
 
 export abstract class NetworkManager {
 
     protected readonly axiosInstance: AxiosInstance;
     private readonly baseUrl = Constants.baseUrl;
+
     // private readonly baseUrl = "http://192.168.1.174:8080";
 
     protected constructor() {
@@ -21,6 +23,17 @@ export abstract class NetworkManager {
         this.initializeResponseInterceptor();
     }
 
+    public formDataHeaders = () => {
+        let headers = this.defaultHeaders();
+        headers["Content-Type"] = "multipart/form-data";
+
+        return headers;
+    }
+
+    protected handleError = (error: any) => {
+        return Promise.reject(error);
+    }
+
     private initializeResponseInterceptor = () => {
         this.axiosInstance.interceptors.response.use(
             this.handleResponse,
@@ -28,15 +41,11 @@ export abstract class NetworkManager {
         );
     };
 
-    private handleResponse = ({ data, headers }: AxiosResponse) => {
+    private handleResponse = ({data, headers}: AxiosResponse) => {
         LocalDatabase.instance.updateAuthorization(headers);
 
         return data;
     };
-
-    protected handleError = (error: any) => {
-        return Promise.reject(error);
-    }
 
     private defaultHeaders = () => {
         let headers: any = {
@@ -44,16 +53,9 @@ export abstract class NetworkManager {
         };
 
         const token = LocalDatabase.instance.getToken()?.value;
-        if(token) {
+        if (token) {
             headers.Authorization = `Bearer ${token}`
         }
-
-        return headers;
-    }
-
-    public formDataHeaders = () => {
-        let headers = this.defaultHeaders();
-        headers["Content-Type"] = "multipart/form-data";
 
         return headers;
     }

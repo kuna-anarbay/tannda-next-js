@@ -1,4 +1,4 @@
-const { locales, defaultLocale } = require('./i18n.json');
+const {locales, defaultLocale} = require('./i18n.json');
 const nextTranslate = require('next-translate');
 
 const nextConfig = {

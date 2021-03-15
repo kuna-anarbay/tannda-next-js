@@ -26,7 +26,7 @@ export default function Features() {
                                 <div className="flex-shrink-0">
                                     <div
                                         className="flex items-center justify-center text-xl h-12 w-12 rounded-lg bg-primary-900 text-white">
-                                        <i className={ feature.icon } />
+                                        <i className={feature.icon}/>
                                     </div>
                                 </div>
                                 <div className="ml-4">

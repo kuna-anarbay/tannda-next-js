@@ -10,18 +10,28 @@ import {BecomePartner} from "../../models/BecomePartner";
 import {City} from "../../models/City";
 import {useRouter} from "next/router";
 import {translate} from "../../models/Translatable";
-import {router} from "next/client";
 
 function Contacts(props: GenericState<BecomePartner>) {
     const [cities, updateCities] = useState(Array<City>());
     useEffect(() => {
-        if(cities.length === 0) {
+        function getCities(count: number) {
+            if (count === 3) {
+                return;
+            }
             const result = localStorage.getItem("cities");
             const citiesList = JSON.parse(result) as Array<City>;
 
-            if(citiesList) {
+            if (citiesList) {
                 updateCities(citiesList);
+            } else {
+                setTimeout(function () {
+                    getCities(count + 1);
+                }, count * 1000);
             }
+        }
+
+        if (cities.length === 0) {
+            getCities(1);
         }
     });
 
@@ -45,7 +55,6 @@ function Contacts(props: GenericState<BecomePartner>) {
         console.log(requestData);
         dispatch(AuthApi.instance.becomePartner(requestData))
     }
-
 
 
     return (
@@ -86,7 +95,8 @@ function Contacts(props: GenericState<BecomePartner>) {
                         </p>
                         <div className="mt-4">
                             <div>
-                                <label htmlFor="price" className="block text-sm font-medium text-gray-700 field-required">
+                                <label htmlFor="price"
+                                       className="block text-sm font-medium text-gray-700 field-required">
                                     {t("form:full-name")}
                                 </label>
                                 <div className="mt-1 rounded-md">
@@ -98,7 +108,8 @@ function Contacts(props: GenericState<BecomePartner>) {
                         </div>
                         <div className="grid md:grid-cols-2 md:grid-flow-col gap-4 mt-4">
                             <div>
-                                <label htmlFor="price" className="block text-sm font-medium text-gray-700 field-required">
+                                <label htmlFor="price"
+                                       className="block text-sm font-medium text-gray-700 field-required">
                                     {t("form:city")}
                                 </label>
                                 <div className="mt-1 rounded-md">
@@ -107,16 +118,17 @@ function Contacts(props: GenericState<BecomePartner>) {
                                         name="city"
                                         placeholder={t("form:city")}
                                         className="w-full rounded-md border-gray-300 shadow-sm sm:text-sm focus:border-primary-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                        { cities.map(city => (
+                                        {cities.map(city => (
                                             <option value={city.id}>
-                                                { translate(city.title, locale)}
+                                                {translate(city.title, locale)}
                                             </option>
                                         ))}
                                     </select>
                                 </div>
                             </div>
                             <div>
-                                <label htmlFor="price" className="block text-sm font-medium text-gray-700 field-required">
+                                <label htmlFor="price"
+                                       className="block text-sm font-medium text-gray-700 field-required">
                                     {t("form:center-name")}
                                 </label>
                                 <div className="mt-1 rounded-md">
@@ -128,7 +140,8 @@ function Contacts(props: GenericState<BecomePartner>) {
                         </div>
                         <div className="grid md:grid-cols-2 md:grid-flow-col gap-4 mt-4">
                             <div>
-                                <label htmlFor="price" className="block text-sm font-medium text-gray-700 field-required">
+                                <label htmlFor="price"
+                                       className="block text-sm font-medium text-gray-700 field-required">
                                     {t("form:phone-number")}
                                 </label>
                                 <div className="mt-1 rounded-md">
@@ -138,7 +151,8 @@ function Contacts(props: GenericState<BecomePartner>) {
                                 </div>
                             </div>
                             <div>
-                                <label htmlFor="price" className="block text-sm font-medium text-gray-700 field-required">
+                                <label htmlFor="price"
+                                       className="block text-sm font-medium text-gray-700 field-required">
                                     {t("form:email")}
                                 </label>
                                 <div className="mt-1 rounded-md">
@@ -162,7 +176,8 @@ function Contacts(props: GenericState<BecomePartner>) {
                             </div>
                         </div>
                         <div>
-                            {error ? <Alert initialVisible={true} type={"error"} title={error.error}  text={error.message}/> : null}
+                            {error ? <Alert initialVisible={true} type={"error"} title={error.error}
+                                            text={error.message}/> : null}
                             {response ? <Alert initialVisible={true} type={"success"}
                                                title={t("landing:become-partner.success.title")}
                                                text={t("landing:become-partner.success.text")}/> : null}

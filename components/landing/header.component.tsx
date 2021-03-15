@@ -1,13 +1,12 @@
 import React from "react";
 import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
-import Image from "next/image";
 import {useRouter} from "next/router";
 
 export default function Header() {
 
     const {t} = useTranslation();
-    const{ locale} = useRouter();
+    const {locale} = useRouter();
 
     return (
         <div className="bg-secondaryBackground px-4 py-12 md:py-24">
@@ -26,7 +25,8 @@ export default function Header() {
                             {t("common:header.description")}
                         </h2>
                         <Link href="/#become-partner">
-                            <button className="bg-main font-medium text-white pl-4 pr-4 pt-2 pb-2 rounded-lg mt-6 hover:bg-primary-900">
+                            <button
+                                className="bg-main font-medium text-white pl-4 pr-4 pt-2 pb-2 rounded-lg mt-6 hover:bg-primary-900">
                                 {t("common:button.becomePartner")}
                             </button>
                         </Link>

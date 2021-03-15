@@ -1,9 +1,21 @@
 {
-  "locales": ["ru", "kz", "en"],
+  "locales": [
+    "ru",
+    "kz",
+    "en"
+  ],
   "defaultLocale": "ru",
   "pages": {
-    "*": ["common", "form"],
-    "/": ["landing", "features"],
-    "/become-partner": ["features"]
+    "*": [
+      "common",
+      "form"
+    ],
+    "/": [
+      "landing",
+      "features"
+    ],
+    "/become-partner": [
+      "features"
+    ]
   }
 }

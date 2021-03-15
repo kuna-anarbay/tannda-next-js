@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import {ErrorResponse} from "../../models/ErrorResponse";
 
 interface AlertProps {
     initialVisible: boolean;
@@ -8,7 +7,7 @@ interface AlertProps {
     text: string;
 }
 
-export default function Alert(props: AlertProps = { initialVisible: true, type: "info", text: "", title: ""}) {
+export default function Alert(props: AlertProps = {initialVisible: true, type: "info", text: "", title: ""}) {
     const [visible, hide] = useState(props.initialVisible);
 
     let color: string;
