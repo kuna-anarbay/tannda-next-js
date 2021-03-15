@@ -11,12 +11,12 @@ export default function Product() {
                 <div className="grid grid-cols-1 md:grid-cols-4 md:grid-flow-col gap-12">
                     <div className="flex flex-wrap content-center md:col-span-2">
                         <div>
-                            <h2 className="text-base text-main font-semibold tracking-wide uppercase">
+                            <p className="text-base text-main font-semibold tracking-wide uppercase">
                                 {t("landing:product.title")}
-                            </h2>
-                            <p className="mt-2 text-2xl leading-8 font-bold tracking-tight text-gray-900 md:text-3xl">
-                                {t("landing:product.subtitle")}
                             </p>
+                            <h2 className="mt-2 text-2xl leading-8 font-bold tracking-tight text-gray-900 md:text-3xl">
+                                {t("landing:product.subtitle")}
+                            </h2>
                             <p className="mt-4 text-sm leading-8 text-gray-700 md:text-lg">
                                 {t("landing:product.description")}
                             </p>

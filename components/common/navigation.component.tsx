@@ -8,7 +8,7 @@ import {CityApi} from "../../services/network/city.api";
 import {connect, useDispatch} from 'react-redux';
 import {RootState} from "../../store/store";
 
-function NavigationComponent () {
+function NavigationComponent() {
 
     useEffect(() => {
         dispatch(CityApi.instance.getCities(null));
@@ -57,7 +57,7 @@ function NavigationComponent () {
                             className="absolute mt-12 w-44 rounded-lg bg-white p-2 shadow-md focus:outline-none"
                         >
                             {languages.map(lang => (
-                                <Menu.Item>
+                                <Menu.Item key={lang.key}>
                                     {({active}) => (
                                         <div className={`${getClassName(active, lang.key)} rounded-md`}>
                                             <Link href={router.pathname} locale={lang.key}>

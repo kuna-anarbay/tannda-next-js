@@ -12,6 +12,7 @@ export default function Footer() {
                 <div className="flex justify-center space-x-6">
                     {contacts.map(contact => (
                         <a href={contact.link}
+                           key={contact.link}
                            className="text-white duration-150 ease-in-out transform hover:-translate-y-0.5 hover:scale-100">
                             <i className={contact.icon + " text-md md:text-lg"}/>
                         </a>

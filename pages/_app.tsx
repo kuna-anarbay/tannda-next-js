@@ -24,6 +24,7 @@ function MyApp({Component, pageProps}) {
                     <link rel="icon" href="/favicon.ico"/>
 
                     <meta name="description" content={t("common:headData.description")}/>
+                    <meta name="keywords" content="Tañda, таңда, танда, образовательные центры, образовательные курсы" />
                     <meta property="og:title" content={t("common:headData.title")}/>
                     <meta property="og:description" content={t("common:headData.description")}/>
                     <meta property="og:image" content="/android-chrome-192x192.png"/>

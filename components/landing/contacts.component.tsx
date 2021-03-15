@@ -63,9 +63,9 @@ function Contacts(props: GenericState<BecomePartner>) {
                 <div className="py-8 md:py-16 md:col-span-1">
                     <div>
                         <div>
-                            <h2 className="text-base text-main font-semibold tracking-wide uppercase">
+                            <p className="text-base text-main font-semibold tracking-wide uppercase">
                                 {t("landing:contacts.title")}
-                            </h2>
+                            </p>
                             <p className="mt-2 text-2xl leading-8 font-bold tracking-tight text-gray-900 md:text-3xl">
                                 {t("landing:contacts.subtitle")}
                             </p>
@@ -73,7 +73,7 @@ function Contacts(props: GenericState<BecomePartner>) {
                         <div className="mt-4">
                             <ul>
                                 {contacts.map(contact => (
-                                    <li className="px-3 py-1.5 my-0.5 text-gray-600 space-x-2.5 rounded-md hover:bg-blue-50 hover:text-main">
+                                    <li key={contact.value} className="px-3 py-1.5 my-0.5 text-gray-600 space-x-2.5 rounded-md hover:bg-blue-50 hover:text-main">
                                         <i className={contact.icon}/>
                                         <a href={contact.link}>
                                             {contact.value}
@@ -87,9 +87,9 @@ function Contacts(props: GenericState<BecomePartner>) {
                 </div>
                 <div className="bg-white py-8 md:py-16 md:col-span-2">
                     <form onSubmit={becomePartner} id="become-partner">
-                        <h3 className="text-xl font-medium md:text-2xl">
+                        <h2 className="text-xl font-medium md:text-2xl">
                             {t("landing:become-partner.title")}
-                        </h3>
+                        </h2>
                         <p className="text-gray-500">
                             {t("landing:become-partner.subtitle")}
                         </p>
