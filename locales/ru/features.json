@@ -1,31 +1,31 @@
 {
   "header": {
-    "title": "Ерекшеліктер",
-    "subtitle": "Өзіңізді ерекше таныстырыңыз",
-    "description": "Миссияңызға ғана назар аударыңыз. Қалғанының бәрін біз реттейміз. Біздің ерекшеліктеріміздің арқасында сіздің бизнесіңіз көптің арасында ерекше көзге түседі"
+    "title": "Особенности",
+    "subtitle": "Представьте себя иначе",
+    "description": "Сфокуссируйтесь на своей миссии. Остальное оставьте нам. Благодоря нам, ваш бизнес будет выделяться среди конкурентов"
   },
   "content": {
-    "title": "Reliable content",
-    "description": "Information about educational centers and courses are reviewed by our editors. Everything will be easy for customers to understand"
+    "title": "Достоверная информация",
+    "description": "Информация об образовательных центрах будет тщательно проверяться нашими редакторами. Все будет легко и доступно"
   },
   "marketing.title": {
-    "title": "We'll handle marketing for you",
-    "description": "We provide you with ready clients. We will increase your popularity through our platform"
+    "title": "Мы займемся вашим маркеттингом",
+    "description": "Мы будем привлекать к вам клиентов. Вы сможете стать популярными через нашу платформу"
   },
   "requests": {
-    "title": "Online applications",
-    "description": "Your customers will be able to apply to your courses and track the status of their applications"
+    "title": "Онлайн заявки",
+    "description": "Выши клиенты смогут подавать заявки на ваши курсы и получать обратную связь"
   },
   "multilanguage": {
-    "title": "Available in 3 languages",
-    "description": "Platform will be available in kazakh, english and russian. All of the content will be translated and reviewed carefully"
+    "title": "Доступно на 3 языках",
+    "description": "Наша платформа доступна на 3 языках. Весь контент будет переведен и тщательно проверен нами"
   },
   "images": {
-    "title": "Best quality images",
-    "description": "High quality images will be taken by professional photographers to accurately represent your center"
+    "title": "Фото лучшего качества",
+    "description": "Наши профессиональные фотографы сделают лучшие фотографии вашего центра чтобы показать ее во всей красе"
   },
   "online": {
-    "title": "Online 24/7",
-    "description": "Your center will be available to your customers 24/7. No need to launch your own website"
+    "title": "Онлайн 24/7",
+    "description": "Сайт вашего центра будет доступен для клиентов круглые сутки. Нет необходимости создавать свой вэб-сайт"
   }
 }

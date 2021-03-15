@@ -12,5 +12,5 @@ export class AuthApi extends NetworkManager {
         super();
     }
 
-    public becomePartner = (req: Object) => GenericRequest(this.axiosInstance.post<BecomePartner>("auth/requests", req), authConstants.BECOME_PARTNER);
+    public becomePartner = (req: Object) => GenericRequest(this.axiosInstance.post<BecomePartner>("auth/becomePartner", req), authConstants.BECOME_PARTNER);
 }
