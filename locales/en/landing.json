@@ -3,11 +3,6 @@
     "title": "Ready to dive in?",
     "subtitle": "Reintroduce your business today"
   },
-  "about-us": {
-    "title": "About us",
-    "subtitle": "On a mission to empower businesses",
-    "description": "LOrem ipsum"
-  },
   "contacts": {
     "title": "Contacts",
     "subtitle": "Have a question? Contact us"
@@ -15,11 +10,16 @@
   "become-partner": {
     "title": "Leave a request",
     "subtitle": "Fill out the form and we will contact you!",
-    "emailRequired": "We will create your account with the email above"
+    "emailRequired": "We will create your account with the email above",
+    "success": {
+      "title": "Your request has been sent",
+      "text": "Thank you for your request. Our manager will contact you within an hour"
+    }
   },
   "product": {
-    "title": "Products",
-    "subtitle": "Some subtitle",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    "title": "Platform",
+    "subtitle": "Coming soon on App & Play Store",
+    "description": "Your customers will have the best experience with our iOS and Android applications. Every part of our application was thoroughly examined and carefully thought out to carry out our mission. Our app will be a valuable asset that will attract customers. It will have a simple interface and all the reliable information to accurately represent your center. Your best and most popular courses will show up in the respective categories. Have a free trial? An entry test or a discount? Your customers will be able to see that too",
+    "meta": "Coming soon"
   }
 }

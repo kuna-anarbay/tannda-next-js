@@ -2,16 +2,18 @@ import React from "react";
 import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
 import Image from "next/image";
+import {useRouter} from "next/router";
 
 export default function Header() {
 
     const {t} = useTranslation();
+    const{ locale} = useRouter();
 
     return (
-        <div className="bg-secondaryBackground px-4 py-16 md:py-24">
-            <div className="container mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 md:grid-flow-col gap-4">
-                    <div className="flex flex-wrap content-center">
+        <div className="bg-secondaryBackground px-4 py-12 md:py-24">
+            <div className="container mx-auto w-full">
+                <div className="grid md:grid-cols-5 md:grid-flow-col md:gap-16">
+                    <div className="flex flex-wrap content-center md:col-span-3">
                         <h1 className="text-4xl md:text-6xl font-bold">
                             <div>
                                 {t("common:header.title")}
@@ -29,9 +31,10 @@ export default function Header() {
                             </button>
                         </Link>
                     </div>
-                    <div>
-                        <img src={"https://tannda-storage.s3.eu-central-1.amazonaws.com/tannda/web/landing-header.png"}
-                             alt={"Tañda header image"}/>
+                    <div className="md:col-span-2">
+                        <img
+                            src={`https://tannda-storage.s3.eu-central-1.amazonaws.com/tannda/web/landing-product-${locale}.svg`}
+                            alt={"Tañda header image"}/>
                     </div>
                 </div>
             </div>

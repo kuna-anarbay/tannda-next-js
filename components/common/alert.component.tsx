@@ -1,12 +1,14 @@
 import React, {useState} from "react";
+import {ErrorResponse} from "../../models/ErrorResponse";
 
 interface AlertProps {
     initialVisible: boolean;
     type: "error" | "success" | "info";
+    title: string;
     text: string;
 }
 
-export default function Alert(props: AlertProps = { initialVisible: true, type: "info", text: ""}) {
+export default function Alert(props: AlertProps = { initialVisible: true, type: "info", text: "", title: ""}) {
     const [visible, hide] = useState(props.initialVisible);
 
     let color: string;
@@ -25,10 +27,15 @@ export default function Alert(props: AlertProps = { initialVisible: true, type: 
     if (visible) {
         return (
             <div
-                className={`fixed py-4 px-6 rounded-md text-${color}-900 bg-${color}-50 bottom-8 left-4 right-4 md:bottom-16 md:left-16 md:right-16`}>
-                <div className="flex">
+                className={`fixed z-50 shadow-md py-4 px-6 rounded-md text-${color}-900 bg-${color}-50 bottom-8 left-4 right-4 md:bottom-16 md:left-16 md:right-16`}>
+                <div className="flex space-x-4">
                     <div className="flex-grow">
-                        {props.text}
+                        <h5 className={`text-${color}-900 font-medium`}>
+                            {props.title}
+                        </h5>
+                        <p className={`text-${color}-500 text-sm`}>
+                            {props.text}
+                        </p>
                     </div>
                     <div className="flex-none w-4">
                         <button onClick={() => hide(false)} type="button">

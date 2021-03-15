@@ -1,11 +1,19 @@
-import React, {useState} from "react";
+import React, {useEffect} from "react";
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
 import {Menu, Transition} from "@headlessui/react";
 import {useRouter} from "next/router";
 import {languages} from "../../public/static/languages.data";
+import {CityApi} from "../../services/network/city.api";
+import {connect, useDispatch} from 'react-redux';
+import {RootState} from "../../store/store";
 
-export default function NavigationComponent() {
+function NavigationComponent () {
+
+    useEffect(() => {
+        dispatch(CityApi.instance.getCities(null));
+    });
+    const dispatch = useDispatch();
     const router = useRouter();
     const {t} = useTranslation();
     const {locale} = router;
@@ -48,7 +56,7 @@ export default function NavigationComponent() {
                             static
                             className="absolute mt-12 w-44 rounded-lg bg-white p-2 shadow-md focus:outline-none"
                         >
-                            { languages.map(lang => (
+                            {languages.map(lang => (
                                 <Menu.Item>
                                     {({active}) => (
                                         <div className={`${getClassName(active, lang.key)} rounded-md`}>
@@ -70,7 +78,7 @@ export default function NavigationComponent() {
 
 
     return (
-        <div style={{ height: "64px" }}>
+        <div style={{height: "64px"}}>
             <nav className="bg-white top-0 w-full fixed shadow-sm">
                 <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
                     <div className="relative flex items-center justify-between h-16">
@@ -101,7 +109,8 @@ export default function NavigationComponent() {
                             <div className="ml-3 relative">
                                 <div>
                                     <Link href="/#become-partner">
-                                        <button className="bg-blue-50 text-main text-sm font-medium px-3 py-2 rounded-md hover:bg-blue-100">
+                                        <button
+                                            className="bg-blue-50 text-main text-sm font-medium px-3 py-2 rounded-md hover:bg-blue-100">
                                             {t("common:button.becomePartner")}
                                         </button>
                                     </Link>
@@ -114,3 +123,13 @@ export default function NavigationComponent() {
         </div>
     );
 }
+
+const mapStateToProps = (state: RootState) => {
+    const cities = state.city.getCities.response;
+    if (cities) {
+        localStorage.setItem("cities", JSON.stringify(cities.results))
+    }
+    return {};
+}
+
+export default connect(mapStateToProps)(NavigationComponent);

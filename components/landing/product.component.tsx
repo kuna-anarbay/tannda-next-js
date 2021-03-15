@@ -17,11 +17,11 @@ export default function Product() {
                             <p className="mt-2 text-2xl leading-8 font-bold tracking-tight text-gray-900 md:text-3xl">
                                 {t("landing:product.subtitle")}
                             </p>
-                            <p className="mt-2 text-md leading-8 text-gray-700 md:text-lg">
+                            <p className="mt-4 text-sm leading-8 text-gray-700 md:text-lg">
                                 {t("landing:product.description")}
                             </p>
-                            <p className="">
-                                Coming soon
+                            <p className="mt-3 font-medium text-main">
+                                {t("landing:product.meta")}
                             </p>
                         </div>
                     </div>
