@@ -1,5 +1,8 @@
 {
   "full-name": "Full name",
+  "city": "City",
+  "center-name": "Center name",
   "phone-number": "Phone number",
-  "question": "Question"
+  "email": "Email",
+  "comments": "Comments"
 }

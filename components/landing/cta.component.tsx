@@ -18,7 +18,7 @@ export default function CTA() {
                 </h2>
                 <div className="flex flex-wrap content-center">
                     <button className="bg-main font-medium text-white pl-4 pr-4 pt-2 pb-2 rounded-lg mt-6 hover:bg-primary-900">
-                        <Link href="/become-partner">
+                        <Link href="/#become-partner">
                             {t("common:button.becomePartner")}
                         </Link>
                     </button>

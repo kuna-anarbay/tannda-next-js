@@ -3,9 +3,23 @@
     "title": "Готовы окунуться?",
     "subtitle": "Представьте свой бизнес по-новому"
   },
+  "about-us": {
+    "title": "О нас",
+    "subtitle": "На миссии по расширению возможностей бизнеса",
+    "description": "LOrem ipsum"
+  },
   "contacts": {
     "title": "Контакты",
-    "subtitle": "Есть вопросы? Свяжитесь с нами",
-    "socialMedia": "Мы в соцсетях"
+    "subtitle": "Есть вопросы? Свяжитесь с нами"
+  },
+  "become-partner": {
+    "title": "Оставьте заявку на подключение",
+    "subtitle": "Заполните форму, и мы обязательно с Вами свяжемся!",
+    "emailRequired": "Мы создадим вашу учетную запись с указанным выше адресом электронной почты"
+  },
+  "product": {
+    "title": "Products",
+    "subtitle": "Some subtitle",
+    "description": "Lorewm inpsum"
   }
 }

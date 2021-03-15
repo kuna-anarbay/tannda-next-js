@@ -23,7 +23,7 @@ export default function Header() {
                         <h2 className="text-md md:text-lg text-gray-500 mt-4">
                             {t("common:header.description")}
                         </h2>
-                        <Link href="/become-partner">
+                        <Link href="/#become-partner">
                             <button className="bg-main font-medium text-white pl-4 pr-4 pt-2 pb-2 rounded-lg mt-6 hover:bg-primary-900">
                                 {t("common:button.becomePartner")}
                             </button>

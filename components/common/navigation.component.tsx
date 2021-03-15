@@ -100,7 +100,7 @@ export default function NavigationComponent() {
                             className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                             <div className="ml-3 relative">
                                 <div>
-                                    <Link href="/become-partner">
+                                    <Link href="/#become-partner">
                                         <button className="bg-blue-50 text-main text-sm font-medium px-3 py-2 rounded-md hover:bg-blue-100">
                                             {t("common:button.becomePartner")}
                                         </button>
