@@ -4,7 +4,7 @@ import useTranslation from "next-translate/useTranslation";
 import Alert from "../common/alert.component";
 import {connect, useDispatch} from 'react-redux';
 import {AuthApi} from "../../services/network/auth.api";
-import {AppDispatch, RootState} from "../../store/store";
+import {AppDispatch, RootState} from "../../services/redux/store";
 import {GenericState} from "../../generic/generic.state";
 import {BecomePartner} from "../../models/BecomePartner";
 import {City} from "../../models/City";
@@ -52,8 +52,8 @@ function Contacts(props: GenericState<BecomePartner>) {
             },
             language: locale
         };
-        console.log(requestData);
-        dispatch(AuthApi.instance.becomePartner(requestData))
+
+        dispatch(AuthApi.instance.becomePartner(requestData));
     }
 
 
@@ -119,7 +119,7 @@ function Contacts(props: GenericState<BecomePartner>) {
                                         placeholder={t("form:city")}
                                         className="w-full rounded-md border-gray-300 shadow-sm sm:text-sm focus:border-primary-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                         {cities.map(city => (
-                                            <option value={city.id}>
+                                            <option key={city.id} value={city.id}>
                                                 {translate(city.title, locale)}
                                             </option>
                                         ))}

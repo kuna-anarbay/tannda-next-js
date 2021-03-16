@@ -2,8 +2,8 @@ import {ApprovalStatus} from "../../models/ApprovalStatus";
 import {City} from "../../models/City";
 import {Page} from "../../models/Page";
 import {NetworkManager} from "./network-manager";
-import {GenericRequest} from "../../store/generic.request";
-import {cityConstants} from "../../store/constants/city.constants";
+import {GenericRequest} from "../redux/generic.request";
+import {cityConstants} from "../redux/constants/city.constants";
 
 export class CityApi extends NetworkManager {
 

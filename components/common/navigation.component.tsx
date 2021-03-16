@@ -6,7 +6,7 @@ import {useRouter} from "next/router";
 import {languages} from "../../public/static/languages.data";
 import {CityApi} from "../../services/network/city.api";
 import {connect, useDispatch} from 'react-redux';
-import {RootState} from "../../store/store";
+import {RootState} from "../../services/redux/store";
 
 function NavigationComponent() {
 

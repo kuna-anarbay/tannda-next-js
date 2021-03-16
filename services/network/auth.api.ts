@@ -1,7 +1,7 @@
 import {NetworkManager} from "./network-manager";
 import {BecomePartner} from "../../models/BecomePartner";
-import {GenericRequest} from "../../store/generic.request";
-import {authConstants} from "../../store/constants/auth.constants";
+import {GenericRequest} from "../redux/generic.request";
+import {authConstants} from "../redux/constants/auth.constants";
 
 
 export class AuthApi extends NetworkManager {

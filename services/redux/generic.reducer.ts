@@ -1,5 +1,5 @@
-import {defaultState, GenericState} from "../generic/generic.state";
-import {FailureAction, GenericAction, SuccessAction} from "../generic/generic.action";
+import {defaultState, GenericState} from "../../generic/generic.state";
+import {FailureAction, GenericAction, SuccessAction} from "../../generic/generic.action";
 
 const genericReducer = <T>(type: string) => {
     return (state: GenericState<T> = defaultState, action: GenericAction<T>) => {
