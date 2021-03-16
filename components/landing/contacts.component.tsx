@@ -10,6 +10,7 @@ import {BecomePartner} from "../../models/BecomePartner";
 import {City} from "../../models/City";
 import {useRouter} from "next/router";
 import {translate} from "../../models/Translatable";
+import {icons} from "../../public/icons";
 
 function Contacts(props: GenericState<BecomePartner>) {
     const [cities, updateCities] = useState(Array<City>());
@@ -183,7 +184,7 @@ function Contacts(props: GenericState<BecomePartner>) {
                                                text={t("landing:become-partner.success.text")}/> : null}
                             <button disabled={loading} type="submit"
                                     className={`bg-${loading ? "gray-700" : "main"} flex space-x-2.5 text-white px-6 py-2 rounded-lg md:px-8 hover:bg-${loading ? "gray-700" : "primary-900"}`}>
-                                {loading ? <i className="animate-spin fas fa-spinner"/> : null}
+                                {loading ? icons.spinner : null}
                                 <div>
                                     {t("common:button.submit")}
                                 </div>
