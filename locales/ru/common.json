@@ -1,7 +1,8 @@
 {
   "button": {
     "becomePartner": "Стать партнером",
-    "submit": "Отправить"
+    "submit": "Отправить",
+    "loading": "Загрузка..."
   },
   "navigation": {
     "language": "Язык"

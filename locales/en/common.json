@@ -1,7 +1,8 @@
 {
   "button": {
     "becomePartner": "Become partner",
-    "submit": "Submit"
+    "submit": "Submit",
+    "loading": "Loading..."
   },
   "navigation": {
     "language": "Language"

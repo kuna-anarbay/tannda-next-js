@@ -1,7 +1,8 @@
 {
   "button": {
     "becomePartner": "Серіктес болу",
-    "submit": "Жіберу"
+    "submit": "Жіберу",
+    "loading": "Жүктелуде..."
   },
   "navigation": {
     "language": "Тіл"

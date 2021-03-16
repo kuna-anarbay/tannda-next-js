@@ -186,9 +186,8 @@ function Contacts(props: GenericState<BecomePartner>) {
                                                text={t("landing:become-partner.success.text")}/> : null}
                             <button disabled={loading} type="submit"
                                     className={`bg-${loading ? "gray-700" : "main"} flex space-x-2.5 text-white px-6 py-2 rounded-lg md:px-8 hover:bg-${loading ? "gray-700" : "primary-900"}`}>
-                                {loading ? spinner : null}
                                 <div>
-                                    {t("common:button.submit")}
+                                    {loading ? t("common:button.loading") : t("common:button.submit")}
                                 </div>
                             </button>
                         </div>
