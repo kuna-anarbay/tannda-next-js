@@ -14,6 +14,28 @@ import {icons} from "../../public/icons";
 
 function Contacts(props: GenericState<BecomePartner>) {
     const [cities, updateCities] = useState(Array<City>());
+    const {locale} = useRouter();
+    const {loading, error, response} = props;
+    const {t} = useTranslation();
+    const dispatch: AppDispatch = useDispatch();
+    const {spinner} = icons;
+
+    const becomePartner = (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+        const formObject = Object.fromEntries(formData);
+        const requestData = {
+            ...formObject,
+            city: {
+                id: parseInt(formObject.city as string)
+            },
+            language: locale
+        };
+
+        dispatch(AuthApi.instance.becomePartner(requestData));
+    }
+
     useEffect(() => {
         function getCities(count: number) {
             if (count === 3) {
@@ -36,27 +58,6 @@ function Contacts(props: GenericState<BecomePartner>) {
         }
     });
 
-    const {locale} = useRouter();
-    const {loading, error, response} = props;
-    const {t} = useTranslation();
-    const dispatch: AppDispatch = useDispatch();
-
-    const becomePartner = (e) => {
-        e.preventDefault();
-
-        const formData = new FormData(e.target);
-        const formObject = Object.fromEntries(formData);
-        const requestData = {
-            ...formObject,
-            city: {
-                id: parseInt(formObject.city as string)
-            },
-            language: locale
-        };
-
-        dispatch(AuthApi.instance.becomePartner(requestData));
-    }
-
 
     return (
         <div className="container mx-auto px-4">
@@ -74,7 +75,8 @@ function Contacts(props: GenericState<BecomePartner>) {
                         <div className="mt-4">
                             <ul>
                                 {contacts.map(contact => (
-                                    <li key={contact.value} className="px-3 py-1.5 my-0.5 text-gray-600 space-x-2.5 rounded-md hover:bg-blue-50 hover:text-main">
+                                    <li key={contact.value}
+                                        className="px-3 py-1.5 my-0.5 text-gray-600 space-x-2.5 rounded-md hover:bg-blue-50 hover:text-main">
                                         <i className={contact.icon}/>
                                         <a href={contact.link}>
                                             {contact.value}
@@ -184,7 +186,7 @@ function Contacts(props: GenericState<BecomePartner>) {
                                                text={t("landing:become-partner.success.text")}/> : null}
                             <button disabled={loading} type="submit"
                                     className={`bg-${loading ? "gray-700" : "main"} flex space-x-2.5 text-white px-6 py-2 rounded-lg md:px-8 hover:bg-${loading ? "gray-700" : "primary-900"}`}>
-                                {loading ? icons.spinner : null}
+                                {loading ? spinner : null}
                                 <div>
                                     {t("common:button.submit")}
                                 </div>
