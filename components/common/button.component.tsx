@@ -1,5 +1,4 @@
 import React from "react";
-import {icons} from "../../public/icons";
 
 interface ButtonProps {
     type: "primary";
@@ -13,7 +12,7 @@ export default function Button(props: ButtonProps) {
         return (
             <button disabled={true} type="submit"
                     className="bg-gray-700 flex space-x-2.5 text-white px-6 py-2 rounded-lg md:px-8 hover:bg-gray-700">
-                { icons.spinner }
+                <i className="animate-spin fas fa-spinner"/>
                 <div>
                     {props.title}
                 </div>
