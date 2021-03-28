@@ -4,23 +4,19 @@ import {Language} from "./Language";
 import {ApprovalStatus} from "./ApprovalStatus";
 
 export interface BecomePartner {
-    id: number | null;
-    name: String;
-    phone: String;
-    email: String;
-    centerName: String;
-    message: String | null;
+    name: string;
+    phone: string;
+    email: string;
+    centerName: string;
+    message?: string;
     language: Language;
     city: City;
-    timestamp: Timestamp | null;
-    approvalStatus: ApprovalStatus | null;
+
+    id?: number;
+    timestamp?: Timestamp;
+    approvalStatus?: ApprovalStatus;
 }
 
-////////// POST
-// name
-// phone
-// email
-// centerName
-// message | null
-// language
-// city
+export declare var ConstructBecomePartner: {
+    new(form?: object): BecomePartner;
+}

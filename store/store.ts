@@ -1,12 +1,15 @@
-import {Action, configureStore, ThunkAction} from "@reduxjs/toolkit";
-import {rootReducer} from "./reducers";
+import {handleRequests} from '@redux-requests/core';
+import {createDriver} from '@redux-requests/axios';
+import {applyMiddleware, combineReducers, createStore} from "redux";
+import {axiosInstance} from "./http/AxiosInstance";
 
-const store = configureStore({
-    reducer: rootReducer
+const {requestsReducer, requestsMiddleware} = handleRequests({
+    driver: createDriver(axiosInstance()),
 });
 
-export type AppThunk = ThunkAction<void, RootState, null, Action<string>>
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+const reducers = combineReducers({
+    requests: requestsReducer,
+});
 
-export default store;
+export const store = createStore(reducers, applyMiddleware(...requestsMiddleware));
+

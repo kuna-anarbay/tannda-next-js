@@ -1,59 +1,58 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {contacts} from "../../public/static/contacts.data";
 import useTranslation from "next-translate/useTranslation";
 import Alert from "../common/alert.component";
-import {connect, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {AuthApi} from "../../services/network/auth.api";
-import {AppDispatch, RootState} from "../../store/store";
-import {GenericState} from "../../generic/generic.state";
-import {BecomePartner} from "../../models/BecomePartner";
-import {City} from "../../models/City";
+import {ConstructBecomePartner} from "../../models/BecomePartner";
 import {useRouter} from "next/router";
 import {translate} from "../../models/Translatable";
+import {useQuery} from "@redux-requests/react";
+import {CityAction} from "../../store/actions/city.action";
+import {AuthAction} from "../../store/actions/auth.action";
+import {Language} from "../../models/Language";
+import {FormBody} from "../../utils/formdata.util";
 
-function Contacts(props: GenericState<BecomePartner>) {
-    const [cities, updateCities] = useState(Array<City>());
-    useEffect(() => {
-        function getCities(count: number) {
-            if (count === 3) {
-                return;
-            }
-            const result = localStorage.getItem("cities");
-            const citiesList = JSON.parse(result) as Array<City>;
-
-            if (citiesList) {
-                updateCities(citiesList);
-            } else {
-                setTimeout(function () {
-                    getCities(count + 1);
-                }, count * 1000);
-            }
-        }
-
-        if (cities.length === 0) {
-            getCities(1);
-        }
-    });
-
+function Contacts() {
+    const {data, loading, error} = useQuery({type: CityAction.getCities});
     const {locale} = useRouter();
-    const {loading, error, response} = props;
     const {t} = useTranslation();
-    const dispatch: AppDispatch = useDispatch();
+    const dispatch = useDispatch();
 
     const becomePartner = (e) => {
         e.preventDefault();
 
-        const formData = new FormData(e.target);
-        const formObject = Object.fromEntries(formData);
-        const requestData = {
-            ...formObject,
-            city: {
-                id: parseInt(formObject.city as string)
-            },
-            language: locale
-        };
-        console.log(requestData);
-        dispatch(AuthApi.instance.becomePartner(requestData))
+        // name: String;
+        // phone: String;
+        // email: String;
+        // centerName: String;
+        // message: String | null;
+        // language: Language;
+        // city: City;
+
+        console.log(typeof e.target);
+        const vars = new FormData(e.target);
+        console.log(vars);
+        // let body: BecomePartner = {
+        //     ...(new BecomePartner(e.target)),
+        //     city: {
+        //         id:
+        //     }
+        // }
+        //
+        // const formObject = Object.fromEntries(formData);
+        //
+        // const requestData = {
+        //     ...formObject,
+        //     city: {
+        //         id: parseInt(formObject.city as string)
+        //     },
+        //     language: locale
+        // };
+        //
+        // console.log(requestData);
+        // dispatch(AuthAction.becomePartner(body))
+        // dispatch(AuthApi.instance.becomePartner(requestData))
     }
 
 
@@ -73,7 +72,8 @@ function Contacts(props: GenericState<BecomePartner>) {
                         <div className="mt-4">
                             <ul>
                                 {contacts.map(contact => (
-                                    <li key={contact.value} className="px-3 py-1.5 my-0.5 text-gray-600 space-x-2.5 rounded-md hover:bg-blue-50 hover:text-main">
+                                    <li key={contact.value}
+                                        className="px-3 py-1.5 my-0.5 text-gray-600 space-x-2.5 rounded-md hover:bg-blue-50 hover:text-main">
                                         <i className={contact.icon}/>
                                         <a href={contact.link}>
                                             {contact.value}
@@ -115,14 +115,14 @@ function Contacts(props: GenericState<BecomePartner>) {
                                 <div className="mt-1 rounded-md">
                                     <select
                                         required
-                                        name="city"
+                                        name="city.id"
                                         placeholder={t("form:city")}
                                         className="w-full rounded-md border-gray-300 shadow-sm sm:text-sm focus:border-primary-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                        {cities.map(city => (
-                                            <option value={city.id}>
+                                        {data ? data.map(city => (
+                                            <option value={city.id} key={city.id}>
                                                 {translate(city.title, locale)}
                                             </option>
-                                        ))}
+                                        )) : null }
                                     </select>
                                 </div>
                             </div>
@@ -178,7 +178,7 @@ function Contacts(props: GenericState<BecomePartner>) {
                         <div>
                             {error ? <Alert initialVisible={true} type={"error"} title={error.error}
                                             text={error.message}/> : null}
-                            {response ? <Alert initialVisible={true} type={"success"}
+                            {data ? <Alert initialVisible={true} type={"success"}
                                                title={t("landing:become-partner.success.title")}
                                                text={t("landing:become-partner.success.text")}/> : null}
                             <button disabled={loading} type="submit"
@@ -196,8 +196,5 @@ function Contacts(props: GenericState<BecomePartner>) {
     );
 }
 
-const mapStateToProps = (state: RootState) => {
-    return state.auth.becomePartner;
-}
 
-export default connect(mapStateToProps)(Contacts);
+export default Contacts;

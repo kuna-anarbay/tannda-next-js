@@ -1,3 +1,5 @@
+import {Token} from "../../models/Token";
+
 class LocalDatabase {
 
     public static instance = new LocalDatabase();
@@ -6,10 +8,13 @@ class LocalDatabase {
     }
 
     getToken = () => {
-        // const temp = localStorage.getItem("accessToken");
-        // if (temp) {
-        //     return JSON.parse(temp!)
-        // }
+        if(typeof window === "undefined") {
+            return null;
+        }
+        const temp = window.localStorage.getItem("accessToken");
+        if (temp) {
+            return JSON.parse(temp!) as Token
+        }
 
         return null;
     }
@@ -32,7 +37,10 @@ class LocalDatabase {
     }
 
     setCities = (cities: Array<Object>) => {
-        // localStorage.setItem("cities", JSON.stringify(cities));
+        if(typeof window === "undefined") {
+            return null;
+        }
+        window.localStorage.setItem("cities", JSON.stringify(cities));
     }
 
     getProfile = () => {
