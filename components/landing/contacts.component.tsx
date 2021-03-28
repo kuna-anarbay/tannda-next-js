@@ -3,15 +3,10 @@ import {contacts} from "../../public/static/contacts.data";
 import useTranslation from "next-translate/useTranslation";
 import Alert from "../common/alert.component";
 import {useDispatch} from 'react-redux';
-import {AuthApi} from "../../services/network/auth.api";
-import {ConstructBecomePartner} from "../../models/BecomePartner";
 import {useRouter} from "next/router";
 import {translate} from "../../models/Translatable";
 import {useQuery} from "@redux-requests/react";
 import {CityAction} from "../../store/actions/city.action";
-import {AuthAction} from "../../store/actions/auth.action";
-import {Language} from "../../models/Language";
-import {FormBody} from "../../utils/formdata.util";
 
 function Contacts() {
     const {data, loading, error} = useQuery({type: CityAction.getCities});

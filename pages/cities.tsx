@@ -2,7 +2,6 @@ import React from "react";
 import {useDispatch} from "react-redux";
 import {CityAction} from "../store/actions/city.action";
 import {Query} from '@redux-requests/react';
-import {cityConstants} from "../store/constants/city.constants";
 
 const Spinner = () => <p>loading...</p>;
 const RequestError = () => (

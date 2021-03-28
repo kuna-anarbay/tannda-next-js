@@ -4,7 +4,7 @@ import {Provider} from "react-redux";
 import {store} from "../store/store";
 import useTranslation from "next-translate/useTranslation";
 import Footer from "../components/common/footer.component";
-import "../styles/globals.css";
+import "../public/styles/globals.css";
 import PageHead from "../components/common/page-head.component";
 
 
