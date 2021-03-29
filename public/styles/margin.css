@@ -1,0 +1,186 @@
+
+.tn-margin-mini {
+  margin: var(--constraint-mini);
+}
+
+.tn-margin-top-mini {
+  margin-top: var(--constraint-mini);
+}
+
+.tn-margin-bottom-mini {
+  margin-bottom: var(--constraint-mini);
+}
+
+.tn-margin-leading-mini {
+  margin-left: var(--constraint-mini);
+}
+
+.tn-margin-trailing-mini {
+  margin-right: var(--constraint-mini);
+}
+
+.tn-margin-vertical-mini {
+  margin-top: var(--constraint-mini);
+  margin-bottom: var(--constraint-mini);
+}
+
+.tn-margin-horizontal-mini {
+  margin-left: var(--constraint-mini);
+  margin-right: var(--constraint-mini);
+}
+
+
+.tn-margin-small {
+  margin: var(--constraint-small);
+}
+
+.tn-margin-top-small {
+  margin-top: var(--constraint-small);
+}
+
+.tn-margin-bottom-small {
+  margin-bottom: var(--constraint-small);
+}
+
+.tn-margin-leading-small {
+  margin-left: var(--constraint-small);
+}
+
+.tn-margin-trailing-small {
+  margin-right: var(--constraint-small);
+}
+
+.tn-margin-vertical-small {
+  margin-top: var(--constraint-small);
+  margin-bottom: var(--constraint-small);
+}
+
+.tn-margin-horizontal-small {
+  margin-left: var(--constraint-small);
+  margin-right: var(--constraint-small);
+}
+
+
+.tn-margin-regular {
+  margin: var(--constraint-regular);
+}
+
+.tn-margin-top-regular {
+  margin-top: var(--constraint-regular);
+}
+
+.tn-margin-bottom-regular {
+  margin-bottom: var(--constraint-regular);
+}
+
+.tn-margin-leading-regular {
+  margin-left: var(--constraint-regular);
+}
+
+.tn-margin-trailing-regular {
+  margin-right: var(--constraint-regular);
+}
+
+.tn-margin-vertical-regular {
+  margin-top: var(--constraint-regular);
+  margin-bottom: var(--constraint-regular);
+}
+
+.tn-margin-horizontal-regular {
+  margin-left: var(--constraint-regular);
+  margin-right: var(--constraint-regular);
+}
+
+
+.tn-margin-medium {
+  margin: var(--constraint-medium);
+}
+
+.tn-margin-top-medium {
+  margin-top: var(--constraint-medium);
+}
+
+.tn-margin-bottom-medium {
+  margin-bottom: var(--constraint-medium);
+}
+
+.tn-margin-leading-medium {
+  margin-left: var(--constraint-medium);
+}
+
+.tn-margin-trailing-medium {
+  margin-right: var(--constraint-medium);
+}
+
+.tn-margin-vertical-medium {
+  margin-top: var(--constraint-medium);
+  margin-bottom: var(--constraint-medium);
+}
+
+.tn-margin-horizontal-medium {
+  margin-left: var(--constraint-medium);
+  margin-right: var(--constraint-medium);
+}
+
+
+.tn-margin-large {
+  margin: var(--constraint-large);
+}
+
+.tn-margin-top-large {
+  margin-top: var(--constraint-large);
+}
+
+.tn-margin-bottom-large {
+  margin-bottom: var(--constraint-large);
+}
+
+.tn-margin-leading-large {
+  margin-left: var(--constraint-large);
+}
+
+.tn-margin-trailing-large {
+  margin-right: var(--constraint-large);
+}
+
+.tn-margin-vertical-large {
+  margin-top: var(--constraint-large);
+  margin-bottom: var(--constraint-large);
+}
+
+.tn-margin-horizontal-large {
+  margin-left: var(--constraint-large);
+  margin-right: var(--constraint-large);
+}
+
+
+.tn-margin-extra-large {
+  margin: var(--constraint-extra-large);
+}
+
+.tn-margin-top-extra-large {
+  margin-top: var(--constraint-extra-large);
+}
+
+.tn-margin-bottom-extra-large {
+  margin-bottom: var(--constraint-extra-large);
+}
+
+.tn-margin-leading-extra-large {
+  margin-left: var(--constraint-extra-large);
+}
+
+.tn-margin-trailing-extra-large {
+  margin-right: var(--constraint-extra-large);
+}
+
+.tn-margin-vertical-extra-large {
+  margin-top: var(--constraint-extra-large);
+  margin-bottom: var(--constraint-extra-large);
+}
+
+.tn-margin-horizontal-extra-large {
+  margin-left: var(--constraint-extra-large);
+  margin-right: var(--constraint-extra-large);
+}
+  

@@ -1,0 +1,184 @@
+.tn-padding-mini {
+  padding: var(--constraint-mini);
+}
+
+.tn-padding-top-mini {
+  padding-top: var(--constraint-mini);
+}
+
+.tn-padding-bottom-mini {
+  padding-bottom: var(--constraint-mini);
+}
+
+.tn-padding-leading-mini {
+  padding-left: var(--constraint-mini);
+}
+
+.tn-padding-trailing-mini {
+  padding-right: var(--constraint-mini);
+}
+
+.tn-padding-vertical-mini {
+  padding-top: var(--constraint-mini);
+  padding-bottom: var(--constraint-mini);
+}
+
+.tn-padding-horizontal-mini {
+  padding-left: var(--constraint-mini);
+  padding-right: var(--constraint-mini);
+}
+
+
+.tn-padding-small {
+  padding: var(--constraint-small);
+}
+
+.tn-padding-top-small {
+  padding-top: var(--constraint-small);
+}
+
+.tn-padding-bottom-small {
+  padding-bottom: var(--constraint-small);
+}
+
+.tn-padding-leading-small {
+  padding-left: var(--constraint-small);
+}
+
+.tn-padding-trailing-small {
+  padding-right: var(--constraint-small);
+}
+
+.tn-padding-vertical-small {
+  padding-top: var(--constraint-small);
+  padding-bottom: var(--constraint-small);
+}
+
+.tn-padding-horizontal-small {
+  padding-left: var(--constraint-small);
+  padding-right: var(--constraint-small);
+}
+
+
+.tn-padding-regular {
+  padding: var(--constraint-regular);
+}
+
+.tn-padding-top-regular {
+  padding-top: var(--constraint-regular);
+}
+
+.tn-padding-bottom-regular {
+  padding-bottom: var(--constraint-regular);
+}
+
+.tn-padding-leading-regular {
+  padding-left: var(--constraint-regular);
+}
+
+.tn-padding-trailing-regular {
+  padding-right: var(--constraint-regular);
+}
+
+.tn-padding-vertical-regular {
+  padding-top: var(--constraint-regular);
+  padding-bottom: var(--constraint-regular);
+}
+
+.tn-padding-horizontal-regular {
+  padding-left: var(--constraint-regular);
+  padding-right: var(--constraint-regular);
+}
+
+
+.tn-padding-medium {
+  padding: var(--constraint-medium);
+}
+
+.tn-padding-top-medium {
+  padding-top: var(--constraint-medium);
+}
+
+.tn-padding-bottom-medium {
+  padding-bottom: var(--constraint-medium);
+}
+
+.tn-padding-leading-medium {
+  padding-left: var(--constraint-medium);
+}
+
+.tn-padding-trailing-medium {
+  padding-right: var(--constraint-medium);
+}
+
+.tn-padding-vertical-medium {
+  padding-top: var(--constraint-medium);
+  padding-bottom: var(--constraint-medium);
+}
+
+.tn-padding-horizontal-medium {
+  padding-left: var(--constraint-medium);
+  padding-right: var(--constraint-medium);
+}
+
+
+.tn-padding-large {
+  padding: var(--constraint-large);
+}
+
+.tn-padding-top-large {
+  padding-top: var(--constraint-large);
+}
+
+.tn-padding-bottom-large {
+  padding-bottom: var(--constraint-large);
+}
+
+.tn-padding-leading-large {
+  padding-left: var(--constraint-large);
+}
+
+.tn-padding-trailing-large {
+  padding-right: var(--constraint-large);
+}
+
+.tn-padding-vertical-large {
+  padding-top: var(--constraint-large);
+  padding-bottom: var(--constraint-large);
+}
+
+.tn-padding-horizontal-large {
+  padding-left: var(--constraint-large);
+  padding-right: var(--constraint-large);
+}
+
+
+.tn-padding-extra-large {
+  padding: var(--constraint-extra-large);
+}
+
+.tn-padding-top-extra-large {
+  padding-top: var(--constraint-extra-large);
+}
+
+.tn-padding-bottom-extra-large {
+  padding-bottom: var(--constraint-extra-large);
+}
+
+.tn-padding-leading-extra-large {
+  padding-left: var(--constraint-extra-large);
+}
+
+.tn-padding-trailing-extra-large {
+  padding-right: var(--constraint-extra-large);
+}
+
+.tn-padding-vertical-extra-large {
+  padding-top: var(--constraint-extra-large);
+  padding-bottom: var(--constraint-extra-large);
+}
+
+.tn-padding-horizontal-extra-large {
+  padding-left: var(--constraint-extra-large);
+  padding-right: var(--constraint-extra-large);
+}

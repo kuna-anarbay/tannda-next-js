@@ -17,37 +17,10 @@ function Contacts() {
     const becomePartner = (e) => {
         e.preventDefault();
 
-        // name: String;
-        // phone: String;
-        // email: String;
-        // centerName: String;
-        // message: String | null;
-        // language: Language;
-        // city: City;
-
         console.log(typeof e.target);
         const vars = new FormData(e.target);
         console.log(vars);
-        // let body: BecomePartner = {
-        //     ...(new BecomePartner(e.target)),
-        //     city: {
-        //         id:
-        //     }
-        // }
-        //
-        // const formObject = Object.fromEntries(formData);
-        //
-        // const requestData = {
-        //     ...formObject,
-        //     city: {
-        //         id: parseInt(formObject.city as string)
-        //     },
-        //     language: locale
-        // };
-        //
-        // console.log(requestData);
-        // dispatch(AuthAction.becomePartner(body))
-        // dispatch(AuthApi.instance.becomePartner(requestData))
+
     }
 
 

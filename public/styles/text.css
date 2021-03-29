@@ -1,0 +1,35 @@
+/*FONT SIZES*/
+.tn-text-large-title {
+  font-size: var(--font-large-title);
+}
+
+.tn-text-body {
+  font-size: 16px;
+}
+
+.tn-text-footnote {
+  font-size: 14px;
+}
+
+
+/*FONTS WEIGHTS*/
+.tn-font-regular {
+  font-weight: var(--font-regular);
+}
+
+.tn-font-medium {
+  font-weight: var(--font-medium);
+}
+
+.tn-font-semibold {
+  font-weight: var(--font-semibold);
+}
+
+.tn-font-bold {
+  font-weight: var(--font-bold);
+}
+
+/*TEXT ALIGNMENT*/
+.tn-text-center {
+  text-align: center;
+}

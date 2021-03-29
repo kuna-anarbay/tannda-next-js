@@ -6,8 +6,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: var(--font-body);
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Ubuntu, sans-serif;
 }
 
 a {
@@ -31,4 +31,14 @@ a {
   font-family: SimSun, sans-serif;
   line-height: 1;
   content: "*";
+}
+
+
+.tn-pointer {
+  cursor: pointer;
+}
+
+.tn-link {
+  cursor: pointer;
+  color: var(--main);
 }

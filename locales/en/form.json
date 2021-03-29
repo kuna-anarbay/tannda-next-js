@@ -4,5 +4,6 @@
   "center-name": "Center name",
   "phone-number": "Phone number",
   "email": "Email",
-  "comments": "Comments"
+  "comments": "Comments",
+  "password": "Password"
 }

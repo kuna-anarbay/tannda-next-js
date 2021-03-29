@@ -16,6 +16,9 @@
     ],
     "/become-partner": [
       "features"
+    ],
+    "rgx:/auth": [
+      "auth"
     ]
   }
 }

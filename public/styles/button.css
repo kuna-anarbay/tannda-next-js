@@ -1,0 +1,15 @@
+.tn-button {
+  height: 38px;
+  font-size: var(--font-body);
+  font-weight: var(--font-regular);
+  background-color: var(--main);
+  color: white;
+  padding-left: 24px;
+  padding-right: 24px;
+  border-radius: var(--border-radius-small);
+}
+
+.tn-button:hover {
+  background-color: var(--main);
+  opacity: 0.9;
+}
