@@ -1,4 +1,4 @@
-import LocalDatabase from "../../services/localDatabase";
+import LocalDatabase from "../../localDatabase";
 
 export const HTTPHeader = {
     "Content-Type": "application/json",
