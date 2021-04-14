@@ -2,7 +2,9 @@
   "button": {
     "becomePartner": "Become partner",
     "submit": "Submit",
-    "loading": "Loading..."
+    "login": "Login",
+    "forgotPassword": "Forgot password?",
+    "setupAccount": "Setup your account"
   },
   "navigation": {
     "language": "Language"
