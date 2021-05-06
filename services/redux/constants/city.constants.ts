@@ -1,6 +1,0 @@
-export const cityConstants = {
-    GET_CITIES: "GET_CITIES",
-    APPROVE_CITY: "APPROVE_CITY",
-    CREATE_CITY: "CREATE_CITY",
-    DELETE_CITY: "DELETE_CITY",
-}

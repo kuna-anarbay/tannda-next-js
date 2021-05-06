@@ -5,11 +5,6 @@ const nextConfig = {
     i18n: {
         locales,
         defaultLocale
-    },
-    images: {
-        domains: [
-            "https://tannda-storage.s3.eu-central-1.amazonaws.com/tannda"
-        ]
     }
 }
 

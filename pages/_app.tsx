@@ -1,17 +1,15 @@
 import React from "react";
-import '../public/styles/globals.css'
-import NavigationComponent from "../components/common/navigation.component";
+import '../styles/globals.scss'
 import {Provider} from "react-redux";
-import store from "../services/redux/store";
+import {configureStore} from "../services/store/store";
 import Head from "next/head";
 import useTranslation from "next-translate/useTranslation";
-import Footer from "../components/common/footer.component";
 
 function MyApp({Component, pageProps}) {
     const {t} = useTranslation();
 
     return (
-        <Provider store={store}>
+        <Provider store={configureStore()}>
             <div>
                 <Head>
                     <title>Tañda</title>
@@ -24,22 +22,16 @@ function MyApp({Component, pageProps}) {
                     <link rel="icon" href="/favicon/favicon.ico"/>
 
                     <meta name="description" content={t("common:headData.description")}/>
-                    <meta name="keywords" content="Tañda, таңда, танда, образовательные центры, образовательные курсы" />
+                    <meta name="keywords" content={"Tañda, таңда, танда, образовательные центры, образовательные курсы"} />
                     <meta property="og:title" content={t("common:headData.title")}/>
                     <meta property="og:description" content={t("common:headData.description")}/>
                     <meta property="og:image" content="/favicon/android-chrome-192x192.png"/>
-                    <meta property="og:image:width" content="100"/>
-                    <meta property="og:image:height" content="100"/>
                     <meta property="og:type" content="website"/>
                     <meta property="og:site_name" content="Tañda"/>
                     <meta property="og:locale" content={t("common:headData.ogLocale")}/>
 
-                    <link rel="stylesheet"
-                          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"/>
                 </Head>
-                <NavigationComponent/>
                 <Component {...pageProps} />
-                <Footer/>
             </div>
         </Provider>
     )
