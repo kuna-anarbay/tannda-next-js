@@ -35,6 +35,7 @@ module.exports = {
                 }
             },
             borderRadius: {
+                "1": "0.25rem",
                 "4": "1rem"
             },
             height: {
@@ -59,6 +60,9 @@ module.exports = {
             },
             inset: {
                 "75": "18.75rem",
+            },
+            fontVariantNumeric: {
+                "small-caps": "small-caps"
             }
         },
     },

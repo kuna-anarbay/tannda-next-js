@@ -1,5 +1,10 @@
 @layer components {
-    .input-text {
+
+    .form {
+        @apply space-y-2;
+    }
+
+    .input-text, .textarea {
         @apply border mt-1 block w-full px-3 py-1.5 border-divider rounded-md focus:ring-primary-light focus:border-primary-light;
     }
 
@@ -7,7 +12,7 @@
         @apply border rounded-md ;
     }
 
-    .input-group > input {
+    .input-group > input, .input-group > .textarea {
         @apply text-footnote w-full px-3 py-1.5 border-b border-divider focus:ring-0;
     }
 

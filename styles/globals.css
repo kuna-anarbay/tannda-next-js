@@ -10,3 +10,9 @@
         font-variant: small-caps;
     }
 }
+
+@layer components {
+    .px-container {
+        @apply px-4 md:px-9;
+    }
+}

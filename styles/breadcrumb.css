@@ -1,0 +1,22 @@
+@layer components {
+
+    .breadcrumb {
+        @apply space-x-1 flex items-center;
+    }
+
+    .breadcrumb-item {
+        @apply space-x-1 flex items-center text-footnote text-primary font-normal cursor-pointer;
+    }
+
+    .breadcrumb-item.disabled {
+        @apply text-label-light cursor-default;
+    }
+
+    .breadcrumb .breadcrumb-item:last-child {
+        @apply text-label-light font-medium cursor-default;
+    }
+
+    .breadcrumb-divider {
+        @apply text-label-light text-footnote font-medium;
+    }
+}

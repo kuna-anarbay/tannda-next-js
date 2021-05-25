@@ -8,7 +8,7 @@ export const configureStore = () => {
     const { requestsReducer, requestsMiddleware } = handleRequests({
         driver: createDriver(
             axios.create({
-                baseURL: config.baseUrl,
+                baseURL: config.baseURL,
             }),
         )
     });
