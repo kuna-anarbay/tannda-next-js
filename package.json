@@ -11,21 +11,26 @@
     "@redux-requests/axios": "^1.1.1",
     "@redux-requests/core": "^1.6.2",
     "@redux-requests/react": "^1.6.1",
+    "@reduxjs/toolkit": "^1.5.0",
+    "@tailwindcss/forms": "^0.3.2",
     "axios": "^0.21.1",
-    "dotenv": "^9.0.0",
     "next": "10.0.8",
     "next-translate": "^1.0.4",
     "react": "17.0.1",
+    "react-animated-css": "^1.2.1",
     "react-dom": "17.0.1",
     "react-icons": "^4.2.0",
+    "react-imask": "^6.0.7",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
-    "reselect": "^4.0.0",
-    "sass": "^1.32.12"
+    "reselect": "^4.0.0"
   },
   "devDependencies": {
     "@types/node": "^14.14.33",
     "@types/react": "^17.0.3",
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.15",
+    "tailwindcss": "^2.1.2",
     "typescript": "^4.2.3"
   }
 }

@@ -1,12 +1,10 @@
 import axios from "axios";
-import {Constants} from "../../../public/Constants";
 import {HTTPHeader} from "./HTTPHeader";
+import config from "../../../config";
 
 export const axiosInstance = () => {
-    const instance = axios.create({
-        baseURL: Constants.baseUrl,
+    return axios.create({
+        baseURL: config.baseURL,
         headers: HTTPHeader
     });
-
-    return instance;
 }

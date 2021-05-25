@@ -1,0 +1,21 @@
+@layer components {
+    .input-text {
+        @apply border mt-1 block w-full px-3 py-1.5 border-divider rounded-md focus:ring-primary-light focus:border-primary-light;
+    }
+
+    .input-group {
+        @apply border rounded-md ;
+    }
+
+    .input-group > input {
+        @apply text-footnote w-full px-3 py-1.5 border-b border-divider focus:ring-0;
+    }
+
+    .input-group > input:first-child {
+        @apply rounded-t-md;
+    }
+
+    .input-group > input:last-child {
+        @apply rounded-b-md border-0;
+    }
+}
