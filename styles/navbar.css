@@ -1,0 +1,5 @@
+@layer components {
+    .navbar-item-indicator {
+        @apply absolute bottom-0 h-0.5 bg-primary left-1.5 right-1.5 rounded-t-md;
+    }
+}
