@@ -6,19 +6,5 @@
   ],
   "defaultLocale": "ru",
   "pages": {
-    "*": [
-      "common",
-      "form"
-    ],
-    "/": [
-      "landing",
-      "features"
-    ],
-    "/become-partner": [
-      "features"
-    ],
-    "rgx:/auth": [
-      "auth"
-    ]
   }
 }

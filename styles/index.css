@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+@import "globals.css";
+@import "button.css";
+@import "navbar.css";
+@import "form.css";

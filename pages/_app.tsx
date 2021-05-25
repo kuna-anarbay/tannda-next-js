@@ -1,16 +1,14 @@
 import React from "react";
 import {Provider} from "react-redux";
-import {store} from "../services/store/store";
-import useTranslation from "next-translate/useTranslation";
-import "../public/styles/index.css";
-
+import {store} from "../services/store";
+import "../styles/index.css";
+import Navbar from "../modules/layout/navbar.component";
 
 function App({Component, pageProps}) {
-    const {t} = useTranslation();
-
     return (
         <Provider store={store}>
             <div>
+                <Navbar />
                 <Component {...pageProps} />
             </div>
         </Provider>
