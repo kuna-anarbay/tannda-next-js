@@ -5,6 +5,7 @@ import "../styles/index.css";
 import Navbar from "../modules/layout/navbar.component";
 
 function App({Component, pageProps}) {
+
     return (
         <Provider store={configureStore()}>
             <div>

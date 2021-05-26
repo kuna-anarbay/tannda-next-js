@@ -1,0 +1,34 @@
+@layer components {
+
+    .tab {
+        @apply relative h-10;
+    }
+
+    .tab .tab-border {
+        @apply absolute inset-x-0 bottom-0 h-0.25 bg-divider;
+    }
+
+    .tab .tab-content {
+        @apply flex absolute inset-0 items-center;
+    }
+
+    .tab .tab-content .tab-item {
+        @apply h-10 flex items-center justify-center relative px-3 md:px-4 cursor-pointer;
+    }
+
+    .tab .tab-content .tab-item .tab-item-title {
+        @apply text-footnote text-label-light;
+    }
+
+    .tab .tab-content .tab-item .tab-item-border {
+        @apply absolute inset-x-0 bottom-0 h-0.5 bg-transparent;
+    }
+
+    .tab .tab-content .tab-item.active .tab-item-title {
+        @apply text-label font-semibold;
+    }
+
+    .tab .tab-content .tab-item.active .tab-item-border {
+        @apply bg-primary;
+    }
+}

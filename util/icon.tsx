@@ -1,10 +1,11 @@
-import {IoChevronDown, IoChevronForward, IoClose, IoLanguageOutline} from "react-icons/io5";
+import {IoChevronDown, IoChevronForward, IoClose, IoLanguageOutline, IoWarning} from "react-icons/io5";
 
 export enum IconType {
     ChevronDown,
     LanguageOutline,
     ChevronRight,
-    XMark
+    XMark,
+    Warning
 }
 
 const icons = (className?: string) => {
@@ -12,7 +13,8 @@ const icons = (className?: string) => {
         <IoChevronDown className={className}/>,
         <IoLanguageOutline className={className}/>,
         <IoChevronForward className={className}/>,
-        <IoClose className={className}/>
+        <IoClose className={className}/>,
+        <IoWarning className={className} />
     ]
 }
 
