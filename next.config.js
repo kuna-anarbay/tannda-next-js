@@ -5,9 +5,6 @@ const nextConfig = {
     i18n: {
         locales,
         defaultLocale
-    },
-    node: {
-        fs: "empty"
     }
 }
 

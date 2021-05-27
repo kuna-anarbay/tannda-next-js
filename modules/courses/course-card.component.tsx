@@ -1,20 +1,26 @@
 import Link from "next/link";
+import Course from "./course.entity";
 
-export default function CourseCardComponent() {
+interface CourseCardComponentProps {
+    course: Course;
+}
+
+export default function CourseCardComponent(props: CourseCardComponentProps) {
+    const {course} = props;
 
     return (
-        <Link href={"/courses/1"}>
+        <Link href={`/courses/${course.id}`}>
             <div className={"course-card"}>
                 <div>
                     <h3 className={"course-title"}>
-                        Web development
+                        {course.title}
                     </h3>
                     <p className={"course-category"}>
-                        software
+                        {course.category.toLowerCase()}
                     </p>
                 </div>
                 <p className={"course-description"}>
-                    If you want to add an additional small breakpoint, you can’t use extend because the small breakpoint would be added to the end of the breakpoint list.
+                    {course.description}
                 </p>
             </div>
         </Link>

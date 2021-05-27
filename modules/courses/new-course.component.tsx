@@ -1,5 +1,7 @@
-import PageHeader from "../../components/page-header";
+import PageHeader from "../util/page-header";
 import Category from "../category/category.entity";
+import {useDispatch} from "react-redux";
+import CourseAction from "./course.action";
 
 interface NewCourseComponentProps {
     categories: Category[];
@@ -7,8 +9,12 @@ interface NewCourseComponentProps {
 
 export default function NewCourseComponent(props: NewCourseComponentProps) {
     const {categories} = props;
+    const dispatch = useDispatch();
+    const courseAction = new CourseAction();
 
     function handleSubmit(e) {
+        e.preventDefault();
+
 
     }
 
@@ -38,7 +44,7 @@ export default function NewCourseComponent(props: NewCourseComponentProps) {
                         <label className={"block text-caption1 text-label-light"}>
                             Course category
                         </label>
-                        <select name={"category"} className={"select"}>
+                        <select name={"category"} placeholder={"Course category"} className={"select"}>
                             {categories.map(category => (
                                 <option key={category.id} value={category.id}>
                                     {category.title.ru}

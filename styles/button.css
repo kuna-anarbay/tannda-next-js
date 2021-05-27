@@ -14,4 +14,5 @@
   .btn-sm {
     @apply text-footnote font-normal text-white px-3 py-0.5 md:px-4 md:py-1 rounded-md;
   }
+
 }

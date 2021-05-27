@@ -1,8 +1,12 @@
-import PageHeader from "../../components/page-header";
+import PageHeader from "../util/page-header";
 import {CoursePageProps} from "../../pages/courses/[id]";
-import Tab from "../../components/tab";
+import Tab from "../util/tab";
 import {useState} from "react";
-import ErrorState from "../../components/error-state";
+import StateView from "../util/state-view";
+import {IconType} from "../../util/icon";
+import SectionComponent from "../content/section.component";
+import LessonComponent from "../content/lesson.component";
+import ContentsComponent from "../content/contents.component";
 
 export default function CourseComponent(props: CoursePageProps) {
     const [selectedTab, setSelectedTab] = useState(0);
@@ -21,9 +25,7 @@ export default function CourseComponent(props: CoursePageProps) {
 
             <div className={"px-container"}>
                 <Tab tabs={["Content", "Students", "Info"]} selectedTab={selectedTab} selectTab={index => setSelectedTab(index)} />
-                <ErrorState />
-
-                { props.id}
+                <ContentsComponent courseId={props.id} />
             </div>
         </div>
     )
