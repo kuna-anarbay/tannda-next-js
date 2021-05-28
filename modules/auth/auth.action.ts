@@ -1,54 +1,37 @@
-import {RequestAction} from "@redux-requests/core";
-import {HTTPMethod} from "../../services/store/http/HTTPMethod";
 import {URLPath} from "../../services/store/http/URLPath";
 import {RegisterReq, RegisterRes} from "./dto/register.dto";
 import {LoginReq, LoginRes} from "./dto/login.dto";
-import {authConstants} from "./auth.constants";
+import {mutationRequest} from "../../services/store/http/AxiosInstance";
 
 export default class AuthAction {
 
-    sendCode(phone: string): RequestAction<void> {
-        return {
-            type: authConstants.SEND_CODE,
-            request: {
-                method: HTTPMethod.POST,
-                url: URLPath.auth.sendCode,
-                data: {
-                    phone
-                }
-            }
-        }
+    sendCode(phone: string) {
+        return mutationRequest<LoginRes>({
+            method: "POST",
+            url: URLPath.auth.sendCode,
+            data: {phone}
+        });
     }
 
-    register(data: RegisterReq): RequestAction<RegisterRes> {
-        return {
-            type: authConstants.REGISTER,
-            request: {
-                method: HTTPMethod.POST,
-                url: URLPath.auth.register,
-                data: data
-            }
-        }
+    register(data: RegisterReq) {
+        return mutationRequest<RegisterRes>({
+            method: "POST",
+            url: URLPath.auth.register,
+            data: data
+        });
     }
 
-    login(data: LoginReq): RequestAction<LoginRes> {
-        return {
-            type: authConstants.LOGIN,
-            request: {
-                method: HTTPMethod.POST,
-                url: URLPath.auth.login,
-                data: data
-            }
-        }
+    login() {
+        return mutationRequest<LoginRes, LoginReq>({
+            method: "POST",
+            url: URLPath.auth.login
+        });
     }
 
-    refreshToken(): RequestAction<string> {
-        return {
-            type: "REFRESH_TOKEN",
-            request: {
-                method: HTTPMethod.POST,
-                url: URLPath.auth.refreshToken
-            }
-        }
+    refreshToken() {
+        return mutationRequest<string>({
+            method: "POST",
+            url: URLPath.auth.refreshToken
+        })
     }
 }

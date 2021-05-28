@@ -7,7 +7,7 @@ import {useDispatch} from "react-redux";
 import {Query} from "@redux-requests/react";
 import {ContentType} from "../enum/content-type.enum";
 import StateView from "../util/state-view";
-import {IconType} from "../../util/icon";
+import {IconType} from "../util/icon";
 
 export interface ContentComponentProps {
     content: Content;

@@ -1,4 +1,4 @@
-import {getIcon, IconType} from "../../util/icon";
+import {getIcon, IconType} from "../util/icon";
 import {useState} from "react";
 import {ContentComponentProps} from "./contents.component";
 

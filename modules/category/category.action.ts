@@ -1,19 +1,14 @@
-import Category from "./category.entity";
-import {RequestAction} from "@redux-requests/core";
+import {queryRequest} from "../../services/store/http/AxiosInstance";
 import {URLPath} from "../../services/store/http/URLPath";
-import {HTTPMethod} from "../../services/store/http/HTTPMethod";
-
+import Category from "./category.entity";
 
 export default class CategoryAction {
 
-    getCategories(): RequestAction<Category[]> {
-        return {
-            type: "getCategories",
-            request: {
-                url: URLPath.category.base,
-                method: HTTPMethod.GET
-            }
-        }
+    getCategories() {
+        return queryRequest<Category[]>("GET_CATEGORIES", {
+            method: "GET",
+            url: URLPath.category.base
+        })
     }
 
 }

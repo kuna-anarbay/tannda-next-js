@@ -13,6 +13,12 @@ class LocalDatabase {
         if (typeof window === 'undefined') {
             return null;
         }
+        const accessExp = window.localStorage.getItem("accessExp");
+        const accessExpDate = new Date(accessExp).getTime();
+        const today = new Date().getTime();
+        if(today - accessExpDate > 1000 * 3600 * 24) {
+            return null;
+        }
 
         return window.localStorage.getItem("accessToken");
     }
@@ -22,6 +28,7 @@ class LocalDatabase {
             return;
         }
 
+        window.localStorage.setItem("accessExp", new Date().toString());
         window.localStorage.setItem("accessToken", token);
     }
 

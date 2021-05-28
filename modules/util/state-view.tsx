@@ -1,4 +1,4 @@
-import {getIcon, IconType} from "../../util/icon";
+import {getIcon, IconType} from "./icon";
 
 interface StateViewProps {
     title: string;

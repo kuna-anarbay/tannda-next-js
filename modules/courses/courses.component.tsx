@@ -6,7 +6,7 @@ import {useEffect} from "react";
 import CourseAction from "./course.action";
 import {Query} from "@redux-requests/react";
 import StateView from "../util/state-view";
-import {IconType} from "../../util/icon";
+import {IconType} from "../util/icon";
 
 export default function CoursesComponent() {
     const {push} = useRouter();

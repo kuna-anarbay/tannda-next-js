@@ -1,16 +1,15 @@
-import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
-import {handleRequests} from '@redux-requests/core';
-import {createDriver} from '@redux-requests/axios';
-import {axiosInstance} from "./http/AxiosInstance";
+import {QueryClient} from "react-query";
 
-export const configureStore = () => {
-    const {requestsReducer, requestsMiddleware} = handleRequests({
-        driver: createDriver(axiosInstance())
+
+export const configureQueryClient = () => {
+    return new QueryClient({
+        defaultOptions: {
+            queries: {
+                retry: false,
+                refetchOnWindowFocus: false,
+                refetchOnMount: false,
+                staleTime: 1000 * 60 * 60 * 24
+            }
+        }
     });
-
-    const reducers = combineReducers({
-        requests: requestsReducer,
-    });
-
-    return createStore(reducers, compose(applyMiddleware(...requestsMiddleware)));
-};
+}

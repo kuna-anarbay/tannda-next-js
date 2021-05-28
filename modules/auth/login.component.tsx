@@ -1,35 +1,24 @@
 import AuthAction from "./auth.action";
-import {useToasts} from "react-toast-notifications";
 import Button from "../util/button";
-import NumberFormat from 'react-number-format';
-import LocalDatabase from "../../services/localDatabase";
-import {useState} from "react";
-import {useDispatchRequest} from "@redux-requests/react";
+import {useToasts} from "react-toast-notifications";
 
 export default function LoginComponent() {
-    const [loading, setLoading] = useState(false);
-    const {addToast} = useToasts();
-    const dispatch = useDispatchRequest();
     const authAction = new AuthAction();
+    const {addToast} = useToasts();
+    const {data, mutate, isLoading, error} = authAction.login();
+
+    if(error) {
+        addToast(error.message);
+    }
 
     async function handleSubmit(e) {
         e.preventDefault();
 
         const {phone, password} = e.target;
-        setLoading(true);
-        const {data, error} = await dispatch(authAction.login({
+        mutate({
             username: phone.value.replaceAll(" ", ""),
             password: password.value
-        }));
-        setLoading(false);
-        if (data) {
-            LocalDatabase.instance.setAccessToken(data.accessToken);
-            LocalDatabase.instance.setRefreshToken(data.refreshToken);
-            LocalDatabase.instance.setCurrentUser(data.user);
-        }
-        if (error) {
-            addToast(error.message, {appearance: "error", autoDismiss: true});
-        }
+        });
     }
 
     return (
@@ -51,8 +40,8 @@ export default function LoginComponent() {
                                 <label className={"block text-caption1 text-label-light"}>
                                     Phone
                                 </label>
-                                <NumberFormat format={"+7 ### ### ####"} name={"phone"} placeholder={"Phone"}
-                                              className={"input-text"}/>
+                                <input name={"phone"} placeholder={"Phone"}
+                                       className={"input-text"}/>
                             </div>
                             <div>
                                 <label className={"block text-caption1 text-label-light"}>
@@ -62,7 +51,7 @@ export default function LoginComponent() {
                                        placeholder={"Password"}
                                        className="input-text"/>
                             </div>
-                            <Button className={"btn btn-primary btn-sm"} title={"Login"} loading={loading}
+                            <Button className={"btn btn-primary btn-sm"} title={"Login"} loading={isLoading}
                                     type={"submit"}/>
                         </form>
                     </div>

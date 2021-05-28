@@ -3,7 +3,7 @@ import {CoursePageProps} from "../../pages/courses/[id]";
 import Tab from "../util/tab";
 import {useState} from "react";
 import StateView from "../util/state-view";
-import {IconType} from "../../util/icon";
+import {IconType} from "../util/icon";
 import SectionComponent from "../content/section.component";
 import LessonComponent from "../content/lesson.component";
 import ContentsComponent from "../content/contents.component";

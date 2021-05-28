@@ -1,5 +1,5 @@
-import r from "../../util/r";
-import {getIcon, IconType} from "../../util/icon";
+import r from "../util/r";
+import {getIcon, IconType} from "../util/icon";
 import {Animated} from "react-animated-css";
 import {useState} from "react";
 import Link from "next/link";

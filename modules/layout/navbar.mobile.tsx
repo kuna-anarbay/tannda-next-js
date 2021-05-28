@@ -1,6 +1,6 @@
 import {useState} from "react";
-import r from "../../util/r";
-import {getIcon, IconType} from "../../util/icon";
+import r from "../util/r";
+import {getIcon, IconType} from "../util/icon";
 import {Animated} from "react-animated-css";
 
 export default function NavbarMobile() {
