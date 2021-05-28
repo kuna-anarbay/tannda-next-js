@@ -5,7 +5,7 @@
     }
 
     .input-text, .textarea, .select {
-        @apply border mt-1 block w-full px-3 py-1.5 border-divider rounded-md focus:ring-primary-light focus:border-primary-light;
+        @apply border mt-1 block w-full px-3 py-1.5 border-divider rounded-md focus:ring-primary-light focus:border-primary-light !important;
     }
 
     .input-group {

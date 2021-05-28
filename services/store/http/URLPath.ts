@@ -9,5 +9,11 @@ export const URLPath = {
     },
     course: {
         base: "/course"
+    },
+    auth: {
+        sendCode: "/auth/send-code",
+        register: "/auth/register",
+        login: "/auth/login",
+        refreshToken: "/auth/refresh-token"
     }
 }

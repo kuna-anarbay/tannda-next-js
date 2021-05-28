@@ -3,25 +3,27 @@ import NavbarMobile from "./navbar.mobile";
 import {useRouter} from "next/router";
 import CategoryAction from "../category/category.action";
 import {useEffect} from "react";
-import {useDispatch} from "react-redux";
 import LocalDatabase from "../../services/localDatabase";
-import Category from "../category/category.entity";
+import {useDispatchRequest} from "@redux-requests/react";
 
 export default function Navbar() {
-    const dispatch = useDispatch();
+    const dispatch = useDispatchRequest();
     const categoryAction = new CategoryAction();
 
     useEffect(() => {
         getCategories();
+
     }, []);
 
-    function getCategories() {
-        dispatch(categoryAction.getCategories()).then(res => {
-            const result = res.data as Category[];
-            if (result) {
-                LocalDatabase.instance.setCategories(result);
-            }
-        });
+    async function getCategories() {
+        const {data} = await dispatch(categoryAction.getCategories());
+        if (data) {
+            LocalDatabase.instance.setCategories(data);
+        }
+    }
+
+    async function refreshToken() {
+
     }
 
     const {pathname} = useRouter();

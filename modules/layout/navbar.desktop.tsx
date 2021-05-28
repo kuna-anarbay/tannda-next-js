@@ -2,6 +2,8 @@ import r from "../../util/r";
 import {getIcon, IconType} from "../../util/icon";
 import {Animated} from "react-animated-css";
 import {useState} from "react";
+import Link from "next/link";
+
 
 export default function NavbarDesktop() {
     const [showLangMenu, setLangMenu] = useState(false);
@@ -51,8 +53,17 @@ export default function NavbarDesktop() {
                             {/*) : null}*/}
                         </Animated>
                     </div>
-                    <div className={"h-12 px-5 text-white bg-primary flex items-center font-medium cursor-pointer hover:bg-primary-selected"}>
-                        Become partner
+                    <div className={"h-12 px-5 flex items-center space-x-4"}>
+                        <Link href={"/auth/register"}>
+                            <button className={"btn btn-sm bg-primary-extra-light border border-primary-light text-primary"}>
+                                Register
+                            </button>
+                        </Link>
+                        <Link href={"/auth/login"}>
+                            <button className={"btn btn-primary btn-sm"}>
+                                Login
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>

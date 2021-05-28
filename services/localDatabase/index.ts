@@ -1,4 +1,5 @@
 import Category from "../../modules/category/category.entity";
+import User from "../../modules/user/user.entity";
 
 class LocalDatabase {
 
@@ -7,13 +8,60 @@ class LocalDatabase {
     private constructor() {
     }
 
+    // Access token
+    getAccessToken(): string | null {
+        if (typeof window === 'undefined') {
+            return null;
+        }
 
-    getToken(): string | undefined {
-        return undefined;
+        return window.localStorage.getItem("accessToken");
     }
 
+    setAccessToken(token: string) {
+        if (typeof window === 'undefined') {
+            return;
+        }
+
+        window.localStorage.setItem("accessToken", token);
+    }
+
+    // Refresh token
+    getRefreshToken(): string | null {
+        if (typeof window === 'undefined') {
+            return null;
+        }
+
+        return window.localStorage.getItem("refreshToken");
+    }
+
+    setRefreshToken(token: string) {
+        if (typeof window === 'undefined') {
+            return;
+        }
+
+        window.localStorage.setItem("refreshToken", token);
+    }
+
+    // Current user
+    getCurrentUser(): User | null {
+        if (typeof window === 'undefined') {
+            return null;
+        }
+        const userStr = window.localStorage.getItem("currentUser");
+        return JSON.parse(userStr) as User;
+    }
+
+    setCurrentUser(user: User) {
+        if (typeof window === 'undefined') {
+            return;
+        }
+        const userStr = JSON.stringify(user);
+        window.localStorage.setItem("currentUser", userStr);
+    }
+
+    // Categories
     getCategories(): Category[] {
-        if (typeof window === undefined) {
+        if (typeof window === 'undefined') {
             return [];
         }
 
@@ -21,8 +69,8 @@ class LocalDatabase {
     }
 
     setCategories(categories: Category[]) {
-        if (typeof window === undefined) {
-            return [];
+        if (typeof window === 'undefined') {
+            return;
         }
 
         window.localStorage.setItem("categories", JSON.stringify(categories));
