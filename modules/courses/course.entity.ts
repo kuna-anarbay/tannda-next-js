@@ -1,6 +1,8 @@
+import {Translatable} from "../util/translatable.entity";
+
 export default class Course {
     id: number;
-    title: string;
-    category?: string;
-    description?: string;
+    title: Translatable;
+    categoryId?: number;
+    description?: Translatable;
 }

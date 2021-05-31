@@ -1,43 +1,27 @@
 import {useRouter} from "next/router";
 import PageHeader from "../util/page-header";
 import CourseCardComponent from "./course-card.component";
-import {useDispatch} from "react-redux";
-import {useEffect} from "react";
 import CourseAction from "./course.action";
-import {Query} from "@redux-requests/react";
 import StateView from "../util/state-view";
-import {IconType} from "../util/icon";
+import CategoryAction from "../category/category.action";
 
 export default function CoursesComponent() {
-    const {push} = useRouter();
-    const dispatch = useDispatch();
     const courseAction = new CourseAction();
-
-    useEffect(() => {
-        dispatch(courseAction.getCourses());
-    }, []);
+    const categoryAction = new CategoryAction();
+    const {data: courses, isLoading, error} = courseAction.getCourses();
+    const {data: categories} = categoryAction.getCategories();
+    const {push} = useRouter();
 
     return (
         <div className={"container mx-auto"}>
             <PageHeader title={"Courses"} buttonTitle={"+ Add course"} handleClick={() => push("/courses/new")}
                         items={[]}/>
-            <div className={"px-container"}>
-                <Query
-                    type={courseAction.getCourses}
-                    loadingComponent={StateView}
-                    loadingComponentProps={{title: "Fetching courses", icon: IconType.Warning}}
-                    errorComponent={StateView}
-                    errorComponentProps={{ title: "Failed to fetch courses", icon: IconType.Warning}}
-                    noDataMessage={<StateView title={"Courses not found"} icon={IconType.Search} />}
-                >
-                    {
-                        ({data}) => (
-                            data.map(course => (
-                                <CourseCardComponent key={course.id} course={course}/>
-                            ))
-                        )
-                    }
-                </Query>
+            <div className={"px-container grid grid-cols-1 md:grid-cols-3 md:gap-4"}>
+                {isLoading ? <StateView title={"Loading"}/> : null}
+                {courses ? courses.map(course => (
+                    <CourseCardComponent categories={categories ?? []} key={course.id} course={course}/>
+                )) : null}
+                {error ? error.message : null}
             </div>
         </div>
     )

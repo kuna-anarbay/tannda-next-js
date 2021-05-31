@@ -1,29 +1,26 @@
 import React from "react";
 import "../styles/index.css";
 import Navbar from "../modules/layout/navbar.component";
-import {ToastProvider, useToasts} from "react-toast-notifications";
+import {ToastProvider} from "react-toast-notifications";
 import {configureQueryClient} from "../services/store";
 import {QueryClientProvider} from "react-query";
+import {AppDataProvider} from "../modules/app/app-data-provider";
+import {ReactQueryDevtools} from "react-query/devtools";
 
 function App({Component, pageProps}) {
 
     return (
         <ToastProvider>
-            <Body Component={Component} pageProps={pageProps}/>
+            <QueryClientProvider client={configureQueryClient()}>
+                <AppDataProvider>
+                    <div>
+                        <Navbar/>
+                        <Component {...pageProps} />
+                    </div>
+                </AppDataProvider>
+                <ReactQueryDevtools />
+            </QueryClientProvider>
         </ToastProvider>
-    )
-}
-
-function Body({Component, pageProps}) {
-    const {addToast} = useToasts();
-
-    return (
-        <QueryClientProvider client={configureQueryClient()}>
-            <div>
-                <Navbar/>
-                <Component {...pageProps} />
-            </div>
-        </QueryClientProvider>
     )
 }
 

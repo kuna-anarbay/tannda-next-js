@@ -29,7 +29,7 @@ export default class AuthAction {
     }
 
     refreshToken() {
-        return mutationRequest<string>({
+        return mutationRequest<LoginRes>({
             method: "POST",
             url: URLPath.auth.refreshToken
         })

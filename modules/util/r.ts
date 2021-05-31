@@ -16,22 +16,15 @@ const image = {
 const data = {
     navbarItems: [
         "home",
-        "aboutUs",
-        "features",
-        "pricing"
+        "aboutUs"
+    ],
+    loginItems: [
+        "courses"
     ],
     languages: [
         "english",
         "russian",
         "qazaq"
-    ],
-    dashboardSidebar: [
-        "company",
-        "payment",
-        "courses",
-        "groups",
-        "teachers",
-        "students"
     ]
 }
 

@@ -1,11 +1,19 @@
 import Category from "../../modules/category/category.entity";
 import User from "../../modules/user/user.entity";
+import {LoginRes} from "../../modules/auth/dto/login.dto";
 
 class LocalDatabase {
 
     public static instance = new LocalDatabase();
 
     private constructor() {
+    }
+
+
+    //Configure
+    configure(value: LoginRes) {
+        this.setAccessToken(value.accessToken);
+        this.setCurrentUser(value.user);
     }
 
     // Access token
@@ -16,7 +24,7 @@ class LocalDatabase {
         const accessExp = window.localStorage.getItem("accessExp");
         const accessExpDate = new Date(accessExp).getTime();
         const today = new Date().getTime();
-        if(today - accessExpDate > 1000 * 3600 * 24) {
+        if (today - accessExpDate > 1000 * 3600 * 24) {
             return null;
         }
 

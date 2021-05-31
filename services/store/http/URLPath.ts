@@ -8,7 +8,8 @@ export const URLPath = {
         }
     },
     course: {
-        base: "/course"
+        base: "/course",
+        byId: (id) => `/course/${id}`
     },
     auth: {
         sendCode: "/auth/send-code",

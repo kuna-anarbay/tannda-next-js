@@ -11,7 +11,7 @@ export const HTTPHeader = () => {
         headers["Authorization"] = `Bearer ${accessToken}`;
     }
     if (refreshToken) {
-        headers["Refresh-Token"] = `Bearer ${refreshToken}`;
+        headers["Refresh-Token"] = `${refreshToken}`;
     }
 
     return headers;

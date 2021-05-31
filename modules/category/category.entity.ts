@@ -1,4 +1,4 @@
-import Translatable from "../util/translatable.entity";
+import {Translatable} from "../util/translatable.entity";
 
 export default class Category {
     id: number;

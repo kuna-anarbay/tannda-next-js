@@ -3,10 +3,12 @@ import {getIcon, IconType} from "../util/icon";
 import {Animated} from "react-animated-css";
 import {useState} from "react";
 import Link from "next/link";
+import {useAppData} from "../app/app-data-provider";
 
 
 export default function NavbarDesktop() {
     const [showLangMenu, setLangMenu] = useState(false);
+    const {currentUser} = useAppData();
 
     return (
         <div className={"h-12 relative hidden md:block"}>
@@ -24,6 +26,16 @@ export default function NavbarDesktop() {
                             <div className={"navbar-item-indicator"}/>
                         </div>
                     ))}
+                    { currentUser ? r.data.loginItems.map(item => (
+                        <Link href={"/" + item}>
+                            <div className={"flex items-center justify-center relative h-12 w-30"} key={item}>
+                                <p className={"text-base font-medium"}>
+                                    {item}
+                                </p>
+                                <div className={"navbar-item-indicator"}/>
+                            </div>
+                        </Link>
+                    )) : null}
                 </div>
                 <div className={"flex"}>
                     <div className={"relative"}>
@@ -53,18 +65,27 @@ export default function NavbarDesktop() {
                             {/*) : null}*/}
                         </Animated>
                     </div>
-                    <div className={"h-12 px-5 flex items-center space-x-4"}>
-                        <Link href={"/auth/register"}>
+                    { currentUser ? (
+                        <div className={"h-12 px-5 flex items-center space-x-4"}>
                             <button className={"btn btn-sm bg-primary-extra-light border border-primary-light text-primary"}>
-                                Register
+                                {currentUser.firstName}
                             </button>
-                        </Link>
-                        <Link href={"/auth/login"}>
-                            <button className={"btn btn-primary btn-sm"}>
-                                Login
-                            </button>
-                        </Link>
-                    </div>
+                        </div>
+                    ) : (
+                        <div className={"h-12 px-5 flex items-center space-x-4"}>
+                            <Link href={"/auth/register"}>
+                                <button className={"btn btn-sm bg-primary-extra-light border border-primary-light text-primary"}>
+                                    Register
+                                </button>
+                            </Link>
+                            <Link href={"/auth/login"}>
+                                <button className={"btn btn-primary btn-sm"}>
+                                    Login
+                                </button>
+                            </Link>
+                        </div>
+                    )}
+
                 </div>
             </div>
         </div>

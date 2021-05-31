@@ -1,7 +1,7 @@
 import PageHeader from "../util/page-header";
 import Category from "../category/category.entity";
-import {useDispatch} from "react-redux";
 import CourseAction from "./course.action";
+import {Field, Form, Formik} from 'formik';
 
 interface NewCourseComponentProps {
     categories: Category[];
@@ -9,13 +9,16 @@ interface NewCourseComponentProps {
 
 export default function NewCourseComponent(props: NewCourseComponentProps) {
     const {categories} = props;
-    const dispatch = useDispatch();
     const courseAction = new CourseAction();
+    const {data, isLoading, mutate} = courseAction.createCourse();
 
-    function handleSubmit(e) {
-        e.preventDefault();
-
-
+    function handleSubmit(values) {
+        console.log(values);
+        mutate({
+            title: values.title,
+            description: values.description,
+            categoryId: values.categoryId
+        })
     }
 
     return (
@@ -31,40 +34,45 @@ export default function NewCourseComponent(props: NewCourseComponentProps) {
             ]}/>
 
             <div className={"px-container"}>
-                <form onSubmit={handleSubmit} className={"form"}>
-                    <div>
-                        <label className={"block text-caption1 text-label-light"}>
-                            Course name
-                        </label>
-                        <input name={"title"}
-                               placeholder={"Course name"}
-                               className="input-text"/>
-                    </div>
-                    <div>
-                        <label className={"block text-caption1 text-label-light"}>
-                            Course category
-                        </label>
-                        <select name={"category"} placeholder={"Course category"} className={"select"}>
-                            {categories.map(category => (
-                                <option key={category.id} value={category.id}>
-                                    {category.title.ru}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                    <div>
-                        <label className={"block text-caption1 text-label-light"}>
-                            Course description
-                        </label>
-                        <textarea name={"description"}
-                                  rows={3}
-                                  placeholder={"Course description"}
-                                  className="textarea"/>
-                    </div>
-                    <button type={"submit"} className={"btn btn-primary"}>
-                        Submit
-                    </button>
-                </form>
+                <Formik initialValues={{
+                    categoryId: categories.length > 0 ? categories[0].id : null
+                }} onSubmit={(values) => handleSubmit(values)}>
+                    <Form className={"form"}>
+                        <div>
+                            <label className={"block text-caption1 text-label-light"}>
+                                Course name
+                            </label>
+                            <Field name={"title"}
+                                   placeholder={"Course name"}
+                                   className="input-text"/>
+                        </div>
+                        <div>
+                            <label className={"block text-caption1 text-label-light"}>
+                                Course category
+                            </label>
+                            <Field as={"select"} name={"categoryId"} placeholder={"Course category"}
+                                   className={"select"}>
+                                {categories.map(category => (
+                                    <option key={category.id} value={category.id}>
+                                        {category.title.ru}
+                                    </option>
+                                ))}
+                            </Field>
+                        </div>
+                        <div>
+                            <label className={"block text-caption1 text-label-light"}>
+                                Course description
+                            </label>
+                            <Field as={"textarea"} name={"description"}
+                                   rows={3}
+                                   placeholder={"Course description"}
+                                   className="textarea"/>
+                        </div>
+                        <button type={"submit"} className={"btn btn-primary"}>
+                            Submit
+                        </button>
+                    </Form>
+                </Formik>
             </div>
         </div>
     );

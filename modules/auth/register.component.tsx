@@ -1,24 +1,10 @@
-import {useState} from "react";
-import {useDispatch} from "react-redux";
 import AuthAction from "./auth.action";
 
 export default function RegisterComponent() {
-    const dispatch = useDispatch();
     const authAction = new AuthAction();
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(false);
 
     function handleSubmit(e) {
         e.preventDefault();
-
-        const {firstName, lastName, phone, password, code} = e.target.values;
-        dispatch(authAction.register({
-            firstName: firstName.value,
-            lastName: lastName.value,
-            phone: phone.value,
-            password: password.value,
-            code: code.value
-        }));
 
     }
 
