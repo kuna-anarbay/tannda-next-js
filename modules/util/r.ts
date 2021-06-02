@@ -13,13 +13,28 @@ const image = {
     }
 };
 
+const string = {
+    aboutUs: "common:aboutUs",
+    courses: "common:courses",
+    login: "common:login",
+    register: "common:register",
+    phoneNumber: "auth:phoneNumber",
+    password: "auth:password",
+    loginToYourAccount: "auth:loginToYourAccount"
+};
+
 const data = {
     navbarItems: [
-        "home",
-        "aboutUs"
+        {
+            path: "/about",
+            title: string.aboutUs,
+        }
     ],
     loginItems: [
-        "courses"
+        {
+            path: "/courses",
+            title: string.courses
+        }
     ],
     languages: [
         "english",
@@ -28,6 +43,7 @@ const data = {
     ]
 }
 
+
 export default {
-    image, data
+    image, data, string
 }

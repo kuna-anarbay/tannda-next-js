@@ -1,7 +1,7 @@
-import AuthAction from "./auth.action";
+import AuthService from "../../services/auth.service";
 
 export default function RegisterComponent() {
-    const authAction = new AuthAction();
+    const authService = new AuthService();
 
     function handleSubmit(e) {
         e.preventDefault();

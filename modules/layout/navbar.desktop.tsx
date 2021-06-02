@@ -1,36 +1,40 @@
 import r from "../util/r";
-import {getIcon, IconType} from "../util/icon";
-import {Animated} from "react-animated-css";
-import {useState} from "react";
 import Link from "next/link";
 import {useAppData} from "../app/app-data-provider";
+import useTranslation from "next-translate/useTranslation";
 
 
 export default function NavbarDesktop() {
-    const [showLangMenu, setLangMenu] = useState(false);
     const {currentUser} = useAppData();
+    const {t} = useTranslation();
 
     return (
         <div className={"h-12 relative hidden md:block"}>
             <div
                 className="bg-background h-12 fixed top-0 inset-x-0 z-40 flex justify-between border-b border-divider-light">
                 <div className={"flex items-center"}>
-                    <div className={"px-5 py-2 h-12"}>
-                        <img className={"h-full"} src={r.image.logoIconText.val} alt={r.image.logoIconText.alt}/>
+                    <div className={"pl-12 pr-5 py-2 h-12"}>
+                        <Link href={"/"}>
+                            <img className={"h-full cursor-pointer"} src={r.image.logoIconText.val}
+                                 alt={r.image.logoIconText.alt}/>
+                        </Link>
                     </div>
                     {r.data.navbarItems.map(item => (
-                        <div className={"flex items-center justify-center relative h-12 w-30"} key={item}>
-                            <p className={"text-base font-medium"}>
-                                {item}
-                            </p>
-                            <div className={"navbar-item-indicator"}/>
-                        </div>
-                    ))}
-                    { currentUser ? r.data.loginItems.map(item => (
-                        <Link href={"/" + item}>
-                            <div className={"flex items-center justify-center relative h-12 w-30"} key={item}>
+                        <Link href={item.path}>
+                            <div className={"flex items-center justify-center relative h-12 w-30 cursor-pointer"}
+                                 key={item.path}>
                                 <p className={"text-base font-medium"}>
-                                    {item}
+                                    {t(item.title)}
+                                </p>
+                                <div className={"navbar-item-indicator"}/>
+                            </div>
+                        </Link>
+                    ))}
+                    {currentUser ? r.data.loginItems.map(item => (
+                        <Link href={item.path}>
+                            <div className={"flex items-center justify-center relative h-12 w-30"} key={item.path}>
+                                <p className={"text-base font-medium"}>
+                                    {t(item.title)}
                                 </p>
                                 <div className={"navbar-item-indicator"}/>
                             </div>
@@ -38,49 +42,24 @@ export default function NavbarDesktop() {
                     )) : null}
                 </div>
                 <div className={"flex"}>
-                    <div className={"relative"}>
-                        <div onClick={() => setLangMenu(!showLangMenu)}
-                             className={"flex items-center space-x-4 px-3 cursor-pointer"}>
-                            <div className={"flex space-x-2 items-center h-12"}>
-                                {getIcon(IconType.LanguageOutline, "text-base")}
-                                <p className={"text-footnote"}>
-                                    English
-                                </p>
-                            </div>
-                            <div className={"p-0.5 border rounded-xl border-divider-light text-center"}>
-                                {getIcon(IconType.ChevronDown, "text-caption1 text-center")}
-                            </div>
-                        </div>
-                        <Animated animationIn="fadeIn" animationOut="fadeOut" animationInDuration={200}
-                                  animationOutDuration={200} isVisible={showLangMenu}>
-                            {/*{showLangMenu ? (*/}
-                                <div className={"absolute shadow-md rounded-b-md w-30"}>
-                                    {r.data.languages.map(lang => (
-                                        <div
-                                            className={"px-4 py-2 text-footnote cursor-pointer hover:bg-muted hover:text-primary"}>
-                                            {lang}
-                                        </div>
-                                    ))}
-                                </div>
-                            {/*) : null}*/}
-                        </Animated>
-                    </div>
-                    { currentUser ? (
+                    {currentUser ? (
                         <div className={"h-12 px-5 flex items-center space-x-4"}>
-                            <button className={"btn btn-sm bg-primary-extra-light border border-primary-light text-primary"}>
-                                {currentUser.firstName}
+                            <button
+                                className={"btn btn-sm bg-primary-extra-light border border-primary-light text-primary"}>
+                                {currentUser.firstName} {currentUser.lastName}
                             </button>
                         </div>
                     ) : (
-                        <div className={"h-12 px-5 flex items-center space-x-4"}>
+                        <div className={"h-12 pl-5 pr-12 flex items-center space-x-4"}>
                             <Link href={"/auth/register"}>
-                                <button className={"btn btn-sm bg-primary-extra-light border border-primary-light text-primary"}>
-                                    Register
+                                <button
+                                    className={"btn btn-sm bg-primary-extra-light border border-primary-light text-primary"}>
+                                    {t(r.string.register)}
                                 </button>
                             </Link>
                             <Link href={"/auth/login"}>
                                 <button className={"btn btn-primary btn-sm"}>
-                                    Login
+                                    {t(r.string.login)}
                                 </button>
                             </Link>
                         </div>

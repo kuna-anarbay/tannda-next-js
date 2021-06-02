@@ -15,6 +15,10 @@ export const URLPath = {
         sendCode: "/auth/send-code",
         register: "/auth/register",
         login: "/auth/login",
-        refreshToken: "/auth/refresh-token"
+        logOut: "/auth/log-out",
+        refreshToken: "/auth/refresh-token",
+        forgotPassword: "/auth/forgot-password",
+        verifyPhone: "/auth/verify-phone",
+        resetPassword: "/auth/reset-password"
     }
 }

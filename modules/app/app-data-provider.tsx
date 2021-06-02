@@ -1,30 +1,53 @@
-import React, {createContext, ReactNode, useEffect} from "react";
+import React, {createContext, ReactNode, useEffect, useState} from "react";
 import User from "../user/user.entity";
-import {useMutation} from "react-query";
-import {axiosInstance} from "../../services/store/http/AxiosInstance";
-import {URLPath} from "../../services/store/http/URLPath";
 import {LoginRes} from "../auth/dto/login.dto";
 import LocalDatabase from "../../services/localDatabase";
+import AuthService from "../../services/auth.service";
 
-async function getCurrentUser() {
-    const response = await axiosInstance().post<LoginRes>(URLPath.auth.refreshToken);
-    LocalDatabase.instance.configure(response.data);
-    return response.data.user;
-}
 
 type AppDataType = {
     currentUser: User | undefined;
+    setUser: (body: LoginRes) => void;
+    deleteUser: () => void;
 };
 const AppData = createContext<AppDataType>(undefined!);
 
 export function AppDataProvider({children}: { children: ReactNode }) {
-    const {data: user, mutate} = useMutation<User, Error>("currentUser", getCurrentUser)
+    const authService = new AuthService();
+    const [currentUser, setUser] = useState(null);
+
     useEffect(() => {
-        mutate();
+        const loginRes = LocalDatabase.instance.getUser();
+        if (loginRes) {
+            configureUser(loginRes);
+        }
+        authService.refreshToken().then(loginRes => {
+            configureUser(loginRes);
+        }).catch((err) => {
+            console.log(err);
+        })
     }, []);
 
+    const configureUser = (data: LoginRes | null) => {
+        LocalDatabase.instance.configure(data);
+        if (data) {
+            setUser(data.user);
+        } else {
+            setUser(null);
+        }
+    }
 
-    return <AppData.Provider value={{currentUser: user}}>{children}</AppData.Provider>
+    return (
+        <AppData.Provider value={
+            {
+                currentUser: currentUser,
+                setUser: (loginRes) => configureUser(loginRes),
+                deleteUser: () => configureUser(null)
+            }
+        }>
+            {children}
+        </AppData.Provider>
+    );
 }
 
 export const useAppData = () => React.useContext(AppData);

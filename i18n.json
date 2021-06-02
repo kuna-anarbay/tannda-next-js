@@ -1,10 +1,14 @@
 {
   "locales": [
-    "ru",
-    "kz",
-    "en"
+    "ru"
   ],
   "defaultLocale": "ru",
   "pages": {
+    "*": [
+      "common"
+    ],
+    "rgx:/auth$": [
+      "auth"
+    ]
   }
 }

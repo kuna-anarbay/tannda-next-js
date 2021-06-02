@@ -1,4 +1,3 @@
-import Category from "../../modules/category/category.entity";
 import User from "../../modules/user/user.entity";
 import {LoginRes} from "../../modules/auth/dto/login.dto";
 
@@ -11,84 +10,78 @@ class LocalDatabase {
 
 
     //Configure
-    configure(value: LoginRes) {
-        this.setAccessToken(value.accessToken);
-        this.setCurrentUser(value.user);
+    configure(value: LoginRes | null) {
+        if (value) {
+            if (value.refreshToken) {
+                this.setString("refreshToken", value.refreshToken);
+            }
+            this.setString("accessToken", value.accessToken);
+            this.set("currentUser", value.user);
+        } else {
+            this.delete("refreshToken");
+            this.delete("accessToken");
+            this.delete("currentUser");
+        }
     }
 
-    // Access token
-    getAccessToken(): string | null {
+    getUser(): LoginRes | null {
+        const accessToken = this.string("accessToken");
+        const refreshToken = this.string("refreshToken");
+        const user = this.object<User>("currentUser");
+        if (accessToken && refreshToken && user) {
+            return {accessToken, refreshToken, user};
+        }
+
+        return null;
+    }
+
+    object = <T = string>(key: string): T | null => {
         if (typeof window === 'undefined') {
             return null;
         }
-        const accessExp = window.localStorage.getItem("accessExp");
-        const accessExpDate = new Date(accessExp).getTime();
-        const today = new Date().getTime();
-        if (today - accessExpDate > 1000 * 3600 * 24) {
+        const item = window.localStorage.getItem(key);
+        if (!item) {
             return null;
         }
 
-        return window.localStorage.getItem("accessToken");
+        const cast = <T>JSON.parse(item);
+        if (!cast) {
+            return null;
+        }
+
+        return cast;
     }
 
-    setAccessToken(token: string) {
+    string = (key: string): string | null => {
+        if (typeof window === 'undefined') {
+            return null;
+        }
+
+        return window.localStorage.getItem(key);
+    }
+
+    set = <T>(key: string, value: T) => {
         if (typeof window === 'undefined') {
             return;
         }
 
-        window.localStorage.setItem("accessExp", new Date().toString());
-        window.localStorage.setItem("accessToken", token);
+        window.localStorage.setItem(key, JSON.stringify(value));
     }
 
-    // Refresh token
-    getRefreshToken(): string | null {
-        if (typeof window === 'undefined') {
-            return null;
-        }
-
-        return window.localStorage.getItem("refreshToken");
-    }
-
-    setRefreshToken(token: string) {
+    setString = (key: string, value: string) => {
         if (typeof window === 'undefined') {
             return;
         }
 
-        window.localStorage.setItem("refreshToken", token);
+        window.localStorage.setItem(key, value);
     }
 
-    // Current user
-    getCurrentUser(): User | null {
-        if (typeof window === 'undefined') {
-            return null;
-        }
-        const userStr = window.localStorage.getItem("currentUser");
-        return JSON.parse(userStr) as User;
-    }
-
-    setCurrentUser(user: User) {
-        if (typeof window === 'undefined') {
-            return;
-        }
-        const userStr = JSON.stringify(user);
-        window.localStorage.setItem("currentUser", userStr);
-    }
-
-    // Categories
-    getCategories(): Category[] {
-        if (typeof window === 'undefined') {
-            return [];
-        }
-
-        return JSON.parse(window.localStorage.getItem("categories")!) as Category[];
-    }
-
-    setCategories(categories: Category[]) {
+    delete = (key: string) => {
         if (typeof window === 'undefined') {
             return;
         }
 
-        window.localStorage.setItem("categories", JSON.stringify(categories));
+        window.localStorage.removeItem(key);
     }
 
 }

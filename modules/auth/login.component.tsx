@@ -1,14 +1,35 @@
-import AuthAction from "./auth.action";
 import Button from "../util/button";
-import {Form, Formik, Field} from "formik";
-import InputMask from "react-input-mask";
-import LocalDatabase from "../../services/localDatabase";
+import {Field, Form, Formik, FormikValues} from "formik";
+import useTranslation from "next-translate/useTranslation";
+import r from "../util/r";
+import {useAppData} from "../app/app-data-provider";
+import {useState} from "react";
+import {useToasts} from "react-toast-notifications";
+import {useRouter} from "next/router";
+import AuthService from "../../services/auth.service";
 
 export default function LoginComponent() {
-    const authAction = new AuthAction();
-    const {data, mutate, isLoading} = authAction.login();
-    if (data) {
-        LocalDatabase.instance.configure(data);
+    const authService = new AuthService();
+    const {addToast} = useToasts();
+    const [loading, setLoading] = useState(false);
+    const {setUser} = useAppData();
+    const {push} = useRouter();
+    const {t} = useTranslation();
+
+    const login = async (values: FormikValues) => {
+        setLoading(true);
+        try {
+            const loginData = await authService.login({
+                username: values.phone.replaceAll(" ", ""),
+                password: values.password
+            });
+            setUser(loginData);
+            setLoading(false);
+            await push("/");
+        } catch (err) {
+            setLoading(false);
+            addToast(err.message, {autoDismiss: true, appearance: "error"});
+        }
     }
 
     return (
@@ -18,7 +39,7 @@ export default function LoginComponent() {
                     <div className={"auth-content"}>
                         <div className={"auth-header"}>
                             <h2 className={"auth-title"}>
-                                Login to your account
+                                {t(r.string.loginToYourAccount)}
                             </h2>
                             <p className={"auth-meta"}>
                                 Hello folks!! This is our new travel app design. Tools Used: Adobe XD Eager to hear your
@@ -30,32 +51,27 @@ export default function LoginComponent() {
                                 phone: "",
                                 password: ""
                             }}
-                            onSubmit={(values) => {
-                                console.log(values);
-                                mutate({
-                                    username: values.phone.replaceAll(" ", ""),
-                                    password: values.password
-                                })
-                            }}>
+                            onSubmit={login}>
                             <Form className={"auth-form"}>
                                 <div>
                                     <label className={"block text-caption1 text-label-light"}>
-                                        Phone
+                                        {t(r.string.phoneNumber)}
                                     </label>
-                                    <Field name={"phone"} placeholder={"Phone number"} />
+                                    <Field name={"phone"} placeholder={t(r.string.phoneNumber)}/>
                                 </div>
                                 <div>
                                     <label className={"block text-caption1 text-label-light"}>
-                                        Password
+                                        {t(r.string.password)}
                                     </label>
                                     <Field required={true}
                                            type={"password"}
                                            id={"password"}
                                            name={"password"}
-                                           placeholder={"Password"}
+                                           placeholder={t(r.string.password)}
                                            className="input-text"/>
                                 </div>
-                                <Button className={"btn btn-primary btn-sm"} title={"Login"} loading={isLoading}
+                                <Button className={"btn btn-primary btn-sm"} title={t(r.string.login)}
+                                        loading={loading}
                                         type={"submit"}/>
                             </Form>
                         </Formik>
