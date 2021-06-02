@@ -17,7 +17,7 @@
     }
 
     .tab .tab-content .tab-item .tab-item-title {
-        @apply text-footnote text-label-light;
+        @apply text-footnote text-label-light font-medium;
     }
 
     .tab .tab-content .tab-item .tab-item-border {
@@ -25,7 +25,7 @@
     }
 
     .tab .tab-content .tab-item.active .tab-item-title {
-        @apply text-label font-semibold;
+        @apply text-label;
     }
 
     .tab .tab-content .tab-item.active .tab-item-border {

@@ -17,7 +17,7 @@ export default function CourseCardComponent(props: CourseCardComponentProps) {
                     </h3>
                 </div>
                 <p className={"course-description"}>
-                    {course.description}
+                    {course.description.substring(0, 200)}
                 </p>
             </div>
         </Link>

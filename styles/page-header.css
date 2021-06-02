@@ -12,6 +12,10 @@
         @apply text-title2 font-semibold md:font-bold md:text-title1;
     }
 
+    .page-header-content .page-details {
+        @apply text-footnote text-label-light md:text-base;
+    }
+
     .page-header-content .page-button {
         @apply text-primary rounded-md border border-primary-light bg-primary-extra-light px-3 py-1 md:px-4 md:py-1.5 hover:bg-primary-light;
     }

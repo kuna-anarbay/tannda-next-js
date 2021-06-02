@@ -41,16 +41,16 @@ export default function NavbarDesktop() {
                         </Link>
                     )) : null}
                 </div>
-                <div className={"flex"}>
+                <div className={"flex pl-5 pr-12"}>
                     {currentUser ? (
-                        <div className={"h-12 px-5 flex items-center space-x-4"}>
-                            <button
-                                className={"btn btn-sm bg-primary-extra-light border border-primary-light text-primary"}>
+                        <div className={"h-12 flex items-center space-x-2"}>
+                            <img src={currentUser.avatar} className={"rounded-full w-8 h-8 border border-label-light border-opacity-10"} />
+                            <p className={"text-base font-regular"}>
                                 {currentUser.firstName} {currentUser.lastName}
-                            </button>
+                            </p>
                         </div>
                     ) : (
-                        <div className={"h-12 pl-5 pr-12 flex items-center space-x-4"}>
+                        <div className={"h-12 flex items-center space-x-4"}>
                             <Link href={"/auth/register"}>
                                 <button
                                     className={"btn btn-sm bg-primary-extra-light border border-primary-light text-primary"}>

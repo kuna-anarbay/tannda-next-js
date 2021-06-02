@@ -62,7 +62,6 @@ export default abstract class NetworkManager {
             "Content-Type": "application/json"
         };
         const data = LocalDatabase.instance.getUser();
-        console.log("DEfault headers", data);
         if (data) {
             headers["Authorization"] = `Bearer ${data.accessToken}`;
             headers["Refresh-Token"] = `${data.refreshToken}`;

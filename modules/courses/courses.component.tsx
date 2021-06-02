@@ -31,7 +31,7 @@ export default function CoursesComponent() {
         <div className={"container mx-auto"}>
             <PageHeader title={"Courses"} buttonTitle={"+ Add course"} handleClick={() => push("/courses/new")}
                         items={[]}/>
-            <div className={"px-container grid grid-cols-1 md:grid-cols-3 md:gap-4"}>
+            <div className={"container courses-grid"}>
                 {loading ? <StateView title={"Loading"}/> : null}
                 {courses ? courses.map(course => (
                     <CourseCardComponent key={course.id} course={course}/>

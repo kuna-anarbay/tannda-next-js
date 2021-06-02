@@ -1,6 +1,10 @@
 @layer components {
   .btn-primary {
-    @apply bg-primary border-primary-selected border;
+    @apply text-white bg-primary border-primary-selected border;
+  }
+
+  .btn-outline {
+    @apply text-primary bg-primary-extra-light border-primary-light border hover:bg-primary-light;
   }
 
   .btn-danger {
@@ -8,11 +12,11 @@
   }
 
   .btn {
-    @apply text-base text-white font-medium px-4 py-1 md:px-6 md:py-1.5 rounded-md;
+    @apply text-base font-medium px-4 py-1 md:px-6 md:py-1.5 rounded-md;
   }
 
   .btn-sm {
-    @apply text-footnote font-normal text-white px-3 py-0.5 md:px-4 md:py-1 rounded-md;
+    @apply text-footnote font-normal px-3 py-0.5 md:px-4 md:py-1 rounded-md;
   }
 
 }

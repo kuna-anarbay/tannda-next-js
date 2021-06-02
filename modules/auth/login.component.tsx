@@ -25,7 +25,7 @@ export default function LoginComponent() {
             });
             setUser(loginData);
             setLoading(false);
-            await push("/");
+            await push("/courses");
         } catch (err) {
             setLoading(false);
             addToast(err.message, {autoDismiss: true, appearance: "error"});

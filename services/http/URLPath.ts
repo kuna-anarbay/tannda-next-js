@@ -1,7 +1,4 @@
 export const URLPath = {
-    category: {
-        base: "/category"
-    },
     content: {
         base: (id: number) => {
             return`/course/${id}/content`
@@ -9,7 +6,8 @@ export const URLPath = {
     },
     course: {
         base: "/course",
-        byId: (id) => `/course/${id}`
+        byId: (id) => `/course/${id}`,
+        members: (id) => `/course/${id}/member`
     },
     auth: {
         sendCode: "/auth/send-code",

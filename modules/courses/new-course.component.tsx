@@ -1,16 +1,35 @@
 import PageHeader from "../util/page-header";
 import {Field, Form, Formik} from 'formik';
+import CourseService from "../../services/course.service";
+import {useState} from "react";
+import {useToasts} from "react-toast-notifications";
+import {useRouter} from "next/router";
+import Button from "../util/button";
 
 interface NewCourseComponentProps {
 
 }
 
 export default function NewCourseComponent(props: NewCourseComponentProps) {
-    const {} = props;
+    const courseService = new CourseService();
+    const {addToast} = useToasts();
+    const [loading, setLoading] = useState(false);
+    const {push} = useRouter();
 
-    function handleSubmit(values) {
+    const handleSubmit = async (values) => {
         console.log(values);
-
+        setLoading(true);
+        try {
+            await courseService.createCourse({
+                title: values.title,
+                description: values.description
+            });
+            setLoading(false);
+            await push("/courses");
+        } catch (err) {
+            setLoading(false);
+            addToast(err.message, {appearance: "error", autoDismiss: true});
+        }
     }
 
     return (
@@ -45,9 +64,7 @@ export default function NewCourseComponent(props: NewCourseComponentProps) {
                                    placeholder={"Course description"}
                                    className="textarea"/>
                         </div>
-                        <button type={"submit"} className={"btn btn-primary"}>
-                            Submit
-                        </button>
+                        <Button title={"Submit"} loading={loading} type={"submit"} className={"btn btn-primary"} />
                     </Form>
                 </Formik>
             </div>
