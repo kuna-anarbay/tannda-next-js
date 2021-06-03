@@ -4,10 +4,12 @@ import {LoginRes} from "../auth/dto/login.dto";
 import LocalDatabase from "../../services/localDatabase";
 import AuthService from "../../services/auth.service";
 import {useToasts} from "react-toast-notifications";
+import {UserRole} from "../../models/role";
 
 
 type AppDataType = {
-    currentUser: User | undefined;
+    role: UserRole | null;
+    currentUser: User | null;
     setUser: (body: LoginRes) => void;
     deleteUser: () => void;
     showError: (err) => void;
@@ -18,6 +20,7 @@ export function AppDataProvider({children}: { children: ReactNode }) {
     const authService = new AuthService();
     const {addToast} = useToasts();
     const [currentUser, setUser] = useState(null);
+    const [role, setRole] = useState(null);
 
     useEffect(() => {
         const loginRes = LocalDatabase.instance.getUser();
@@ -34,8 +37,10 @@ export function AppDataProvider({children}: { children: ReactNode }) {
     const configureUser = (data: LoginRes | null) => {
         LocalDatabase.instance.configure(data);
         if (data) {
+            setRole(data.role);
             setUser(data.user);
         } else {
+            setRole(null);
             setUser(null);
         }
     }
@@ -47,6 +52,7 @@ export function AppDataProvider({children}: { children: ReactNode }) {
     return (
         <AppData.Provider value={
             {
+                role: role,
                 currentUser: currentUser,
                 setUser: (loginRes) => configureUser(loginRes),
                 deleteUser: () => configureUser(null),
