@@ -48,10 +48,14 @@ module.exports = {
                 "75": "18.75rem",
                 "screen": "100vw"
             },
+            padding: {
+                "0.75": ""
+            },
             fontSize: {
                 caption2: "0.625rem",
                 caption1: "0.75rem",
                 footnote: "0.875rem",
+                subheadline: "0.9375rem",
                 base: "1rem",
                 title3: "1.25rem",
                 title2: "1.5rem",

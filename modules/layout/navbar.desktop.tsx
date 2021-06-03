@@ -64,7 +64,6 @@ export default function NavbarDesktop() {
                             </Link>
                         </div>
                     )}
-
                 </div>
             </div>
         </div>

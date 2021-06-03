@@ -70,7 +70,7 @@ export default function LoginComponent() {
                                            placeholder={t(r.string.password)}
                                            className="input-text"/>
                                 </div>
-                                <Button className={"btn btn-primary btn-sm"} title={t(r.string.login)}
+                                <Button className={"btn btn-primary "} title={t(r.string.login)}
                                         loading={loading}
                                         type={"submit"}/>
                             </Form>

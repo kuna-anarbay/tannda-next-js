@@ -1,4 +1,4 @@
-import AddMemberComponent from "../../../../modules/courses/add-member.component";
+import AddMemberComponent from "../../../../modules/member/add-member.component";
 
 export interface AddMemberPageProps {
     id: number;

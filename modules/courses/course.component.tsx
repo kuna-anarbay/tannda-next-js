@@ -5,7 +5,7 @@ import ContentsComponent from "../content/contents.component";
 import CourseService from "../../services/course.service";
 import {useToasts} from "react-toast-notifications";
 import PageHeader from "../util/page-header";
-import MembersComponent from "./members.component";
+import MembersComponent from "../member/members.component";
 
 export default function CourseComponent(props: CoursePageProps) {
     const {id} = props;

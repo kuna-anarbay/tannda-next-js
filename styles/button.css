@@ -12,11 +12,11 @@
   }
 
   .btn {
-    @apply text-base font-medium px-4 py-1 md:px-6 md:py-1.5 rounded-md;
+    @apply text-subheadline font-medium px-4 py-1.5 rounded-md;
   }
 
   .btn-sm {
-    @apply text-footnote font-normal px-3 py-0.5 md:px-4 md:py-1 rounded-md;
+    @apply text-footnote font-normal px-3 py-1 rounded-md;
   }
 
 }

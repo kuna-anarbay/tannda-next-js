@@ -1,13 +1,16 @@
 export const URLPath = {
     content: {
         base: (id: number) => {
-            return`/course/${id}/content`
+            return `/course/${id}/content`
         }
     },
     course: {
         base: "/course",
         byId: (id) => `/course/${id}`,
         members: (id) => `/course/${id}/member`
+    },
+    member: {
+        member: (courseId, userId) => `/course/${courseId}/member/${userId}`
     },
     auth: {
         sendCode: "/auth/send-code",

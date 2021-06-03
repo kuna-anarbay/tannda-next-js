@@ -7,6 +7,8 @@ export class Member {
     status: MemberStatus;
     role: MemberRole;
     note?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
 }
 
 export enum MemberRole {
