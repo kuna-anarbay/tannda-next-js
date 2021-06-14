@@ -5,7 +5,6 @@ export interface RegisterReq {
     lastName?: string;
     phone: string;
     code: string;
-    device?: string;
     password: string;
 }
 

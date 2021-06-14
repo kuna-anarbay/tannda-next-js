@@ -1,0 +1,120 @@
+/* This fires as soon as the element enters the dorm */
+.list-transition-enter,
+.list-transition-appear {
+    /*We give the list the initial dimension of the list button*/
+    z-index: -1;
+    transform: translateY(-100%);
+}
+
+/* This is where we can add the transition*/
+.list-transition-enter-active,
+.list-transition-appear-active {
+    transform: translateY(0%);
+    transition: all 400ms;
+}
+
+/* This fires as soon as the this.state.showList is false */
+.list-transition-exit {
+    transform: translateY(0%);
+}
+
+/* fires as element leaves the DOM*/
+.list-transition-exit-active {
+    transform: translateY(-100%);
+    transition: all 400ms;
+}
+
+
+/**
+    Drawer background
+ */
+/* This fires as soon as the element enters the dorm */
+.drawer-bg-enter,
+.drawer-bg-appear {
+    /*We give the list the initial dimension of the list button*/
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+/* This is where we can add the transition*/
+.drawer-bg-enter-active,
+.drawer-bg-appear-active {
+    opacity: 1;
+    transition: all 100ms;
+}
+
+/* This fires as soon as the this.state.showList is false */
+.drawer-bg-exit {
+    opacity: 1;
+}
+
+/* fires as element leaves the DOM*/
+.drawer-bg-exit-active {
+    opacity: 0;
+    transition: all 100ms;
+}
+
+
+
+/**
+    Drawer content
+ */
+/* This fires as soon as the element enters the dorm */
+.drawer-content-enter,
+.drawer-content-appear {
+    /*We give the list the initial dimension of the list button*/
+    z-index: -1;
+    transform: translateX(100%);
+}
+
+/* This is where we can add the transition*/
+.drawer-content-enter-active,
+.drawer-content-appear-active {
+    transform: translateX(0%);
+    transition: all 400ms;
+}
+
+/* This fires as soon as the this.state.showList is false */
+.drawer-content-exit {
+    transform: translateX(0%);
+}
+
+/* fires as element leaves the DOM*/
+.drawer-content-exit-active {
+    transform: translateX(100%);
+    transition: all 400ms;
+}
+
+
+
+/**
+    dropdown-animation
+ */
+/* This fires as soon as the element enters the dorm */
+.dropdown-animation-enter,
+.dropdown-animation-appear {
+    /*We give the list the initial dimension of the list button*/
+    opacity: 0;
+}
+
+/* This is where we can add the transition*/
+.dropdown-animation-enter-active,
+.dropdown-animation-appear-active {
+    opacity: 1;
+    transition: all 300ms;
+}
+
+/* This fires as soon as the this.state.showList is false */
+.dropdown-animation-exit {
+    opacity: 1;
+}
+
+/* fires as element leaves the DOM*/
+.dropdown-animation-exit-active {
+    opacity: 0;
+    transition: all 300ms;
+}

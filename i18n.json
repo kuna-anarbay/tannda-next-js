@@ -3,12 +3,5 @@
     "ru"
   ],
   "defaultLocale": "ru",
-  "pages": {
-    "*": [
-      "common"
-    ],
-    "rgx:/auth$": [
-      "auth"
-    ]
-  }
+  "pages": {}
 }

@@ -1,5 +1,7 @@
 import axios, {AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse} from "axios";
 import LocalDatabase from "../localDatabase";
+import config from "../../config";
+
 
 declare module "axios" {
     interface AxiosResponse<T = any> extends Promise<T> {
@@ -9,17 +11,24 @@ declare module "axios" {
 export default abstract class NetworkManager {
 
     protected readonly instance: AxiosInstance;
-    private readonly baseUrl = "http://localhost:8080";
+    protected readonly multipart: AxiosInstance;
+    private readonly baseUrl = config.baseUrl;
+
 
     protected constructor() {
         this.instance = axios.create({
             baseURL: this.baseUrl,
             headers: this.defaultHeaders()
         });
+        this.multipart = axios.create({
+            baseURL: this.baseUrl,
+            headers: this.formDataHeaders()
+        });
 
         this.initializeResponseInterceptor();
         this.initializeRequestInterceptor();
     }
+
 
     public formDataHeaders = () => {
         let headers = this.defaultHeaders();
@@ -28,23 +37,35 @@ export default abstract class NetworkManager {
         return headers;
     }
 
+
     protected handleError = (error: AxiosError) => {
         return Promise.reject(error);
     };
+
 
     private initializeResponseInterceptor = () => {
         this.instance.interceptors.response.use(
             this.handleResponse,
             this.handleError,
         );
+        this.multipart.interceptors.response.use(
+            this.handleResponse,
+            this.handleError,
+        );
     };
+
 
     private initializeRequestInterceptor = () => {
         this.instance.interceptors.request.use(
             this.handleRequest,
             this.handleError
         )
+        this.multipart.interceptors.request.use(
+            this.handleMultipartRequest,
+            this.handleError,
+        );
     }
+
 
     private handleRequest = (request: AxiosRequestConfig) => {
         return {
@@ -53,9 +74,19 @@ export default abstract class NetworkManager {
         };
     }
 
+
+    private handleMultipartRequest = (request: AxiosRequestConfig) => {
+        return {
+            ...request,
+            headers: this.formDataHeaders()
+        };
+    }
+
+
     private handleResponse = ({data}: AxiosResponse) => {
         return data;
     };
+
 
     private defaultHeaders = () => {
         let headers: any = {
@@ -70,4 +101,5 @@ export default abstract class NetworkManager {
         return headers;
     }
 
+    
 }

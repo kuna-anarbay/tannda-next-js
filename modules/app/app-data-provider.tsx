@@ -10,9 +10,10 @@ import {UserRole} from "../../models/role";
 type AppDataType = {
     role: UserRole | null;
     currentUser: User | null;
-    setUser: (body: LoginRes) => void;
+    setUser: (body: LoginRes | null) => void;
     deleteUser: () => void;
     showError: (err) => void;
+    showSuccess: (response: string) => void;
 };
 const AppData = createContext<AppDataType>(undefined!);
 
@@ -30,6 +31,7 @@ export function AppDataProvider({children}: { children: ReactNode }) {
         authService.refreshToken().then(loginRes => {
             configureUser(loginRes);
         }).catch((err) => {
+            configureUser(null);
             console.log(err);
         })
     }, []);
@@ -49,6 +51,10 @@ export function AppDataProvider({children}: { children: ReactNode }) {
         addToast(err, {autoDismiss: true, appearance: "error"});
     }
 
+    const showSuccess = (response: string) => {
+        addToast(response, {autoDismiss: true, appearance: "success"});
+    }
+
     return (
         <AppData.Provider value={
             {
@@ -56,7 +62,8 @@ export function AppDataProvider({children}: { children: ReactNode }) {
                 currentUser: currentUser,
                 setUser: (loginRes) => configureUser(loginRes),
                 deleteUser: () => configureUser(null),
-                showError: showError
+                showError: showError,
+                showSuccess: showSuccess
             }
         }>
             {children}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import {getIcon, IconType} from "./icon";
 
 export interface BreadcrumbItem {
     title: string;
@@ -52,7 +53,7 @@ function BreadcrumbItemComponent(props: BreadcrumbItemComponentProps) {
     return (
         <>
             {response}
-            {!last ? <p className={"breadcrumb-divider"}>/</p> : null}
+            {!last ? getIcon(IconType.ChevronRight, "breadcrumb-divider") : null}
         </>
     );
 }

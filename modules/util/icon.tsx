@@ -5,7 +5,13 @@ import {
     IoClose,
     IoLanguageOutline,
     IoSearch,
-    IoWarning
+    IoWarning,
+    IoMenu,
+    IoPersonSharp,
+    IoChevronBack,
+    IoReaderOutline,
+    IoBook,
+    IoSync, IoLockClosed, IoPencil, IoArrowForward
 } from "react-icons/io5";
 
 export enum IconType {
@@ -15,7 +21,16 @@ export enum IconType {
     XMark,
     Warning,
     ChevronUp,
-    Search
+    Search,
+    Menu,
+    User,
+    ChevronLeft,
+    File,
+    Book,
+    Sync,
+    Lock,
+    Pencil,
+    ArrowRight
 }
 
 const icons = (className?: string) => {
@@ -26,7 +41,16 @@ const icons = (className?: string) => {
         <IoClose className={className}/>,
         <IoWarning className={className} />,
         <IoChevronUp className={className} />,
-        <IoSearch className={className} />
+        <IoSearch className={className} />,
+        <IoMenu className={className} />,
+        <IoPersonSharp className={className} />,
+        <IoChevronBack className={className} />,
+        <IoReaderOutline className={className} />,
+        <IoBook className={className} />,
+        <IoSync className={className} />,
+        <IoLockClosed className={className} />,
+        <IoPencil className={className} />,
+        <IoArrowForward className={className} />
     ]
 }
 

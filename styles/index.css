@@ -7,9 +7,11 @@
 @import "button.css";
 @import "navbar.css";
 @import "form.css";
-@import "course.css";
 @import "breadcrumb.css";
-@import "page-header.css";
+@import "spinner.css";
+@import "animation.css";
+@import "landing.css";
+@import "shadow.css";
+@import "custom.css";
 @import "tab.css";
-@import "content.css";
-@import "auth.css";
+@import "base.css";

@@ -1,47 +1,22 @@
+const colors = require("./config/color.theme.js");
+
 module.exports = {
     purge: [],
     darkMode: false, // or 'media' or 'class'
     theme: {
+        colors: colors,
         extend: {
-            colors: {
-                primary: {
-                    DEFAULT: "#054EA1",
-                    selected: "#04448C",
-                    "extra-light": "#F0F6FE",
-                    light: "#BADDFF"
-                },
-                divider: {
-                    DEFAULT: "#E1E4E8",
-                    light: "#F3F3F6"
-                },
-                background: "#FFFFFF",
-                muted: "#F8F8F8",
-                disabled: "#9DA1B0",
-                label: {
-                    DEFAULT: "#111111",
-                    light: "#586069",
-                    "extra-light": "#848488",
-                    darker: "#252525"
-                },
-                danger: "#CC0000",
-                warning: "#FFA718",
-                highlight: {
-                    DEFAULT: "#F4D150",
-                    light: ""
-                },
-                sidebar: {
-                    DEFAULT: "#1E2739",
-                    light: "#263145"
-                }
-            },
             borderRadius: {
                 "1": "0.25rem",
-                "4": "1rem"
+                "1.5": "0.375rem",
+                "2.5": "0.625rem",
+                "4": "1rem",
             },
             height: {
                 "0.25": "0.0625rem",
                 "30": "7.5rem",
-                "screen": "100vh"
+                "screen": "100vh",
+                "80vh": "80vh"
             },
             width: {
                 "30": "7.5rem",
@@ -60,7 +35,8 @@ module.exports = {
                 title3: "1.25rem",
                 title2: "1.5rem",
                 title1: "1.75rem",
-                largeTitle: "2.25rem"
+                largeTitle: "2.25rem",
+                header: "3rem"
             },
             inset: {
                 "75": "18.75rem",

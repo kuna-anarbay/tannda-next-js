@@ -1,15 +1,11 @@
 export const URLPath = {
-    content: {
-        base: (id: number) => {
-            return `/course/${id}/content`
-        }
-    },
     course: {
         base: "/course",
         byId: (id) => `/course/${id}`,
         members: (id) => `/course/${id}/member`
     },
     member: {
+        base: (courseId) => `/course/${courseId}/member`,
         member: (courseId, userId) => `/course/${courseId}/member/${userId}`
     },
     auth: {
@@ -21,5 +17,14 @@ export const URLPath = {
         forgotPassword: "/auth/forgot-password",
         verifyPhone: "/auth/verify-phone",
         resetPassword: "/auth/reset-password"
+    },
+    profile: {
+        me: "/profile/me",
+        avatar: "/profile/me/avatar"
+    },
+    content: {
+        base: (courseId) => `course/${courseId}/content`,
+        upload: (courseId, contentId) => `course/${courseId}/content/${contentId}/upload`,
+        status: (courseId, contentId) => `course/${courseId}/content/${contentId}/status`,
     }
 }

@@ -1,17 +1,31 @@
 import r from "../util/r";
 import Link from "next/link";
 import {useAppData} from "../app/app-data-provider";
-import useTranslation from "next-translate/useTranslation";
+import Avatar from "../util/avatar";
+import {CSSTransition} from "react-transition-group";
+import {useState} from "react";
+import AuthService from "../../services/auth.service";
 
 
 export default function NavbarDesktop() {
-    const {currentUser} = useAppData();
-    const {t} = useTranslation();
+    const {currentUser, setUser} = useAppData();
+    const [dropdown, setDropdown] = useState(false);
+    const authService = new AuthService();
+
+    const logOut = async () => {
+        setUser(null);
+        setDropdown(!dropdown);
+        try {
+            await authService.logOut();
+        } catch (e) {
+            console.log(e);
+        }
+    }
 
     return (
         <div className={"h-12 relative hidden md:block"}>
             <div
-                className="bg-background h-12 fixed top-0 inset-x-0 z-40 flex justify-between border-b border-divider-light">
+                className="bg-background h-12 fixed top-0 inset-x-0 z-40 flex justify-between border-b border-border">
                 <div className={"flex items-center"}>
                     <div className={"pl-12 pr-5 py-2 h-12"}>
                         <Link href={"/"}>
@@ -23,8 +37,8 @@ export default function NavbarDesktop() {
                         <Link href={item.path}>
                             <div className={"flex items-center justify-center relative h-12 w-30 cursor-pointer"}
                                  key={item.path}>
-                                <p className={"text-base font-medium"}>
-                                    {t(item.title)}
+                                <p className={"text-subheadline font-medium"}>
+                                    {item.title}
                                 </p>
                                 <div className={"navbar-item-indicator"}/>
                             </div>
@@ -32,34 +46,54 @@ export default function NavbarDesktop() {
                     ))}
                     {currentUser ? r.data.loginItems.map(item => (
                         <Link href={item.path}>
-                            <div className={"flex items-center justify-center relative h-12 w-30"} key={item.path}>
-                                <p className={"text-base font-medium"}>
-                                    {t(item.title)}
+                            <div className={"flex items-center justify-center relative h-12 w-30 cursor-pointer"} key={item.path}>
+                                <p className={"text-subheadline font-medium"}>
+                                    {item.title}
                                 </p>
                                 <div className={"navbar-item-indicator"}/>
                             </div>
                         </Link>
                     )) : null}
                 </div>
-                <div className={"flex pl-5 pr-12"}>
+                <div className={"flex pl-5 pr-12 cursor-pointer"}>
                     {currentUser ? (
-                        <div className={"h-12 flex items-center space-x-2"}>
-                            <img src={currentUser.avatar} className={"rounded-full w-8 h-8 border border-label-light border-opacity-10"} />
-                            <p className={"text-base font-regular"}>
-                                {currentUser.firstName} {currentUser.lastName}
-                            </p>
+                        <div  className={"relative"}>
+                            <div onClick={() => setDropdown(!dropdown)} className={"h-12 flex items-center space-x-2"}>
+                                <Avatar src={currentUser.avatar} className={"h-8 w-8"}/>
+                                <p className={"text-base font-regular"}>
+                                    {currentUser.firstName} {currentUser.lastName}
+                                </p>
+                            </div>
+                            <CSSTransition
+                                in={dropdown}
+                                timeout={300}
+                                classNames="dropdown-animation"
+                                unmountOnExit
+                                appear
+                            >
+                                <div className={"absolute bg-background w-full rounded-b-md shadow-md"}>
+                                    <div onClick={() => setDropdown(!dropdown)} className={"px-4 py-2 text-footnote hover:text-primary"}>
+                                        <Link href={"/users/me"}>
+                                            Profile
+                                        </Link>
+                                    </div>
+                                    <div onClick={() => logOut()} className={"px-4 py-2 text-footnote hover:text-danger"}>
+                                        Log out
+                                    </div>
+                                </div>
+                            </CSSTransition>
                         </div>
                     ) : (
                         <div className={"h-12 flex items-center space-x-4"}>
                             <Link href={"/auth/register"}>
                                 <button
                                     className={"btn btn-sm bg-primary-extra-light border border-primary-light text-primary"}>
-                                    {t(r.string.register)}
+                                    {r.string.register}
                                 </button>
                             </Link>
                             <Link href={"/auth/login"}>
                                 <button className={"btn btn-primary btn-sm"}>
-                                    {t(r.string.login)}
+                                    {r.string.login}
                                 </button>
                             </Link>
                         </div>

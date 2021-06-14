@@ -1,0 +1,32 @@
+.landing-yellow-box {
+    position: absolute;
+    width: 16vw;
+    height: 16vw;
+    left: 12vw;
+    bottom: -6vw;
+
+    background: #FFD166;
+    border-radius: 3vw;
+    transform: rotate(-22deg);
+}
+
+.landing-blue-box {
+    position: absolute;
+    width: 18vw;
+    height: 18vw;
+    right: 17vw;
+    bottom: 12vw;
+    border-radius: 50%;
+
+    background: #38DFF6;
+}
+
+.landing-product-demo {
+    width: 60vw;
+    margin: 0 auto;
+    position: absolute;
+    bottom: -10vh;
+    left: 4rem;
+    right: 4rem;
+    object-fit: cover;
+}

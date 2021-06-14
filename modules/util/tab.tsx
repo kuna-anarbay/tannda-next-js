@@ -10,7 +10,7 @@ export default function Tab(props: TabProps) {
     return (
         <div className={"tab"}>
             <div className={"tab-border"}/>
-            <div className={"tab-content"}>
+            <div className={"tab-content px-4"}>
                 {tabs.map((tab, index) => (
                     <div onClick={() => selectTab(index)}
                          className={"tab-item " + (selectedTab === index ? "active" : "")}>

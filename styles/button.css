@@ -1,22 +1,30 @@
 @layer components {
   .btn-primary {
-    @apply text-white bg-primary border-primary-selected border;
+    @apply text-background bg-primary border-primary border;
   }
 
   .btn-outline {
-    @apply text-primary bg-primary-extra-light border-primary-light border hover:bg-primary-light;
+    @apply border-border border hover:bg-background-secondary;
   }
 
   .btn-danger {
-    @apply bg-danger;
+    @apply bg-red text-background;
+  }
+
+  .btn-danger.btn-outline {
+    @apply text-red bg-clear border-border border hover:bg-background-secondary;
+  }
+
+  .btn-warning {
+    @apply bg-orange text-background;
   }
 
   .btn {
-    @apply text-subheadline font-medium px-4 py-1.5 rounded-md;
+    @apply text-subheadline font-medium px-4 py-1.5 rounded-1.5;
   }
 
   .btn-sm {
-    @apply text-footnote font-normal px-3 py-1 rounded-md;
+    @apply text-footnote font-normal px-3 py-1 rounded-1.5;
   }
 
 }

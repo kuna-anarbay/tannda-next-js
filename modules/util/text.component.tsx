@@ -17,7 +17,7 @@ export default function Text(props: TextProps) {
             ) : children }
             {collapsable ? (
                 <a onClick={() => setOpen(!open)} className={"cursor-pointer text-primary"}>
-                    { open ? "меньше" : "больше"}
+                    { open ? " меньше" : " больше"}
                 </a>
             ) : null}
         </p>

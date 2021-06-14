@@ -14,13 +14,34 @@ const image = {
 };
 
 const string = {
-    aboutUs: "common:aboutUs",
-    courses: "common:courses",
-    login: "common:login",
-    register: "common:register",
-    phoneNumber: "auth:phoneNumber",
-    password: "auth:password",
-    loginToYourAccount: "auth:loginToYourAccount"
+    aboutUs: "Про нас",
+    courses: "Курсы",
+    login: "Войти",
+    loginDescription: "С возвращением в Tañda. Войдите, используя свой телефон и пароль",
+    register: "Регистрация",
+    registerDescription: "Заполните регистрационные данные. Это займет пару минут. Все, что вам нужно, это номер телефона",
+    yourAccountSecure: "Мы серьезно относимся к вопросам конфиденциальности. Вы можете быть уверены, что ваши личные данные надежно защищены.",
+    phoneNumber: "Номер телефона",
+    phoneNotConfirmed: "Номер еще не подтвержден",
+    password: "Пароль",
+    loginToYourAccount: "Войдите в свой аккаунт",
+    role: "Роль",
+    title: "Название",
+    description: "Детали",
+    type: "Тип",
+    resources: "Материалы",
+    sendCode: "Отправить код",
+    firstName: "Имя",
+    lastName: "Фамилия",
+    code: "Код",
+    forgotPassword: "Забыли пароль?",
+    noAccount: "Нет учетной записи?",
+    confirm: "Подтверждить",
+    resetPassword: "Сбросить пароль",
+    chooseImage: "Выбрать изображение",
+    delete: "Удалить",
+    save: "Сохранить",
+    logOut: "Выйти"
 };
 
 const data = {

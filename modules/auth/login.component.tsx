@@ -1,83 +1,83 @@
-import Button from "../util/button";
-import {Field, Form, Formik, FormikValues} from "formik";
-import useTranslation from "next-translate/useTranslation";
-import r from "../util/r";
-import {useAppData} from "../app/app-data-provider";
-import {useState} from "react";
-import {useToasts} from "react-toast-notifications";
-import {useRouter} from "next/router";
 import AuthService from "../../services/auth.service";
+import {Field, Form, Formik} from "formik";
+import {useState} from "react";
+import {useAppData} from "../app/app-data-provider";
+import r from "../util/r";
+import Button from "../util/button";
+import {IMaskInput} from 'react-imask';
+import {useRouter} from "next/router";
+import Link from "next/link";
 
 export default function LoginComponent() {
-    const authService = new AuthService();
-    const {addToast} = useToasts();
     const [loading, setLoading] = useState(false);
-    const {setUser} = useAppData();
+    const authService = new AuthService();
+    const {showError, setUser} = useAppData();
     const {push} = useRouter();
-    const {t} = useTranslation();
 
-    const login = async (values: FormikValues) => {
+    const handleSubmit = async (values) => {
         setLoading(true);
         try {
-            const loginData = await authService.login({
+            const user = await authService.login({
                 username: values.phone.replaceAll(" ", ""),
                 password: values.password
             });
-            setUser(loginData);
-            setLoading(false);
+            setUser(user);
             await push("/courses");
+            setLoading(false);
         } catch (err) {
             setLoading(false);
-            addToast(err.message, {autoDismiss: true, appearance: "error"});
+            showError(err.message);
         }
     }
 
     return (
-        <div className={"px-container mx-auto"}>
-            <div className={"grid grid-cols-1 md:grid-cols-2"}>
-                <div className={"auth"}>
-                    <div className={"auth-content"}>
-                        <div className={"auth-header"}>
-                            <h2 className={"auth-title"}>
-                                {t(r.string.loginToYourAccount)}
+        <div className={"px-4 mx-auto md:w-4/12 py-20"}>
+            <Formik initialValues={{}} onSubmit={handleSubmit}>
+                <Form>
+                    <div className={"space-y-8"}>
+                        <div>
+                            <h2 className={"text-title1 font-bold"}>
+                                {r.string.login}
                             </h2>
-                            <p className={"auth-meta"}>
-                                Hello folks!! This is our new travel app design. Tools Used: Adobe XD Eager to hear your
-                                thoughts and comments!
+                            <p className={"text-base text-label-secondary"}>
+                                {r.string.loginDescription}
                             </p>
                         </div>
-                        <Formik
-                            initialValues={{
-                                phone: "",
-                                password: ""
-                            }}
-                            onSubmit={login}>
-                            <Form className={"auth-form"}>
-                                <div>
-                                    <label className={"block text-caption1 text-label-light"}>
-                                        {t(r.string.phoneNumber)}
-                                    </label>
-                                    <Field name={"phone"} placeholder={t(r.string.phoneNumber)}/>
-                                </div>
-                                <div>
-                                    <label className={"block text-caption1 text-label-light"}>
-                                        {t(r.string.password)}
-                                    </label>
-                                    <Field required={true}
-                                           type={"password"}
-                                           id={"password"}
-                                           name={"password"}
-                                           placeholder={t(r.string.password)}
-                                           className="input-text"/>
-                                </div>
-                                <Button className={"btn btn-primary "} title={t(r.string.login)}
-                                        loading={loading}
-                                        type={"submit"}/>
-                            </Form>
-                        </Formik>
+                        <div className={"space-y-4"}>
+                            <div>
+                                <label>
+                                    {r.string.phoneNumber}
+                                </label>
+                                <Field name={"phone"} render={({field}) => (
+                                    <IMaskInput {...field}
+                                                type={"tel"}
+                                                placeholder={r.string.phoneNumber}
+                                                mask={"+{7} 000 000 00 00"}/>
+                                )}/>
+                            </div>
+                            <div>
+                                <label>
+                                    {r.string.password}
+                                </label>
+                                <Field type={"password"} name={"password"}
+                                       placeholder={r.string.password}/>
+                            </div>
+                            <div className={"text-right text-primary text-footnote"}>
+                                <Link href={"/auth/forgot-password"}>
+                                    {r.string.forgotPassword}
+                                </Link>
+                            </div>
+                            <Button className={"btn btn-primary"}
+                                    title={r.string.login}
+                                    loading={loading}
+                                    type={"submit"}/>
+                            <div className={"text-center text-footnote"}>
+                                {r.string.noAccount} <Link href={"/auth/register"}><a className={"text-primary"}>{r.string.register}</a></Link>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </Form>
+            </Formik>
         </div>
     )
 }

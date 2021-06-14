@@ -1,8 +1,8 @@
-import NetworkManager from "./http/axios";
-import Course from "../modules/courses/course.entity";
+import NetworkManager from "./http/network-manager";
+import Course, {CourseRes} from "../models/course";
 import {URLPath} from "./http/URLPath";
 import {CourseReq} from "./dto/course.dto";
-import {AddMemberDto, Member} from "../models/member";
+import {AddMemberDto, Member, MemberStatus} from "../models/member";
 
 export default class CourseService extends NetworkManager {
 
@@ -10,20 +10,16 @@ export default class CourseService extends NetworkManager {
         super();
     }
 
-    getCourses = async () => {
-        return await this.instance.get<Course[]>(URLPath.course.base);
+    getCourses = async (memberStatus?: MemberStatus) => {
+        return await this.instance.get<Course[]>(URLPath.course.base, {
+            params: {
+                memberStatus: memberStatus
+            }
+        });
     }
 
     getCourse = async (id: number) => {
-        return await this.instance.get<Course>(URLPath.course.byId(id))
-    }
-
-    getMembers = async (id: number) => {
-        return await this.instance.get<Member[]>(URLPath.course.members(id))
-    }
-
-    addMember = async (id: number, body: AddMemberDto) => {
-        return await this.instance.post<Member>(URLPath.course.members(id), body);
+        return await this.instance.get<CourseRes>(URLPath.course.byId(id))
     }
 
     createCourse = async (body: CourseReq) => {

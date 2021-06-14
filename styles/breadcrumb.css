@@ -5,18 +5,14 @@
     }
 
     .breadcrumb-item {
-        @apply space-x-1 flex items-center text-footnote text-primary font-normal cursor-pointer;
-    }
-
-    .breadcrumb-item.disabled {
-        @apply text-label-light cursor-default;
+        @apply space-x-1 flex items-center text-footnote text-label-secondary font-normal cursor-pointer;
     }
 
     .breadcrumb .breadcrumb-item:last-child {
-        @apply text-label-light font-medium cursor-default;
+        @apply text-label cursor-default;
     }
 
     .breadcrumb-divider {
-        @apply text-label-light text-footnote font-medium;
+        @apply text-label-secondary text-footnote font-medium;
     }
 }

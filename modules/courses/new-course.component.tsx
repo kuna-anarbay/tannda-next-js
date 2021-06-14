@@ -1,4 +1,3 @@
-import PageHeader from "../util/page-header";
 import {Field, Form, Formik} from 'formik';
 import CourseService from "../../services/course.service";
 import {useState} from "react";
@@ -33,41 +32,32 @@ export default function NewCourseComponent(props: NewCourseComponentProps) {
     }
 
     return (
-        <div className={"container mx-auto"}>
-            <PageHeader title={"Add course"} items={[
-                {
-                    title: "Courses",
-                    path: "/courses"
-                },
-                {
-                    title: "Add course"
-                }
-            ]}/>
-
-            <div className={"px-container"}>
-                <Formik initialValues={{}} onSubmit={(values) => handleSubmit(values)}>
-                    <Form className={"form"}>
-                        <div>
-                            <label className={"block text-caption1 text-label-light"}>
-                                Course name
-                            </label>
-                            <Field name={"title"}
-                                   placeholder={"Course name"}
-                                   className="input-text"/>
-                        </div>
-                        <div>
-                            <label className={"block text-caption1 text-label-light"}>
-                                Course description
-                            </label>
-                            <Field as={"textarea"} name={"description"}
-                                   rows={3}
-                                   placeholder={"Course description"}
-                                   className="textarea"/>
-                        </div>
-                        <Button title={"Submit"} loading={loading} type={"submit"} className={"btn btn-primary"} />
-                    </Form>
-                </Formik>
-            </div>
+        <div className={"container mx-auto px-4 md:px-0"}>
+            <Formik initialValues={{}} onSubmit={(values) => handleSubmit(values)}>
+                <Form className={"space-y-3 md:w-5/12"}>
+                    <div>
+                        <label>
+                            Название курса
+                        </label>
+                        <Field type={"text"}
+                               name={"title"}
+                               placeholder={"Название курса"}/>
+                    </div>
+                    <div>
+                        <label>
+                            Описание курса
+                        </label>
+                        <Field as={"textarea"}
+                               type={"text"}
+                               name={"description"}
+                               rows={3}
+                               placeholder={"Описание курса"}
+                               className={"textarea"}
+                        />
+                    </div>
+                    <Button title={"Добавить"} loading={loading} type={"submit"} className={"btn btn-primary"}/>
+                </Form>
+            </Formik>
         </div>
     );
 }

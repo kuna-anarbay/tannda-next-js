@@ -1,117 +1,111 @@
-import CourseService from "../../services/course.service";
 import {useEffect, useState} from "react";
-import {Member} from "../../models/member";
+import {Member, MemberRole} from "../../models/member";
 import {useAppData} from "../app/app-data-provider";
-import Link from "next/link";
+import MemberRowComponent from "./member-row.component";
+import AddMemberComponent from "./add-member.component";
+import MemberService from "../../services/member.service";
+import Spinner from "../util/spinner.component";
+import {getIcon, IconType} from "../util/icon";
 
 interface MembersComponentProps {
     id: number;
+    role: MemberRole;
 }
 
 export default function MembersComponent(props: MembersComponentProps) {
     const {id} = props;
-    const courseService = new CourseService();
+    const courseService = new MemberService();
     const {showError} = useAppData();
+    const [loading, setLoading] = useState(false);
     const [members, setMembers] = useState(Array<Member>());
-
+    const [newMember, setNewMember] = useState(false);
 
     useEffect(() => {
         getMembers();
     }, [])
 
     const getMembers = async () => {
+        setLoading(true);
         try {
             const members = await courseService.getMembers(props.id);
+            setLoading(false);
             setMembers(members);
         } catch (e) {
+            setLoading(false);
             showError(e.message);
         }
     }
 
     return (
-        <div>
-            <div className="py-6 space-y-4">
-                <div className={"flex justify-between items-center"}>
-                    <h3 className={"text-title3 font-medium md:text-title-2"}>
-                        Members
-                    </h3>
-                    <button type={"button"} className={"btn btn-sm btn-outline"}>
-                        Add member
-                    </button>
-                </div>
-                <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                    <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                        <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                            <table className="min-w-full divide-y divide-gray-200">
-                                <thead className="bg-gray-50">
-                                <tr>
-                                    <th
-                                        scope="col"
-                                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                    >
-                                        Full name
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                    >
-                                        Status
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                    >
-                                        Role
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                    >
-                                        Note
-                                    </th>
-                                    <th scope="col" className="relative px-6 py-3">
-                                        <span className="sr-only">Edit</span>
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody className="bg-white divide-y divide-gray-200">
-                                {members.map((member) => (
-                                    <tr key={member.id}>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <Link href={`/courses/${id}/members/${member.id}`}>
-                                                <div className="flex items-center">
-                                                    <div className="flex-shrink-0 h-10 w-10">
-                                                        <img className="h-10 w-10 rounded-full" src={member.avatar}
-                                                             alt=""/>
-                                                    </div>
-                                                    <div className="ml-4">
-                                                        <div
-                                                            className="text-sm font-medium text-gray-900">{member.firstName} {member.lastName}</div>
-                                                        <div className="text-sm text-gray-500">{member.phone}</div>
-                                                    </div>
-                                                </div>
-                                            </Link>
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <a className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                {member.status}
-                                            </a>
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{member.role}</td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{member.note}</td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                                                Edit
-                                            </a>
-                                        </td>
+        <div className="py-6 space-y-3">
+            <div className={"grid grid-cols-1 md:grid-cols-2 gap-6"}>
+                <div>
+                    <div className={"flex justify-between items-center"}>
+                        <div>
+                            <h3 className={"text-title3 font-medium md:text-title-2"}>
+                                Участники
+                            </h3>
+                        </div>
+                        <div className={"flex space-x-2"}>
+                            <button className={"btn btn-sm btn-outline"} onClick={() => getMembers()}>
+                                {getIcon(IconType.Sync)}
+                            </button>
+                            <button onClick={() => setNewMember(!newMember)} type={"button"} className={"btn btn-sm btn-outline"}>
+                                Новый участник
+                            </button>
+                        </div>
+                    </div>
+                    {loading ? <Spinner/> : null}
+                    <div className="overflow-x-auto mt-3">
+                        <div className="align-middle inline-block min-w-full">
+                            <div className="overflow-hidden">
+                                <table className="min-w-full">
+                                    <thead>
+                                    <tr className={"border-b border-border"}>
+                                        <th
+                                            scope="col"
+                                            className="pr-4 py-2 text-left text-footnote font-normal text-label-secondary tracking-tight w-2"
+                                        >
+                                            <input type={"checkbox"} />
+                                        </th>
+                                        <th
+                                            scope="col"
+                                            className="pr-4 py-2 text-left text-footnote font-normal text-label-secondary tracking-wider"
+                                        >
+                                            Полное имя
+                                        </th>
+                                        <th
+                                            scope="col"
+                                            className="pr-4 py-2 text-left text-footnote font-normal text-label-secondary"
+                                        >
+                                            Номер телефона
+                                        </th>
+                                        <th
+                                            scope="col"
+                                            className="pr-4 py-2 text-left text-footnote font-normal text-label-secondary"
+                                        >
+                                            Статус
+                                        </th>
+                                        <th
+                                            scope="col"
+                                            className="pr-4 py-2 text-left text-footnote font-normal text-label-secondary"
+                                        >
+                                            Роль
+                                        </th>
                                     </tr>
-                                ))}
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody className="bg-white">
+                                    {members.map((member) => (
+                                        <MemberRowComponent member={member} courseId={id}/>
+                                    ))}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <AddMemberComponent id={id} open={newMember} close={() => setNewMember(!newMember)}/>
         </div>
     )
 }
