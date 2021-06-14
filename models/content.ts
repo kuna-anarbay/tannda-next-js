@@ -6,7 +6,8 @@ export class Content {
     description?: string;
     type: ContentType;
     courseId: number;
-    prevId?: number;
+    index: number;
+    sectionId: number;
     status?: ContentStatus;
     resources?: Resource[];
 }
@@ -15,7 +16,8 @@ export class AddContentReq {
     title: string;
     description?: string;
     type: ContentType;
-    prevId?: number;
+    index: number;
+    sectionId: number;
 }
 
 

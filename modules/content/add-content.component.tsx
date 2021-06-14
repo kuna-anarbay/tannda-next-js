@@ -1,24 +1,24 @@
 import {Field, Form, Formik} from "formik";
 import Button from "../util/button";
 import {useState} from "react";
-import {MemberRole} from "../../models/member";
 import {CSSTransition} from "react-transition-group";
 import {getIcon, IconType} from "../util/icon";
 import {useAppData} from "../app/app-data-provider";
 import r from "../util/r";
-import {Content, contentTypes} from "../../models/content";
+import {Content, ContentType} from "../../models/content";
 import ContentService from "../../services/content.service";
 
 interface AddContentComponentProps {
-    id: number;
+    courseId: number;
+    sectionId: number;
     open: boolean;
     close: () => void;
-    contentAdded: () => void;
+    contentAdded: (Content) => void;
     contents: Content[];
 }
 
 export default function AddContentComponent(props: AddContentComponentProps) {
-    const {id, open, close, contents, contentAdded} = props;
+    const {courseId, sectionId, open, close, contents, contentAdded} = props;
     const [progress, setProgress] = useState(0);
     const contentService = new ContentService();
     const {showSuccess, showError} = useAppData();
@@ -28,14 +28,15 @@ export default function AddContentComponent(props: AddContentComponentProps) {
     const handleSubmit = async (values) => {
         setLoading(true);
         try {
-            const content = await contentService.createContent(id, {
+            const content = await contentService.createContent(courseId, {
                 title: values.title,
                 description: values.description,
-                type: values.type,
-                prevId: values.prevId
+                type: ContentType.LESSON,
+                index: parseInt(values.index),
+                sectionId: sectionId
             });
             await uploadFiles(content.id);
-            contentAdded();
+            contentAdded(content);
             setLoading(false);
             showSuccess("Урок добавлен");
             close();
@@ -48,7 +49,7 @@ export default function AddContentComponent(props: AddContentComponentProps) {
 
     const uploadFiles = async (contentId: number) => {
         setLoading(true);
-        await contentService.uploadFiles(id, contentId, files.map(f => f.file), (value) => {
+        await contentService.uploadFiles(courseId, contentId, files.map(f => f.file), (value) => {
             setProgress(value);
         });
     }
@@ -79,7 +80,7 @@ export default function AddContentComponent(props: AddContentComponentProps) {
                 unmountOnExit
                 appear
             >
-                <div onClick={() => close()} className={"bg-black bg-opacity-20 fixed inset-0 z-40"}/>
+                <div onClick={() => close()} className={"bg-label bg-opacity-20 fixed inset-0 z-40"}/>
             </CSSTransition>
 
             <CSSTransition
@@ -89,10 +90,10 @@ export default function AddContentComponent(props: AddContentComponentProps) {
                 unmountOnExit
                 appear
             >
-                <Formik initialValues={{role: MemberRole.STUDENT}} onSubmit={(values) => handleSubmit(values)}>
+                <Formik initialValues={{index: "0"}} onSubmit={(values) => handleSubmit(values)}>
                     <Form className={"form fixed right-0 top-0 bottom-0 right-0 p-4 w-full md:w-1/3 z-40"}>
                         <div className={"bg-background h-full rounded-1.5 space-y-4"}>
-                            <div className={"relative flex items-center justify-center px-4 border-b border-divider"}>
+                            <div className={"relative flex items-center justify-center px-4 border-b border-border"}>
                                 <div onClick={close}
                                      className={"cursor-pointer absolute right-4 flex items-center justify-center p-1 rounded-full bg-primary-extra-light"}>
                                     {getIcon(IconType.XMark, "text-primary")}
@@ -105,26 +106,12 @@ export default function AddContentComponent(props: AddContentComponentProps) {
                             </div>
                             <div className={"px-4 space-y-2.5"}>
                                 <div>
-                                    <label className={"block text-caption1 text-label-light"}>
+                                    <label>
                                         {r.string.title}
                                     </label>
                                     <Field name={"title"}
                                            placeholder={r.string.title}
-                                           className="input-text"/>
-                                </div>
-                                <div>
-                                    <label className={"block text-caption1 text-label-light"}>
-                                        {r.string.type}
-                                    </label>
-                                    <Field as={"select"} name={"type"}
-                                           placeholder={r.string.type}
-                                           className="select">
-                                        {contentTypes.map(type => (
-                                            <option key={type} value={type}>
-                                                {type}
-                                            </option>
-                                        ))}
-                                    </Field>
+                                           type={"text"}/>
                                 </div>
                                 <div>
                                     <label className={"block text-caption1 text-label-light"}>
@@ -140,11 +127,12 @@ export default function AddContentComponent(props: AddContentComponentProps) {
                                     <label className={"block text-caption1 text-label-light"}>
                                         {r.string.role}
                                     </label>
-                                    <Field as={"select"} name={"prevId"}
+                                    <Field as={"select"}
+                                           name={"index"}
                                            placeholder={r.string.type}
                                            className="select">
                                         {contents.map(content => (
-                                            <option key={content.id} value={content.id}>
+                                            <option key={content.id} value={content.index + 1}>
                                                 {content.title}
                                             </option>
                                         ))}
@@ -179,14 +167,16 @@ export default function AddContentComponent(props: AddContentComponentProps) {
                                 </div>
                             </div>
                             <div
-                                className={"p-4 rounded-b-1.5 absolute left-4 right-4 bottom-4 border-t border-divider bg-muted"}>
-                                { progress > 0 ? (
+                                className={"p-4 rounded-b-1.5 absolute left-4 right-4 bottom-4 border-t border-border bg-muted"}>
+                                {progress > 0 ? (
                                     <div className="relative pt-1 w-full">
-                                        <div className="overflow-hidden w-full h-1.5 mb-4 text-xs flex rounded bg-primary-light">
-                                            <div style={{ width: `${progress}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary" />
+                                        <div
+                                            className="overflow-hidden w-full h-1.5 mb-4 text-xs flex rounded bg-primary-light">
+                                            <div style={{width: `${progress}%`}}
+                                                 className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary"/>
                                         </div>
                                     </div>
-                                ) : null }
+                                ) : null}
                                 <Button type={"submit"} title={"Сохранить"} loading={loading}
                                         className={"btn btn-primary"}/>
                             </div>

@@ -1,6 +1,7 @@
 import NetworkManager from "./http/network-manager";
 import {AddContentReq, Content, ContentStatus} from "../models/content";
 import {URLPath} from "./http/URLPath";
+import {SectionData} from "../models/section";
 
 export default class ContentService extends NetworkManager {
 
@@ -9,7 +10,7 @@ export default class ContentService extends NetworkManager {
     }
 
     async getContents(courseId: number) {
-        return await this.instance.get<Content[]>(URLPath.content.base(courseId));
+        return await this.instance.get<SectionData>(URLPath.content.base(courseId));
     }
 
 

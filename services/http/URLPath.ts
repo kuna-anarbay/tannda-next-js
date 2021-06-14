@@ -26,5 +26,8 @@ export const URLPath = {
         base: (courseId) => `course/${courseId}/content`,
         upload: (courseId, contentId) => `course/${courseId}/content/${contentId}/upload`,
         status: (courseId, contentId) => `course/${courseId}/content/${contentId}/status`,
+    },
+    section: {
+        base: (courseId) => `course/${courseId}/section`,
     }
 }
