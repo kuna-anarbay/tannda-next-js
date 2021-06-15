@@ -5,10 +5,9 @@ import {Content} from "../../models/content";
 import {MemberRole} from "../../models/member";
 import {getIcon, IconType} from "../util/icon";
 import Section, {SectionData} from "../../models/section";
-import AddContentComponent from "./add-content.component";
-import {resourceIcon} from "../resources/resource.icon";
-import {bytesToSize} from "../../models/resource";
-import SectionsComponent from "./sections.component";
+import SectionsComponent from "../section/sections.component";
+import AddLessonDrawer from "./create-lesson.drawer";
+import ContentCell from "./content.cell";
 
 export interface ContentComponentProps {
     content: Content;
@@ -91,10 +90,15 @@ export default function ContentsComponent(props: ContentsComponentProps) {
         setSectionData({sections: sections, contents: contents});
     }
 
+    const isNotStudent = () => {
+        return role !== MemberRole.STUDENT;
+    }
+
     return (
         <div className="py-6 space-y-4">
             <div className={"grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-6"}>
-                <SectionsComponent updateSections={updateSections}
+                <SectionsComponent role={role}
+                                   updateSections={updateSections}
                                    syncing={syncing}
                                    loading={loading}
                                    courseId={courseId}
@@ -107,75 +111,43 @@ export default function ContentsComponent(props: ContentsComponentProps) {
                         <h3 className={"text-base font-medium"}>
                             Уроки
                         </h3>
-                        <div className={"flex space-x-2"}>
-                            <button className={"btn btn-outline"}>
-                                {getIcon(IconType.Sync)}
-                            </button>
-                            <div className={"relative"}>
-                                <button onClick={() => setNewLesson(!newLesson)} type={"button"}
-                                        className={"btn btn-sm btn-outline flex items-center space-x-1 " + (newLesson ? "rounded-none rounded-t-1.5" : "")}>
-                                    <p>
-                                        Новый урок
-                                    </p>
-                                    {getIcon(IconType.ChevronDown)}
-                                </button>
-                                {newLesson ? (
-                                    <div className={"absolute bg-background shadow-md rounded-b-1.5 w-full"}>
-                                        <div
-                                            onClick={() => setNewContent(!newContent)}
-                                            className={"px-4 py-1 text-footnote cursor-pointer hover:bg-background-secondary"}>
-                                            Lesson
-                                        </div>
-                                        <AddContentComponent courseId={courseId} sectionId={currentSection}
+                        {isNotStudent() ? (
+                            <div className={"flex space-x-2"}>
+                                <div className={"relative"}>
+                                    <button onClick={() => setNewLesson(!newLesson)} type={"button"}
+                                            className={"btn btn-sm btn-outline flex items-center space-x-1 " + (newLesson ? "rounded-none rounded-t-1.5" : "")}>
+                                        <p>
+                                            Новый урок
+                                        </p>
+                                        {getIcon(IconType.ChevronDown)}
+                                    </button>
+                                    {newLesson ? (
+                                        <div className={"absolute bg-background shadow-md rounded-b-1.5 w-full"}>
+                                            <div
+                                                onClick={() => setNewContent(!newContent)}
+                                                className={"px-4 py-1 text-footnote cursor-pointer hover:bg-background-secondary"}>
+                                                Lesson
+                                            </div>
+                                            <AddLessonDrawer courseId={courseId} sectionId={currentSection}
                                                              open={newContent} close={() => setNewContent(!newContent)}
                                                              contentAdded={contentAdded} contents={filteredContents()}/>
-                                        <div
-                                            className={"px-4 py-1 text-footnote cursor-pointer hover:bg-background-secondary"}>
-                                            Assignment
+                                            <div
+                                                className={"px-4 py-1 text-footnote cursor-pointer hover:bg-background-secondary"}>
+                                                Assignment
+                                            </div>
+                                            <div
+                                                className={"px-4 py-1 text-footnote cursor-pointer rounded-b-1.5 hover:bg-background-secondary"}>
+                                                Assessment
+                                            </div>
                                         </div>
-                                        <div
-                                            className={"px-4 py-1 text-footnote cursor-pointer rounded-b-1.5 hover:bg-background-secondary"}>
-                                            Assessment
-                                        </div>
-                                    </div>
-                                ) : null}
+                                    ) : null}
+                                </div>
                             </div>
-                        </div>
+                        ) : null}
                     </div>
                     <div className={"mt-3 space-y-5"}>
                         {filteredContents().map((content, index) => (
-                            <div className={" space-y-5"}>
-                                <div className={"space-y-2"}>
-                                    <div className={"space-y-1"}>
-                                        <h3 className={"font-semibold"}>
-                                            {content.title}
-                                        </h3>
-                                        <p className={"text-footnote text-label-secondary"}>
-                                            {content.description}
-                                        </p>
-                                    </div>
-                                    <div className={"space-y-1.5"}>
-                                        {content.resources.map(resource => (
-                                            <a href={resource.url} target={"_blank"}
-                                               className={"block flex items-center space-x-3 cursor-pointer"}>
-                                                <div>
-                                                    <img className={"h-10 w-8"}
-                                                         src={resourceIcon(resource.originalName)}/>
-                                                </ div>
-                                                <div>
-                                                    <p className={"text-footnote"}>
-                                                        {resource.originalName}
-                                                    </p>
-                                                    <p className={"text-caption1 text-label-secondary"}>
-                                                        {bytesToSize(resource.size)}
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        ))}
-                                    </div>
-                                </div>
-                                {index + 1 < filteredContents().length ? <hr/> : null}
-                            </div>
+                            <ContentCell content={content} isLast={index + 1 === filteredContents().length}/>
                         ))}
                     </div>
                 </div>

@@ -19,17 +19,13 @@ export default class ContentService extends NetworkManager {
         return await this.instance.post<Content>(URLPath.content.base(courseId), body);
     }
 
-    async uploadFiles(courseId: number, contentId: number, files: File[], progressHandler?: (number) => void) {
+    async uploadFiles(courseId: number, contentId: number, files: File[]) {
         const formData = new FormData();
         files.forEach(file => {
             formData.append("files", file);
         });
 
-        return await this.multipart.post<Resource[]>(URLPath.content.upload(courseId, contentId), formData, {
-            onUploadProgress: (progressEvent => {
-                progressHandler((progressEvent.loaded / progressEvent.total) * 100);
-            })
-        });
+        return await this.multipart.post<Resource[]>(URLPath.content.upload(courseId, contentId), formData);
     }
 
     async updateStatus(courseId: number, contentId: number, status: ContentStatus) {

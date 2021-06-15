@@ -1,0 +1,3 @@
+.list-bordered > *:not(:last-child) {
+    @apply border-b border-border;
+}

@@ -8,7 +8,7 @@ import r from "../util/r";
 import Section from "../../models/section";
 import SectionService from "../../services/section.service";
 
-interface NewSectionComponentProps {
+interface CreateSectionDrawerProps {
     courseId: number;
     open: boolean;
     close: () => void;
@@ -16,7 +16,7 @@ interface NewSectionComponentProps {
     sections: Section[];
 }
 
-export default function NewSectionComponent(props: NewSectionComponentProps) {
+export default function CreateSectionDrawer(props: CreateSectionDrawerProps) {
     const {courseId, open, close, sections, sectionAdded} = props;
     const sectionService = new SectionService();
     const {showSuccess, showError} = useAppData();
@@ -25,11 +25,11 @@ export default function NewSectionComponent(props: NewSectionComponentProps) {
     const handleSubmit = async (values) => {
         setLoading(true);
         try {
-            const section = await sectionService.createSection(courseId, {
+            const result = await sectionService.createSection(courseId, {
                 title: values.title,
                 index: parseInt(values.index)
             });
-            sectionAdded(section);
+            sectionAdded(result);
             setLoading(false);
             showSuccess("Модуль добавлен");
             close();
@@ -38,6 +38,7 @@ export default function NewSectionComponent(props: NewSectionComponentProps) {
             showError(err.message);
         }
     }
+
 
     return (
         <div>
@@ -74,15 +75,15 @@ export default function NewSectionComponent(props: NewSectionComponentProps) {
                             </div>
                             <div className={"px-4 space-y-2.5"}>
                                 <div>
-                                    <label className={"block text-caption1 text-label-light"}>
+                                    <label>
                                         {r.string.title}
                                     </label>
                                     <Field name={"title"}
                                            placeholder={r.string.title}
-                                           className="input-text"/>
+                                           type={"text"} />
                                 </div>
                                 <div>
-                                    <label className={"block text-caption1 text-label-light"}>
+                                    <label>
                                         {r.string.role}
                                     </label>
                                     <Field as={"select"} name={"index"}
@@ -98,7 +99,7 @@ export default function NewSectionComponent(props: NewSectionComponentProps) {
                             </div>
                             <div
                                 className={"p-4 rounded-b-1.5 absolute left-4 right-4 bottom-4 border-t border-border bg-muted"}>
-                                <Button type={"submit"} title={"Сохранить"} loading={loading}
+                                <Button type={"submit"} title={"Добавить"} loading={loading}
                                         className={"btn btn-primary"}/>
                             </div>
                         </div>

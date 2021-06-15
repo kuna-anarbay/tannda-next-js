@@ -1,13 +1,16 @@
 import Section from "../../models/section";
 import {getIcon, IconType} from "../util/icon";
-import NewSectionComponent from "./new-section.component";
+import CreateSectionDrawer from "./create-section.drawer";
 import {useState} from "react";
 import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd';
 import SectionService from "../../services/section.service";
 import {useAppData} from "../app/app-data-provider";
 import Spinner from "../util/spinner.component";
+import SectionCell from "./section.cell";
+import {MemberRole} from "../../models/member";
 
 interface SectionsComponentProps {
+    role: MemberRole;
     courseId: number;
     currentSection: number;
     syncing: boolean;
@@ -19,7 +22,17 @@ interface SectionsComponentProps {
 }
 
 export default function SectionsComponent(props: SectionsComponentProps) {
-    const {updateSections, sections, setCurrentSection, courseId, syncing, currentSection, reload, loading} = props;
+    const {
+        updateSections,
+        sections,
+        setCurrentSection,
+        courseId,
+        syncing,
+        currentSection,
+        reload,
+        loading,
+        role
+    } = props;
     const [newSection, setNewSection] = useState(false);
     const [editing, setEditing] = useState(false);
     const {showError, showSuccess} = useAppData()
@@ -44,10 +57,24 @@ export default function SectionsComponent(props: SectionsComponentProps) {
         }
     }
 
+    const isNotStudent = () => {
+        return role !== MemberRole.STUDENT;
+    }
 
     const sectionAdded = (section: Section) => {
         sections.push(section);
         updateSections(sections);
+    }
+
+    const sectionEdited = (section: Section) => {
+        const index = sections.findIndex(s => s.id === section.id);
+        if (!index) return;
+        sections[index].title = section.title;
+        updateSections(sections);
+    }
+
+    const sectionDeleted = (section: Section) => {
+        updateSections(sections.filter(s => s.id !== section.id));
     }
 
     return (
@@ -57,20 +84,24 @@ export default function SectionsComponent(props: SectionsComponentProps) {
                     Модули
                 </h3>
                 <div className={"flex space-x-2"}>
-                    <button onClick={() => setEditing(!editing)} className={"btn btn-sm btn-outline"}>
-                        {getIcon(IconType.Pencil)}
-                    </button>
                     <button onClick={() => reload()} className={"btn btn-sm btn-outline"}>
                         {getIcon(IconType.Sync, syncing ? "animate-spin" : null)}
                     </button>
-                    <button onClick={() => setNewSection(!newSection)} type={"button"}
-                            className={"btn btn-sm btn-outline"}>
-                        Новый модуль
-                    </button>
+                    {isNotStudent() ? (
+                        <button onClick={() => setEditing(!editing)} className={"btn btn-sm btn-outline"}>
+                            {getIcon(IconType.Pencil)}
+                        </button>
+                    ) : null}
+                    {isNotStudent() ? (
+                        <button onClick={() => setNewSection(!newSection)} type={"button"}
+                                className={"btn btn-sm btn-outline"}>
+                            Новый модуль
+                        </button>
+                    ) : null}
                 </div>
             </div>
 
-            <NewSectionComponent courseId={courseId} open={newSection}
+            <CreateSectionDrawer courseId={courseId} open={newSection}
                                  close={() => setNewSection(!newSection)}
                                  sectionAdded={sectionAdded}
                                  sections={sections}/>
@@ -79,31 +110,17 @@ export default function SectionsComponent(props: SectionsComponentProps) {
                 <Droppable droppableId="draggable">
                     {(provided) => (
                         <ul {...provided.droppableProps}
-                            ref={provided.innerRef} className={"sections border border-border rounded-lg mt-3"}>
+                            ref={provided.innerRef}
+                            className={"sections border border-border list-bordered rounded-lg mt-3"}>
                             {sections.map((section, index) => (
                                 <Draggable key={section.id} draggableId={`${section.id}`} index={index}>
                                     {(provided) => (
-                                        <li
-                                            ref={provided.innerRef}
-                                            {...provided.draggableProps}
-                                            className={`px-4 py-2 text-footnote cursor-pointer hover:text-primary border-border ${currentSection === section.id ? "text-primary font-semibold" : ""} ${index + 1 === sections.length ? "" : "border-b"}`}>
-                                            <div className={"flex items-center space-x-1"}>
-                                                <div onClick={() => setCurrentSection(section)} className={"flex-grow"}>
-                                                    {index + 1}. {section.title}
-                                                </div>
-                                                {editing ? (
-                                                    <div className={"flex space-x-1"}>
-                                                        <button
-                                                            className={"btn btn-outline btn-xs"}  {...provided.dragHandleProps}>
-                                                            {getIcon(IconType.Menu, "text-base hover:text-primary")}
-                                                        </button>
-                                                        <button className={"btn btn-outline btn-xs btn-warning"}>
-                                                            {getIcon(IconType.Ellipsis, "text-base")}
-                                                        </button>
-                                                    </div>
-                                                ) : null}
-                                            </div>
-                                        </li>
+                                        <SectionCell courseId={courseId} section={section} index={index}
+                                                     provided={provided} setCurrentSection={setCurrentSection}
+                                                     isCurrent={currentSection === section.id} editing={editing}
+                                                     sectionEdited={sectionEdited}
+                                                     sectionAdded={sectionAdded}
+                                                     sectionDeleted={sectionDeleted}/>
                                     )}
                                 </Draggable>
                             ))}
