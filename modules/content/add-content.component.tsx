@@ -35,7 +35,7 @@ export default function AddContentComponent(props: AddContentComponentProps) {
                 index: parseInt(values.index),
                 sectionId: sectionId
             });
-            await uploadFiles(content.id);
+            content.resources = await uploadFiles(content.id);
             contentAdded(content);
             setLoading(false);
             showSuccess("Урок добавлен");
@@ -49,7 +49,7 @@ export default function AddContentComponent(props: AddContentComponentProps) {
 
     const uploadFiles = async (contentId: number) => {
         setLoading(true);
-        await contentService.uploadFiles(courseId, contentId, files.map(f => f.file), (value) => {
+        return contentService.uploadFiles(courseId, contentId, files.map(f => f.file), (value) => {
             setProgress(value);
         });
     }

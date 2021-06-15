@@ -30,6 +30,18 @@ export default class MemberService extends NetworkManager {
     }
 
 
+    activateMember = async (courseId: number, userId: number) => {
+        return await this.instance.put<string>(URLPath.member.member(courseId, userId), {
+            status: MemberStatus.ACTIVE
+        })
+    }
+
+
+    deleteMember = async (courseId: number, userId: number) => {
+        return await this.instance.delete<string>(URLPath.member.member(courseId, userId));
+    }
+
+
     respondToInvitation = async (courseId: number, response: MemberStatus.REJECTED | MemberStatus.ACTIVE) => {
         return await this.instance.put<string>(URLPath.member.base(courseId), {
             status: response

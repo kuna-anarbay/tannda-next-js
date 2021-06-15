@@ -10,6 +10,13 @@ const image = {
     logoTextWhite: {
         val: "/images/logo-text-white.svg",
         alt: "Tañda logo"
+    },
+    file: {
+        image: "/icons/file-image.svg",
+        doc: "/icons/file-doc.svg",
+        pdf: "/icons/file-pdf.svg",
+        sheets: "/icons/file-sheets.svg",
+        presentation: "/icons/file-presentation.svg",
     }
 };
 

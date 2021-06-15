@@ -2,6 +2,7 @@ import NetworkManager from "./http/network-manager";
 import {AddContentReq, Content, ContentStatus} from "../models/content";
 import {URLPath} from "./http/URLPath";
 import {SectionData} from "../models/section";
+import {Resource} from "../models/resource";
 
 export default class ContentService extends NetworkManager {
 
@@ -24,7 +25,7 @@ export default class ContentService extends NetworkManager {
             formData.append("files", file);
         });
 
-        return await this.multipart.post<Content>(URLPath.content.upload(courseId, contentId), formData, {
+        return await this.multipart.post<Resource[]>(URLPath.content.upload(courseId, contentId), formData, {
             onUploadProgress: (progressEvent => {
                 progressHandler((progressEvent.loaded / progressEvent.total) * 100);
             })

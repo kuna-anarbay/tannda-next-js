@@ -7,15 +7,18 @@ import {getIcon, IconType} from "../util/icon";
 import {useAppData} from "../app/app-data-provider";
 import r from "../util/r";
 import MemberService from "../../services/member.service";
+import {IMaskInput} from 'react-imask';
+
 
 interface AddMemberComponentProps {
-    id: number;
+    courseId: number;
     open: boolean;
     close: () => void;
+    reload: () => void;
 }
 
 export default function AddMemberComponent(props: AddMemberComponentProps) {
-    const {id, open, close} = props;
+    const {courseId, open, close, reload} = props;
     const courseService = new MemberService();
     const {showSuccess, showError} = useAppData();
     const [loading, setLoading] = useState(false);
@@ -23,12 +26,13 @@ export default function AddMemberComponent(props: AddMemberComponentProps) {
     const handleSubmit = async (values) => {
         setLoading(true);
         try {
-            const message = await courseService.addMember(id, {
+            const message = await courseService.addMember(courseId, {
                 phone: values.phone,
                 role: values.role
             });
             setLoading(false);
             showSuccess(message);
+            reload();
             close();
         } catch (err) {
             setLoading(false);
@@ -74,9 +78,12 @@ export default function AddMemberComponent(props: AddMemberComponentProps) {
                                     <label>
                                         {r.string.phoneNumber}
                                     </label>
-                                    <Field type={"text"}
-                                           name={"phone"}
-                                           placeholder={r.string.phoneNumber}/>
+                                    <Field name={"phone"} render={({field}) => (
+                                        <IMaskInput {...field}
+                                                    type={"tel"}
+                                                    placeholder={r.string.phoneNumber}
+                                                    mask={"+{7} 000 000 00 00"}/>
+                                    )}/>
                                 </div>
                                 <div>
                                     <label>

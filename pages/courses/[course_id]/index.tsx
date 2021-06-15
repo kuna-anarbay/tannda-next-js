@@ -5,16 +5,19 @@ import useInitialProps from "../../../hooks/use.initial-props";
 import {URLPath} from "../../../services/http/URLPath";
 import Spinner from "../../../modules/util/spinner.component";
 import {MemberRole} from "../../../models/member";
+import {useState} from "react";
 
 export interface CoursePageProps {
     id: number;
     course: Course | null;
     role: MemberRole | null;
+    courseEdited?: (Course) => void;
 }
 
 export default function CoursePage(props: CoursePageProps) {
     const {id} = props;
-    const {data: courseRes, loading, error} = useInitialProps<CourseRes>(URLPath.course.byId(id));
+    const {data: courseRes, loading} = useInitialProps<CourseRes>(URLPath.course.byId(id));
+    const [course, setCourse] = useState(null);
 
     if (loading) {
         return <Spinner/>;
@@ -23,7 +26,13 @@ export default function CoursePage(props: CoursePageProps) {
     if (!courseRes) {
         return null;
     }
-    const {course, role} = courseRes;
+    const {role} = courseRes;
+    if (!course) {
+        setCourse(courseRes.course);
+    }
+    if(!course) {
+        return null;
+    }
 
     return (
         <div>
@@ -38,7 +47,7 @@ export default function CoursePage(props: CoursePageProps) {
                     }
                 ]}/>
             </div>
-            <CourseComponent id={id} course={course} role={role}/>
+            <CourseComponent id={id} course={course} courseEdited={c => setCourse(c)} role={role}/>
         </div>
     );
 }

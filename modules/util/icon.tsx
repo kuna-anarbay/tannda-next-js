@@ -11,7 +11,7 @@ import {
     IoChevronBack,
     IoReaderOutline,
     IoBook,
-    IoSync, IoLockClosed, IoPencil, IoArrowForward
+    IoSync, IoLockClosed, IoPencil, IoArrowForward, IoCheckbox, IoCheckmark, IoEllipsisHorizontal
 } from "react-icons/io5";
 
 export enum IconType {
@@ -30,7 +30,9 @@ export enum IconType {
     Sync,
     Lock,
     Pencil,
-    ArrowRight
+    ArrowRight,
+    Checkmark,
+    Ellipsis
 }
 
 const icons = (className?: string) => {
@@ -50,7 +52,9 @@ const icons = (className?: string) => {
         <IoSync className={className} />,
         <IoLockClosed className={className} />,
         <IoPencil className={className} />,
-        <IoArrowForward className={className} />
+        <IoArrowForward className={className} />,
+        <IoCheckmark className={className} />,
+        <IoEllipsisHorizontal className={className} />
     ]
 }
 

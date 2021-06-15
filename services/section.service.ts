@@ -13,4 +13,8 @@ export default class SectionService extends NetworkManager {
         return await this.instance.post<Section>(URLPath.section.base(courseId), body);
     }
 
+    reorder = async (courseId: number, sectionId: number, index: number) => {
+        return await this.instance.put<string>(URLPath.section.reorder(courseId, sectionId), {index});
+    }
+
 }

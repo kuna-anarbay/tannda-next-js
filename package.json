@@ -20,6 +20,7 @@
     "next-translate": "^1.0.4",
     "react": "17.0.1",
     "react-animated-css": "^1.2.1",
+    "react-beautiful-dnd": "^13.1.0",
     "react-dom": "17.0.1",
     "react-icons": "^4.2.0",
     "react-imask": "^6.0.7",

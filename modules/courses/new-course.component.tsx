@@ -5,18 +5,14 @@ import {useToasts} from "react-toast-notifications";
 import {useRouter} from "next/router";
 import Button from "../util/button";
 
-interface NewCourseComponentProps {
 
-}
-
-export default function NewCourseComponent(props: NewCourseComponentProps) {
+export default function NewCourseComponent() {
     const courseService = new CourseService();
     const {addToast} = useToasts();
     const [loading, setLoading] = useState(false);
     const {push} = useRouter();
 
     const handleSubmit = async (values) => {
-        console.log(values);
         setLoading(true);
         try {
             await courseService.createCourse({
@@ -50,7 +46,7 @@ export default function NewCourseComponent(props: NewCourseComponentProps) {
                         <Field as={"textarea"}
                                type={"text"}
                                name={"description"}
-                               rows={3}
+                               rows={6}
                                placeholder={"Описание курса"}
                                className={"textarea"}
                         />

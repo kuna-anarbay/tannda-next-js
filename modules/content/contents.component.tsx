@@ -4,9 +4,11 @@ import ContentService from "../../services/content.service";
 import {Content} from "../../models/content";
 import {MemberRole} from "../../models/member";
 import {getIcon, IconType} from "../util/icon";
-import NewSectionComponent from "./new-section.component";
 import Section, {SectionData} from "../../models/section";
 import AddContentComponent from "./add-content.component";
+import {resourceIcon} from "../resources/resource.icon";
+import {bytesToSize} from "../../models/resource";
+import SectionsComponent from "./sections.component";
 
 export interface ContentComponentProps {
     content: Content;
@@ -24,10 +26,11 @@ interface ContentsComponentProps {
 export default function ContentsComponent(props: ContentsComponentProps) {
     const {courseId, role} = props;
     const [loading, setLoading] = useState(false);
+    const [syncing, setSyncing] = useState(false);
     const [{sections, contents}, setSectionData] = useState(new SectionData());
     const [currentSection, setCurrentSection] = useState(0);
     const {showError} = useAppData();
-    const [newSection, setNewSection] = useState(false);
+
     const [newContent, setNewContent] = useState(false);
     const [newLesson, setNewLesson] = useState(false);
     const contentAction = new ContentService();
@@ -36,26 +39,36 @@ export default function ContentsComponent(props: ContentsComponentProps) {
         getContents();
     }, [])
 
-    const getContents = async () => {
-        setLoading(true);
+    const getContents = async (sync: boolean = false) => {
+        if(sync) {
+            setSyncing(true);
+        } else {
+            setLoading(true);
+        }
         try {
             const data = await contentAction.getContents(courseId);
-            setLoading(false);
-            setSectionData(data);
+            if(sync) {
+                setSyncing(false);
+            } else {
+                setLoading(false);
+            }
+            setSectionData({
+                sections: data.sections.sort((a, b) => a.index - b.index),
+                contents: data.contents
+            });
 
             const firstSection = sortedSections()[0];
             if (firstSection) {
                 setCurrentSection(firstSection.id);
             }
         } catch (err) {
-            setLoading(false);
+            if(sync) {
+                setSyncing(false);
+            } else {
+                setLoading(false);
+            }
             showError(err.message);
         }
-    }
-
-    const sectionAdded = (section: Section) => {
-        sections.push(section);
-        setSectionData({sections: sections, contents: contents});
     }
 
     const contentAdded = (content: Content) => {
@@ -74,38 +87,21 @@ export default function ContentsComponent(props: ContentsComponentProps) {
         return sections.sort((a, b) => a.index - b.index);
     }
 
+    const updateSections = (sections: Section[]) => {
+        setSectionData({sections: sections, contents: contents});
+    }
+
     return (
         <div className="py-6 space-y-4">
             <div className={"grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-6"}>
-                <div>
-                    <div className={"flex justify-between items-center"}>
-                        <h3 className={"text-base font-medium"}>
-                            Модули
-                        </h3>
-                        <div className={"flex space-x-2"}>
-                            <button className={"btn btn-sm btn-outline"}>
-                                {getIcon(IconType.Sync)}
-                            </button>
-                            <button onClick={() => setNewSection(!newSection)} type={"button"}
-                                    className={"btn btn-sm btn-outline"}>
-                                Новый модуль
-                            </button>
-                            <NewSectionComponent courseId={courseId} open={newSection}
-                                                 close={() => setNewSection(!newSection)}
-                                                 sectionAdded={sectionAdded}
-                                                 sections={sections}/>
-                        </div>
-                    </div>
-                    <div className={"border border-border rounded-lg mt-3"}>
-                        {sortedSections().map((section, index) => (
-                            <div
-                                onClick={() => setCurrentSection(section.id)}
-                                className={`px-4 py-2 text-footnote cursor-pointer hover:text-primary border-border ${currentSection === section.id ? "text-primary font-semibold" : ""} ${index + 1 === sections.length ? "" : "border-b"}`}>
-                                {section.title}
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                <SectionsComponent updateSections={updateSections}
+                                   syncing={syncing}
+                                   loading={loading}
+                                   courseId={courseId}
+                                   reload={() => getContents(true)}
+                                   sections={sections}
+                                   currentSection={currentSection}
+                                   setCurrentSection={section => setCurrentSection(section.id)}/>
                 <div className={"md:col-span-2"}>
                     <div className={"flex justify-between items-center"}>
                         <h3 className={"text-base font-medium"}>
@@ -150,31 +146,35 @@ export default function ContentsComponent(props: ContentsComponentProps) {
                         {filteredContents().map((content, index) => (
                             <div className={" space-y-5"}>
                                 <div className={"space-y-2"}>
-                                    <h3 className={"font-semibold"}>
-                                        {content.title}
-                                    </h3>
-                                    <p className={"text-footnote text-label-secondary"}>
-                                        {content.description}
-                                    </p>
-                                    <div>
+                                    <div className={"space-y-1"}>
+                                        <h3 className={"font-semibold"}>
+                                            {content.title}
+                                        </h3>
+                                        <p className={"text-footnote text-label-secondary"}>
+                                            {content.description}
+                                        </p>
+                                    </div>
+                                    <div className={"space-y-1.5"}>
                                         {content.resources.map(resource => (
-                                            <div className={"flex items-center space-x-3"}>
+                                            <a href={resource.url} target={"_blank"}
+                                               className={"block flex items-center space-x-3 cursor-pointer"}>
                                                 <div>
-                                                    {getIcon(IconType.Pencil)}
-                                                </div>
+                                                    <img className={"h-10 w-8"}
+                                                         src={resourceIcon(resource.originalName)}/>
+                                                </ div>
                                                 <div>
                                                     <p className={"text-footnote"}>
                                                         {resource.originalName}
                                                     </p>
                                                     <p className={"text-caption1 text-label-secondary"}>
-                                                        10.7 KB
+                                                        {bytesToSize(resource.size)}
                                                     </p>
                                                 </div>
-                                            </div>
+                                            </a>
                                         ))}
                                     </div>
                                 </div>
-                                { index + 1 < filteredContents().length ? <hr/> : null}
+                                {index + 1 < filteredContents().length ? <hr/> : null}
                             </div>
                         ))}
                     </div>

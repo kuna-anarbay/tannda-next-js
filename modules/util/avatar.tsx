@@ -14,7 +14,7 @@ export default function Avatar(props: AvatarProps) {
     ) : (
         <div
             className={"rounded-full text-center flex items-center justify-center bg-primary w-8 h-8 border border-label-light border-opacity-10 " + className}>
-            {getIcon(IconType.User, "text-base text-white")}
+            {getIcon(IconType.User, "text-base text-background")}
         </div>
     );
 }

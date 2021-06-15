@@ -29,5 +29,6 @@ export const URLPath = {
     },
     section: {
         base: (courseId) => `course/${courseId}/section`,
+        reorder: (courseId, sectionId) => `/course/${courseId}/section/${sectionId}/reorder`
     }
 }

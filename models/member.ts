@@ -53,6 +53,18 @@ export enum MemberStatus {
     REJECTED = 'rejected'
 }
 
+export const isActivatable = (status: MemberStatus) => {
+    return status === MemberStatus.ARCHIVED;
+}
+
+export const isArchievable = (status: MemberStatus) => {
+    return status === MemberStatus.ACTIVE;
+}
+
+export const isDeletable = (status: MemberStatus) => {
+    return status !== MemberStatus.REJECTED;
+}
+
 export const getStatusName = (status: MemberStatus): string => {
     const statusLocale = {
         "pending": "В ожидании",
@@ -66,12 +78,12 @@ export const getStatusName = (status: MemberStatus): string => {
 
 export const getStatusColor = (status: MemberStatus): string => {
     const statusColor = {
-        "pending": "warning",
+        "pending": "gray",
         "active": "primary",
-        "disabled": "danger",
-        "archived": "disabled",
-        "rejected": "label-darker"
+        "archived": "orange",
+        "rejected": "red"
     }
 
     return statusColor[status];
 }
+

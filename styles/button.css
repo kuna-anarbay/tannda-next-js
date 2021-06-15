@@ -15,6 +15,10 @@
     @apply text-red bg-clear border-border border hover:bg-background-secondary;
   }
 
+  .btn-warning.btn-outline {
+    @apply text-orange bg-clear border-border border hover:bg-background-secondary;
+  }
+
   .btn-warning {
     @apply bg-orange text-background;
   }
@@ -25,6 +29,18 @@
 
   .btn-sm {
     @apply text-footnote font-normal px-3 py-1 rounded-1.5;
+  }
+
+  .btn-xs {
+    @apply text-caption1 font-normal px-2 py-0.5 rounded-1.5;
+  }
+
+  .btn-checkbox {
+    @apply border flex items-center cursor-pointer justify-center font-medium border-border rounded-1 bg-background-secondary h-4 w-4;
+  }
+
+  .btn-checkbox.active {
+    @apply border-primary bg-primary text-background;
   }
 
 }

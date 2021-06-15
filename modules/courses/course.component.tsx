@@ -4,9 +4,10 @@ import {useState} from "react";
 import ContentsComponent from "../content/contents.component";
 import MembersComponent from "../member/members.component";
 import {MemberRole} from "../../models/member";
+import EditCourseComponent from "./edit-course.component";
 
 export default function CourseComponent(props: CoursePageProps) {
-    const {id, course, role} = props;
+    const {id, course, role, courseEdited} = props;
     const [selectedTab, setSelectedTab] = useState(0);
 
     const tabs = [
@@ -16,7 +17,11 @@ export default function CourseComponent(props: CoursePageProps) {
         },
         {
             title: "Участники",
-            component: <MembersComponent role={role} id={id}/>
+            component: <MembersComponent role={role} courseId={id}/>
+        },
+        {
+            title: "Инфо",
+            component: <EditCourseComponent course={course} courseEdited={courseEdited} />
         }
     ]
 
