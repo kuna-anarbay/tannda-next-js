@@ -7,6 +7,8 @@ import {useToasts} from "react-toast-notifications";
 import {UserRole} from "../../models/role";
 
 
+const Cache: {[key: string]: any} = [];
+
 type AppDataType = {
     role: UserRole | null;
     currentUser: User | null;
@@ -14,6 +16,8 @@ type AppDataType = {
     deleteUser: () => void;
     showError: (err) => void;
     showSuccess: (response: string) => void;
+    cache: (key: string, value: any) => void;
+    getCache: (key: string) => any;
 };
 const AppData = createContext<AppDataType>(undefined!);
 
@@ -36,6 +40,7 @@ export function AppDataProvider({children}: { children: ReactNode }) {
         })
     }, []);
 
+
     const configureUser = (data: LoginRes | null) => {
         LocalDatabase.instance.configure(data);
         if (data) {
@@ -47,13 +52,25 @@ export function AppDataProvider({children}: { children: ReactNode }) {
         }
     }
 
+
     const showError = (err) => {
         addToast(err, {autoDismiss: true, appearance: "error"});
     }
 
+
     const showSuccess = (response: string) => {
         addToast(response, {autoDismiss: true, appearance: "success"});
     }
+
+
+    const cache = (key: string, value: any) => {
+        Cache[key] = value;
+    }
+
+    const getCache = (key: string) => {
+        return Cache[key];
+    }
+
 
     return (
         <AppData.Provider value={
@@ -63,7 +80,9 @@ export function AppDataProvider({children}: { children: ReactNode }) {
                 setUser: (loginRes) => configureUser(loginRes),
                 deleteUser: () => configureUser(null),
                 showError: showError,
-                showSuccess: showSuccess
+                showSuccess: showSuccess,
+                cache: cache,
+                getCache: getCache
             }
         }>
             {children}

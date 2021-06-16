@@ -8,17 +8,22 @@ import {useAppData} from "../app/app-data-provider";
 import {isManager} from "../../models/role";
 import PageHeader from "../util/page-header";
 import {useRouter} from "next/router";
+import useGetCourses from "../../hooks/use.get-courses";
 
 class Response<T> {
     loading: boolean = false;
     data?: T = undefined;
+
+    constructor(data: T) {
+        this.data = data;
+    }
 }
 
 
 export default function CoursesComponent() {
-    const {showError, role} = useAppData();
-    const [{loading, data: courses}, setCourses] = useState(new Response<Course[]>());
-    const [{data: pendingCourses}, setPendingCourses] = useState(new Response<Course[]>());
+    const {showError, role, cache} = useAppData();
+    const [{loading, data: courses}, setCourses] = useState(new Response<Course[]>(useGetCourses()));
+    const [{data: pendingCourses}, setPendingCourses] = useState(new Response<Course[]>([]));
     const {push} = useRouter();
     const courseService = new CourseService();
 
@@ -31,6 +36,7 @@ export default function CoursesComponent() {
         setCourses({loading: true});
         try {
             const data = await courseService.getCourses();
+            cache("courses", data);
             setCourses({loading: false, data: data});
         } catch (err) {
             showError(err.message);
@@ -59,6 +65,11 @@ export default function CoursesComponent() {
     }
 
 
+    const loaded = () => {
+        return !!courses;
+    }
+
+
     return (
         <div className={"container mx-auto px-4 md:px-0"}>
             <div className={"grid grid-cols-1 md:grid-cols-7 gap-x-8"}>
@@ -68,9 +79,9 @@ export default function CoursesComponent() {
                                 handleClick={() => push("/courses/new")}
                                 items={[]}/>
                 </div>
-                <div />
+                <div/>
                 <div className={"md:col-span-5"}>
-                    {loading ? <Spinner/> : null}
+                    {/*{loading && !loaded()  ? <Spinner/> : null}*/}
                     <div className={"grid grid-cols-1 md:grid-cols-2 md:gap-6"}>
                         {courses ? courses.map(course => (
                             <CourseCardComponent key={course.id} course={course}/>
@@ -80,12 +91,15 @@ export default function CoursesComponent() {
                         )) : null}
                     </div>
                 </div>
-                <div className={"py-4 px-6 md:col-span-2 rounded-md border border-border bg-background-secondary mt-4 md:mt-0"}>
+                <div
+                    className={"py-4 px-6 md:col-span-2 rounded-md border border-border bg-background-secondary mt-4 md:mt-0"}>
                     <h6 className={"font-semibold"}>
                         Цитата дня
                     </h6>
                     <p className={"text-footnote text-label-secondary mt-1.5"}>
-                        За свою карьеру я пропустил более 9000 бросков, проиграл почти 300 игр. 26 раз мне доверяли сделать финальный победный бросок, и я промахивался. Я терпел поражения снова, и снова, и снова. И именно поэтому я добился успеха.
+                        За свою карьеру я пропустил более 9000 бросков, проиграл почти 300 игр. 26 раз мне доверяли
+                        сделать финальный победный бросок, и я промахивался. Я терпел поражения снова, и снова, и снова.
+                        И именно поэтому я добился успеха.
                     </p>
                     <p className={"text-footnote font-medium text-primary mt-1"}>
                         Майкл Джордан

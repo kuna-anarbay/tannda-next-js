@@ -6,7 +6,7 @@ import {MemberRole} from "../../models/member";
 import {getIcon, IconType} from "../util/icon";
 import Section, {SectionData} from "../../models/section";
 import SectionsComponent from "../section/sections.component";
-import AddLessonDrawer from "./create-lesson.drawer";
+import CreateLessonDrawer from "./create-lesson.drawer";
 import ContentCell from "./content.cell";
 
 export interface ContentComponentProps {
@@ -26,17 +26,18 @@ export default function ContentsComponent(props: ContentsComponentProps) {
     const {courseId, role} = props;
     const [loading, setLoading] = useState(false);
     const [syncing, setSyncing] = useState(false);
+    const [newContent, setNewContent] = useState(false);
+    const [newLesson, setNewLesson] = useState(false);
     const [{sections, contents}, setSectionData] = useState(new SectionData());
     const [currentSection, setCurrentSection] = useState(0);
     const {showError} = useAppData();
-
-    const [newContent, setNewContent] = useState(false);
-    const [newLesson, setNewLesson] = useState(false);
     const contentAction = new ContentService();
+
 
     useEffect(() => {
         getContents();
     }, [])
+
 
     const getContents = async (sync: boolean = false) => {
         if(sync) {
@@ -70,14 +71,17 @@ export default function ContentsComponent(props: ContentsComponentProps) {
         }
     }
 
+
     const contentAdded = (content: Content) => {
         contents.push(content);
         setSectionData({sections: sections, contents: contents});
     }
 
+
     const filteredContents = (): Content[] => {
         return contents.filter(c => c.sectionId === currentSection).sort((a, b) => a.index - b.index);
     }
+
 
     const sortedSections = (): Section[] => {
         if (!sections) {
@@ -86,13 +90,16 @@ export default function ContentsComponent(props: ContentsComponentProps) {
         return sections.sort((a, b) => a.index - b.index);
     }
 
+
     const updateSections = (sections: Section[]) => {
         setSectionData({sections: sections, contents: contents});
     }
 
+
     const isNotStudent = () => {
         return role !== MemberRole.STUDENT;
     }
+
 
     return (
         <div className="py-6 space-y-4">
@@ -115,22 +122,19 @@ export default function ContentsComponent(props: ContentsComponentProps) {
                             <div className={"flex space-x-2"}>
                                 <div className={"relative"}>
                                     <button onClick={() => setNewLesson(!newLesson)} type={"button"}
-                                            className={"btn btn-sm btn-outline flex items-center space-x-1 " + (newLesson ? "rounded-none rounded-t-1.5" : "")}>
+                                            className={"btn btn-sm btn-outline flex items-center space-x-1"}>
                                         <p>
                                             Новый урок
                                         </p>
                                         {getIcon(IconType.ChevronDown)}
                                     </button>
                                     {newLesson ? (
-                                        <div className={"absolute bg-background shadow-md rounded-b-1.5 w-full"}>
+                                        <div className={"mt-0.5 absolute list-bordered bg-background shadow-md border-border border rounded-1.5 w-full"}>
                                             <div
                                                 onClick={() => setNewContent(!newContent)}
-                                                className={"px-4 py-1 text-footnote cursor-pointer hover:bg-background-secondary"}>
+                                                className={"px-4 py-1 text-footnote cursor-pointer rounded-t-1.5 hover:bg-background-secondary"}>
                                                 Lesson
                                             </div>
-                                            <AddLessonDrawer courseId={courseId} sectionId={currentSection}
-                                                             open={newContent} close={() => setNewContent(!newContent)}
-                                                             contentAdded={contentAdded} contents={filteredContents()}/>
                                             <div
                                                 className={"px-4 py-1 text-footnote cursor-pointer hover:bg-background-secondary"}>
                                                 Assignment
@@ -141,13 +145,16 @@ export default function ContentsComponent(props: ContentsComponentProps) {
                                             </div>
                                         </div>
                                     ) : null}
+                                    <CreateLessonDrawer courseId={courseId} sectionId={currentSection}
+                                                        open={newContent} close={() => setNewContent(!newContent)}
+                                                        contentAdded={contentAdded} contents={filteredContents()}/>
                                 </div>
                             </div>
                         ) : null}
                     </div>
                     <div className={"mt-3 space-y-5"}>
                         {filteredContents().map((content, index) => (
-                            <ContentCell content={content} isLast={index + 1 === filteredContents().length}/>
+                            <ContentCell courseId={courseId} content={content} isLast={index + 1 === filteredContents().length}/>
                         ))}
                     </div>
                 </div>

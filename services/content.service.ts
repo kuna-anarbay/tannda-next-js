@@ -1,5 +1,5 @@
 import NetworkManager from "./http/network-manager";
-import {AddContentReq, Content, ContentStatus} from "../models/content";
+import {AddContentReq, Content, ContentSection, ContentStatus} from "../models/content";
 import {URLPath} from "./http/URLPath";
 import {SectionData} from "../models/section";
 import {Resource} from "../models/resource";
@@ -28,9 +28,14 @@ export default class ContentService extends NetworkManager {
         return await this.multipart.post<Resource[]>(URLPath.content.upload(courseId, contentId), formData);
     }
 
+    async getContent(id: number, courseId: number) {
+        return await this.instance.get<ContentSection>(URLPath.content.byId(courseId, id));
+    }
+
     async updateStatus(courseId: number, contentId: number, status: ContentStatus) {
         return await this.instance.put<string>(URLPath.content.status(courseId, contentId), {status});
     }
+
 
 
 }

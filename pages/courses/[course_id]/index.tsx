@@ -6,6 +6,7 @@ import {URLPath} from "../../../services/http/URLPath";
 import Spinner from "../../../modules/util/spinner.component";
 import {MemberRole} from "../../../models/member";
 import {useState} from "react";
+import useGetCourse from "../../../hooks/use.get-course";
 
 export interface CoursePageProps {
     id: number;
@@ -17,22 +18,22 @@ export interface CoursePageProps {
 export default function CoursePage(props: CoursePageProps) {
     const {id} = props;
     const {data: courseRes, loading} = useInitialProps<CourseRes>(URLPath.course.byId(id));
-    const [course, setCourse] = useState(null);
+    const template = useGetCourse(id);
+    const [course, setCourse] = useState(template ? template.course : null);
+    const [role, setRole] = useState(template ? template.role : null);
 
-    if (loading) {
+    if (loading && !course) {
         return <Spinner/>;
     }
-
-    if (!courseRes) {
-        return null;
-    }
-    const {role} = courseRes;
     if (!course) {
-        setCourse(courseRes.course);
-    }
-    if(!course) {
+        if (courseRes) {
+            setRole(courseRes.role);
+            setCourse(courseRes.course);
+        }
+
         return null;
     }
+
 
     return (
         <div>
@@ -54,6 +55,6 @@ export default function CoursePage(props: CoursePageProps) {
 
 CoursePage.getInitialProps = ({query: {course_id}}) => {
     return {
-        id: course_id
+        id: parseInt(course_id)
     }
 }

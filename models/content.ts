@@ -1,4 +1,5 @@
 import {Resource} from "./resource";
+import Section from "./section";
 
 export class Content {
     id: number;
@@ -40,8 +41,7 @@ export enum ContentStatus {
     ACTIVE = 'active'
 }
 
-export enum EntityStatus {
-    ACTIVE = 'active',
-    DISABLED = 'disabled',
-    DELETED = 'deleted'
+export class ContentSection {
+    content: Content;
+    section: Section;
 }

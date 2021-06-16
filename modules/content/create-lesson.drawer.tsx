@@ -10,7 +10,7 @@ import ContentService from "../../services/content.service";
 import {Resource} from "../../models/resource";
 import ResourceCell from "../resources/resource.cell";
 
-interface AddLessonDrawerProps {
+interface CreateLessonDrawerProps {
     courseId: number;
     sectionId: number;
     open: boolean;
@@ -19,7 +19,7 @@ interface AddLessonDrawerProps {
     contents: Content[];
 }
 
-export default function AddLessonDrawer(props: AddLessonDrawerProps) {
+export default function CreateLessonDrawer(props: CreateLessonDrawerProps) {
     const {courseId, sectionId, open, close, contents, contentAdded} = props;
     const contentService = new ContentService();
     const {showSuccess, showError} = useAppData();
@@ -109,7 +109,7 @@ export default function AddLessonDrawer(props: AddLessonDrawerProps) {
                                     </p>
                                 </div>
                             </div>
-                            <div className={"px-4 space-y-6"}>
+                            <div className={"px-4 space-y-6 overflow-y-auto h-64"}>
                                 <div className={"space-y-2.5"}>
                                     <div>
                                         <label>
@@ -171,7 +171,7 @@ export default function AddLessonDrawer(props: AddLessonDrawerProps) {
                                 </div>
                             </div>
                             <div
-                                className={"p-4 rounded-b-1.5 absolute left-4 right-4 bottom-4 border-t border-border bg-muted"}>
+                                className={"p-4 rounded-b-1.5 absolute bg-background left-4 right-4 bottom-4 border-t border-border bg-muted"}>
                                 <Button type={"submit"} title={"Сохранить"} loading={loading}
                                         className={"btn btn-primary"}/>
                             </div>

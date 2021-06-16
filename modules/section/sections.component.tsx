@@ -111,7 +111,7 @@ export default function SectionsComponent(props: SectionsComponentProps) {
                     {(provided) => (
                         <ul {...provided.droppableProps}
                             ref={provided.innerRef}
-                            className={"sections border border-border list-bordered rounded-lg mt-3"}>
+                            className={"sections overflow-hidden border border-border list-bordered rounded-lg mt-3"}>
                             {sections.map((section, index) => (
                                 <Draggable key={section.id} draggableId={`${section.id}`} index={index}>
                                     {(provided) => (
