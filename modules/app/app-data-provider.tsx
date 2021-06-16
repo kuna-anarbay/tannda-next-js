@@ -1,4 +1,4 @@
-import React, {createContext, ReactNode, useEffect, useState} from "react";
+import React, {createContext, ReactNode, useEffect, useRef, useState} from "react";
 import User from "../user/user.entity";
 import {LoginRes} from "../auth/dto/login.dto";
 import LocalDatabase from "../../services/localDatabase";
@@ -6,8 +6,6 @@ import AuthService from "../../services/auth.service";
 import {useToasts} from "react-toast-notifications";
 import {UserRole} from "../../models/role";
 
-
-const Cache: {[key: string]: any} = [];
 
 type AppDataType = {
     role: UserRole | null;
@@ -22,6 +20,7 @@ type AppDataType = {
 const AppData = createContext<AppDataType>(undefined!);
 
 export function AppDataProvider({children}: { children: ReactNode }) {
+    const cache = useRef({});
     const authService = new AuthService();
     const {addToast} = useToasts();
     const [currentUser, setUser] = useState(null);
@@ -63,12 +62,12 @@ export function AppDataProvider({children}: { children: ReactNode }) {
     }
 
 
-    const cache = (key: string, value: any) => {
-        Cache[key] = value;
+    const setCache = (key: string, value: any) => {
+        cache.current[key] = value;
     }
 
     const getCache = (key: string) => {
-        return Cache[key];
+        return cache.current[key];
     }
 
 
@@ -81,7 +80,7 @@ export function AppDataProvider({children}: { children: ReactNode }) {
                 deleteUser: () => configureUser(null),
                 showError: showError,
                 showSuccess: showSuccess,
-                cache: cache,
+                cache: setCache,
                 getCache: getCache
             }
         }>

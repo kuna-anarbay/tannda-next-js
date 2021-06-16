@@ -16,7 +16,8 @@ module.exports = {
                 "0.25": "0.0625rem",
                 "30": "7.5rem",
                 "screen": "100vh",
-                "80vh": "80vh"
+                "80vh": "80vh",
+                "drawer-content": "calc(100vh - 11.75rem)"
             },
             width: {
                 "30": "7.5rem",

@@ -13,10 +13,12 @@ export default function useGetContent(courseId: number, contentId: number): Cont
     const course = useGetCourse(courseId);
     const contents = getCache("contents");
 
+    console.log(course, contents);
+
     if (!contents) return {course};
 
     const content = contents.find(c => c.id === contentId);
     if (!content) return {course};
 
-    return {course, content}
+    return {course, content};
 }

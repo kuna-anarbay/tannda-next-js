@@ -30,7 +30,7 @@ export default function ContentsComponent(props: ContentsComponentProps) {
     const [newLesson, setNewLesson] = useState(false);
     const [{sections, contents}, setSectionData] = useState(new SectionData());
     const [currentSection, setCurrentSection] = useState(0);
-    const {showError} = useAppData();
+    const {showError, cache} = useAppData();
     const contentAction = new ContentService();
 
 
@@ -47,6 +47,7 @@ export default function ContentsComponent(props: ContentsComponentProps) {
         }
         try {
             const data = await contentAction.getContents(courseId);
+            cache("contents", data.contents);
             if(sync) {
                 setSyncing(false);
             } else {

@@ -5,6 +5,8 @@ import {useState} from "react";
 import Spinner from "../../../../modules/util/spinner.component";
 import PageHeader from "../../../../modules/util/page-header";
 import ContentComponent from "../../../../modules/content/content.component";
+import useGetCourse from "../../../../hooks/use.get-course";
+import useGetContent from "../../../../hooks/use.get-content";
 
 interface ContentPageProps {
     courseId: number;
@@ -15,17 +17,22 @@ interface ContentPageProps {
 export default function ContentPage(props: ContentPageProps) {
     const {courseId, contentId} = props;
     const {data: courseRes, loading} = useInitialProps<CourseRes>(URLPath.course.byId(courseId));
-    const [title, setTitle] = useState(null);
+    const template = useGetContent(courseId, contentId);
+    const [course, setCourse] = useState(template && template.course ? template.course.course : null);
+    const [role, setRole] = useState(template && template.course  ? template.course.role : null);
+    const [title, setTitle] = useState(template && template.content  ? template.content.title : null);
 
-    if (loading) {
+    console.log(template, "Template");
+
+    if (loading && !course) {
         return <Spinner/>;
     }
-
-    if (!courseRes) {
-        return null;
-    }
-    const {role, course} = courseRes;
     if (!course) {
+        if (courseRes) {
+            setRole(courseRes.role);
+            setCourse(courseRes.course);
+        }
+
         return null;
     }
 

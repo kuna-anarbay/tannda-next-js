@@ -109,7 +109,7 @@ export default function CreateLessonDrawer(props: CreateLessonDrawerProps) {
                                     </p>
                                 </div>
                             </div>
-                            <div className={"px-4 space-y-6 overflow-y-auto h-64"}>
+                            <div className={"px-4 space-y-6 overflow-y-auto h-drawer-content"}>
                                 <div className={"space-y-2.5"}>
                                     <div>
                                         <label>
