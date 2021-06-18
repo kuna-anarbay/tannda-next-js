@@ -50,7 +50,6 @@ export default function CreateLessonDrawer(props: CreateLessonDrawerProps) {
 
 
     const uploadFiles = async (contentId: number) => {
-        setLoading(true);
         return contentService.uploadFiles(courseId, contentId, files.map(f => f.file));
     }
 

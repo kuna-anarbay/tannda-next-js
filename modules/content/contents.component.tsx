@@ -8,6 +8,8 @@ import Section, {SectionData} from "../../models/section";
 import SectionsComponent from "../section/sections.component";
 import CreateLessonDrawer from "./create-lesson.drawer";
 import ContentCell from "./content.cell";
+import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd';
+
 
 export interface ContentComponentProps {
     content: Content;
@@ -30,8 +32,9 @@ export default function ContentsComponent(props: ContentsComponentProps) {
     const [newLesson, setNewLesson] = useState(false);
     const [{sections, contents}, setSectionData] = useState(new SectionData());
     const [currentSection, setCurrentSection] = useState(0);
-    const {showError, cache} = useAppData();
-    const contentAction = new ContentService();
+    const [isEditing, setIsEditing] = useState(false);
+    const {showError, cache, showSuccess} = useAppData();
+    const contentService = new ContentService();
 
 
     useEffect(() => {
@@ -40,15 +43,16 @@ export default function ContentsComponent(props: ContentsComponentProps) {
 
 
     const getContents = async (sync: boolean = false) => {
-        if(sync) {
+        if (sync) {
             setSyncing(true);
         } else {
             setLoading(true);
         }
         try {
-            const data = await contentAction.getContents(courseId);
+            const data = await contentService.getContents(courseId);
             cache("contents", data.contents);
-            if(sync) {
+            cache("sections", data.sections);
+            if (sync) {
                 setSyncing(false);
             } else {
                 setLoading(false);
@@ -63,7 +67,7 @@ export default function ContentsComponent(props: ContentsComponentProps) {
                 setCurrentSection(firstSection.id);
             }
         } catch (err) {
-            if(sync) {
+            if (sync) {
                 setSyncing(false);
             } else {
                 setLoading(false);
@@ -72,6 +76,41 @@ export default function ContentsComponent(props: ContentsComponentProps) {
         }
     }
 
+
+    const handleOnDragEnd = async (result) => {
+        if (!result.destination) return;
+        if (result.destination.index === result.source.index) return;
+        const items = Array.from(contents);
+        const oldOrder = contents;
+        let sourceContent = filteredContents()[result.source.index];
+        let destinationContent = filteredContents()[result.destination.index];
+        const sourceIndex = contents.findIndex(c => c.id === sourceContent.id);
+        const destinationIndex = contents.findIndex(c => c.id === destinationContent.id);
+        console.log(sourceIndex, destinationIndex);
+        if (!sourceIndex) return;
+        if (!destinationIndex) return;
+        items.splice(sourceIndex, 1);
+        items.splice(destinationIndex, 1);
+        console.log(sourceIndex, destinationIndex);
+        console.log(result.source.index, result.destination.index);
+        items.push({
+            ...sourceContent,
+            index: result.destination.index
+        });
+        items.push({
+            ...destinationContent,
+            index: result.source.index
+        });
+        setSectionData({sections: sections, contents: items});
+
+        // try {
+        //     const message = await contentService.reorder(courseId, content.id, result.destination.index);
+        //     showSuccess(message);
+        // } catch (err) {
+        //     showError(err.message);
+        //     setSectionData({sections: sections, contents: oldOrder});
+        // }
+    }
 
     const contentAdded = (content: Content) => {
         contents.push(content);
@@ -121,6 +160,9 @@ export default function ContentsComponent(props: ContentsComponentProps) {
                         </h3>
                         {isNotStudent() ? (
                             <div className={"flex space-x-2"}>
+                                <button onClick={() => setIsEditing(!isEditing)} className={"btn btn-sm btn-outline"}>
+                                    {getIcon(IconType.Pencil)}
+                                </button>
                                 <div className={"relative"}>
                                     <button onClick={() => setNewLesson(!newLesson)} type={"button"}
                                             className={"btn btn-sm btn-outline flex items-center space-x-1"}>
@@ -130,7 +172,8 @@ export default function ContentsComponent(props: ContentsComponentProps) {
                                         {getIcon(IconType.ChevronDown)}
                                     </button>
                                     {newLesson ? (
-                                        <div className={"mt-0.5 absolute list-bordered bg-background shadow-md border-border border rounded-1.5 w-full"}>
+                                        <div
+                                            className={"mt-0.5 absolute list-bordered bg-background shadow-md border-border border rounded-1.5 w-full"}>
                                             <div
                                                 onClick={() => setNewContent(!newContent)}
                                                 className={"px-4 py-1 text-footnote cursor-pointer rounded-t-1.5 hover:bg-background-secondary"}>
@@ -153,11 +196,24 @@ export default function ContentsComponent(props: ContentsComponentProps) {
                             </div>
                         ) : null}
                     </div>
-                    <div className={"mt-3 space-y-5"}>
-                        {filteredContents().map((content, index) => (
-                            <ContentCell courseId={courseId} content={content} isLast={index + 1 === filteredContents().length}/>
-                        ))}
-                    </div>
+                    <DragDropContext onDragEnd={handleOnDragEnd}>
+                        <Droppable droppableId="draggable">
+                            {(provided) => (
+                                <div {...provided.droppableProps}
+                                     ref={provided.innerRef} className={"mt-3 space-y-5"}>
+                                    {filteredContents().map((content, index) => (
+                                        <Draggable key={content.id} draggableId={`${content.id}`} index={index}>
+                                            {(provided) => (
+                                                <ContentCell provided={provided} isEditing={isEditing}
+                                                             courseId={courseId} content={content}
+                                                             isLast={index + 1 === filteredContents().length}/>
+                                            )}
+                                        </Draggable>
+                                    ))}
+                                </div>
+                            )}
+                        </Droppable>
+                    </DragDropContext>
                 </div>
             </div>
 

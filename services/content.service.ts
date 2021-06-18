@@ -1,8 +1,9 @@
 import NetworkManager from "./http/network-manager";
-import {AddContentReq, Content, ContentSection, ContentStatus} from "../models/content";
+import {AddContentReq, Content, ContentSection, ContentStatus, UpdateContentReq} from "../models/content";
 import {URLPath} from "./http/URLPath";
 import {SectionData} from "../models/section";
 import {Resource} from "../models/resource";
+import {ContentMember} from "../models/content-member.";
 
 export default class ContentService extends NetworkManager {
 
@@ -32,10 +33,33 @@ export default class ContentService extends NetworkManager {
         return await this.instance.get<ContentSection>(URLPath.content.byId(courseId, id));
     }
 
-    async updateStatus(courseId: number, contentId: number, status: ContentStatus) {
-        return await this.instance.put<string>(URLPath.content.status(courseId, contentId), {status});
+    async updateStatus(courseId: number, contentId: number, status: ContentStatus, ids: number[]) {
+        return await this.instance.put<string>(URLPath.content.status(courseId, contentId), {status, ids});
+    }
+
+    async deleteContent(courseId: number, contentId: number) {
+        return await this.instance.delete<string>(URLPath.content.byId(courseId, contentId));
     }
 
 
+    async deleteFiles(courseId: number, contentId: number, ids: number[]) {
+        return await this.instance.delete<string>(URLPath.content.upload(courseId, contentId), {
+            params: {ids}
+        });
+    }
+
+    async updateContent(courseId: number, contentId: number, body: UpdateContentReq) {
+        return await this.instance.put<Content>(URLPath.content.byId(courseId, contentId), body);
+    }
+
+
+    async getContentMembers(courseId: number, contentId: number) {
+        return await this.instance.get<ContentMember[]>(URLPath.content.members(courseId, contentId));
+    }
+
+
+    reorder = async (courseId: number, contentId: number, index: number) => {
+        return await this.instance.put<string>(URLPath.content.reorder(courseId, contentId), {index});
+    }
 
 }

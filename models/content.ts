@@ -21,6 +21,12 @@ export class AddContentReq {
     sectionId: number;
 }
 
+export class UpdateContentReq {
+    title: string;
+    description?: string;
+    sectionId: number;
+}
+
 
 export enum ContentType {
     SECTION = 'section',
@@ -29,17 +35,27 @@ export enum ContentType {
     ASSESSMENT = 'assessment'
 }
 
-export const contentTypes = [
-    ContentType.SECTION,
-    ContentType.LESSON,
-    ContentType.ASSIGNMENT,
-    ContentType.ASSESSMENT
-]
-
 export enum ContentStatus {
     HIDDEN = 'hidden',
     ACTIVE = 'active'
 }
+
+export const ContentStatusCases: ContentStatus[] = [
+    ContentStatus.ACTIVE,
+    ContentStatus.HIDDEN
+]
+
+
+export const contentStatusName = (status: ContentStatus) => {
+    switch (status) {
+        case ContentStatus.ACTIVE:
+            return "Доступен";
+        case ContentStatus.HIDDEN:
+            return "Недоступен";
+    }
+}
+
+
 
 export class ContentSection {
     content: Content;

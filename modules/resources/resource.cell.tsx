@@ -11,9 +11,8 @@ export default function ResourceCell(props: ResourceCellProps) {
     const {resource, remove} = props;
 
     return (
-        <a href={resource.url} target={"_blank"}
-           className={"block flex justify-between items-center cursor-pointer"}>
-            <div className={"flex items-center space-x-3 "}>
+        <div className={"block flex justify-between items-center cursor-pointer"}>
+            <a href={resource.url} target={"_blank"} className={"flex items-center space-x-3 "}>
                 <div>
                     <img className={"h-10 w-8"}
                          src={resourceIcon(resource.originalName)}/>
@@ -26,12 +25,12 @@ export default function ResourceCell(props: ResourceCellProps) {
                         {bytesToSize(resource.size)}
                     </p>
                 </div>
-            </div>
+            </a>
             {remove ? (
                 <div onClick={() => remove(resource)} className={"rounded-full p-1 bg-background-secondary"}>
                     {getIcon(IconType.XMark, "text-footnote text-red")}
                 </div>
             ) : null}
-        </a>
+        </div>
     )
 }

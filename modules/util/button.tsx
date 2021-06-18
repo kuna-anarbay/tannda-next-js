@@ -7,13 +7,14 @@ interface ButtonProps {
     className?: string;
     loading?: boolean;
     onClick?: (e) => void;
+    disabled?: boolean;
 }
 
 export default function Button(props: ButtonProps) {
-    const {title, loading, className, type, onClick} = props;
+    const {title, loading, className, type, onClick, disabled} = props;
 
     return (
-        <button onClick={onClick} type={type ?? "button"} disabled={loading} className={"flex items-center space-x-2 " + className}>
+        <button onClick={onClick} type={type ?? "button"} disabled={disabled || loading} className={"flex items-center space-x-2 " + className}>
             {loading ? <Spinner size={"small"} /> : null}
             <span>
                     {title}

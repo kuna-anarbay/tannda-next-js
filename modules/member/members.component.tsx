@@ -15,7 +15,7 @@ interface MembersComponentProps {
 export default function MembersComponent(props: MembersComponentProps) {
     const {courseId} = props;
     const memberService = new MemberService();
-    const {showError, showSuccess} = useAppData();
+    const {showError, showSuccess, cache} = useAppData();
     const [selectedMembers, setSelectedMembers] = useState(Array<Member>());
     const [loading, setLoading] = useState(false);
     const [members, setMembers] = useState(Array<Member>());
@@ -29,6 +29,7 @@ export default function MembersComponent(props: MembersComponentProps) {
         setLoading(true);
         try {
             const members = await memberService.getMembers(courseId);
+            cache("members", members);
             setLoading(false);
             setMembers(members);
         } catch (e) {

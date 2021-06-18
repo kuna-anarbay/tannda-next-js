@@ -28,4 +28,8 @@ export default class SectionService extends NetworkManager {
         return await this.instance.delete<string>(URLPath.section.byId(courseId, sectionId));
     }
 
+
+    getSections = async (courseId: number) => {
+        return await this.instance.get<Section[]>(URLPath.section.base(courseId));
+    }
 }

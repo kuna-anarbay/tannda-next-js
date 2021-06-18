@@ -67,6 +67,7 @@ export function AppDataProvider({children}: { children: ReactNode }) {
     }
 
     const getCache = (key: string) => {
+        console.log(cache.current, cache.current[key]);
         return cache.current[key];
     }
 

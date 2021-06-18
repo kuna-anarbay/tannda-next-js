@@ -1,3 +1,5 @@
+import {PresenceStatus} from "./presence";
+
 export class Member {
     id: number;
     firstName?: string;
@@ -5,8 +7,11 @@ export class Member {
     phone: string;
     avatar?: string;
     status: MemberStatus;
+    presence?: PresenceStatus;
+    presenceNote?: string;
     role: MemberRole;
     createdAt?: Date;
+    presenceDate?: Date;
 }
 
 export class AddMemberDto {
@@ -86,4 +91,3 @@ export const getStatusColor = (status: MemberStatus): string => {
 
     return statusColor[status];
 }
-

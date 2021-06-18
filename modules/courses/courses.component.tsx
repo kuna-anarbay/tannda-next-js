@@ -2,7 +2,6 @@ import CourseService from "../../services/course.service";
 import {useEffect, useState} from "react";
 import Course from "../../models/course";
 import CourseCardComponent from "./course-card.component";
-import Spinner from "../util/spinner.component";
 import {MemberStatus} from "../../models/member";
 import {useAppData} from "../app/app-data-provider";
 import {isManager} from "../../models/role";

@@ -27,10 +27,15 @@ export const URLPath = {
         byId: (courseId, contentId) => `/course/${courseId}/content/${contentId}`,
         upload: (courseId, contentId) => `course/${courseId}/content/${contentId}/upload`,
         status: (courseId, contentId) => `course/${courseId}/content/${contentId}/status`,
+        members: (courseId, contentId) => `course/${courseId}/content/${contentId}/member`,
+        reorder: (courseId, contentId) => `/course/${courseId}/content/${contentId}/reorder`
     },
     section: {
         base: (courseId) => `course/${courseId}/section`,
         byId: (courseId, sectionId) => `/course/${courseId}/section/${sectionId}`,
         reorder: (courseId, sectionId) => `/course/${courseId}/section/${sectionId}/reorder`
+    },
+    presence: {
+        base: (courseId, contentId) => `course/${courseId}/content/${contentId}/presence`
     }
 }

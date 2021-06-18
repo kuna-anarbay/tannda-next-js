@@ -1,3 +1,7 @@
 .list-bordered > *:not(:last-child) {
     @apply border-b border-border;
 }
+
+.list-bordered-light > *:not(:last-child) {
+    @apply border-b border-border-secondary;
+}
