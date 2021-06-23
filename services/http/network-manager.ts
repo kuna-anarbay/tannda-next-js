@@ -15,7 +15,7 @@ export default abstract class NetworkManager {
     private readonly baseUrl = config.baseUrl;
 
 
-    protected constructor() {
+    constructor() {
         this.instance = axios.create({
             baseURL: this.baseUrl,
             headers: this.defaultHeaders()

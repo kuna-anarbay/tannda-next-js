@@ -1,5 +1,8 @@
-import LoginComponent from "../../modules/auth/login.component";
+import LoginService from "../../modules/login/login.service";
+import LoginController from "../../modules/login/login.controller";
 
 export default function LoginPage() {
-    return <LoginComponent />
+    const loginService = new LoginService();
+
+    return <LoginController loginService={loginService}/>
 }

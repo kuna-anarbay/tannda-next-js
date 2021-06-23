@@ -1,16 +1,16 @@
 import React, {createContext, ReactNode, useEffect, useRef, useState} from "react";
 import User from "../user/user.entity";
-import {LoginRes} from "../auth/dto/login.dto";
 import LocalDatabase from "../../services/localDatabase";
 import AuthService from "../../services/auth.service";
 import {useToasts} from "react-toast-notifications";
 import {UserRole} from "../../models/role";
+import {LoginResponseDto} from "../login/login.dto";
 
 
 type AppDataType = {
     role: UserRole | null;
     currentUser: User | null;
-    setUser: (body: LoginRes | null) => void;
+    setUser: (body: LoginResponseDto | null) => void;
     deleteUser: () => void;
     showError: (err) => void;
     showSuccess: (response: string) => void;
@@ -40,7 +40,7 @@ export function AppDataProvider({children}: { children: ReactNode }) {
     }, []);
 
 
-    const configureUser = (data: LoginRes | null) => {
+    const configureUser = (data: LoginResponseDto | null) => {
         LocalDatabase.instance.configure(data);
         if (data) {
             setRole(data.role);
