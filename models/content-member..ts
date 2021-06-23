@@ -3,6 +3,7 @@ import {MemberRole} from "./member";
 
 export class ContentMember {
     id: number;
+    relationId: number;
     firstName: string;
     lastName?: string;
     avatar?: string;

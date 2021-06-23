@@ -24,6 +24,7 @@ export const URLPath = {
     },
     content: {
         base: (courseId) => `course/${courseId}/content`,
+        lesson: (courseId) => `course/${courseId}/content/lesson`,
         byId: (courseId, contentId) => `/course/${courseId}/content/${contentId}`,
         upload: (courseId, contentId) => `course/${courseId}/content/${contentId}/upload`,
         status: (courseId, contentId) => `course/${courseId}/content/${contentId}/status`,
@@ -36,6 +37,6 @@ export const URLPath = {
         reorder: (courseId, sectionId) => `/course/${courseId}/section/${sectionId}/reorder`
     },
     presence: {
-        base: (courseId, contentId) => `course/${courseId}/content/${contentId}/presence`
+        base: (courseId) => `course/${courseId}/presence`
     }
 }

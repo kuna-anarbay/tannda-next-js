@@ -5,12 +5,14 @@ import Avatar from "../util/avatar";
 import {CSSTransition} from "react-transition-group";
 import {useState} from "react";
 import AuthService from "../../services/auth.service";
+import {useRouter} from "next/router";
 
 
 export default function NavbarDesktop() {
     const {currentUser, setUser} = useAppData();
     const [dropdown, setDropdown] = useState(false);
     const authService = new AuthService();
+    const {push} = useRouter();
 
     const logOut = async () => {
         setUser(null);
@@ -20,6 +22,11 @@ export default function NavbarDesktop() {
         } catch (e) {
             console.log(e);
         }
+    }
+
+    const showProfile = async () => {
+        setDropdown(!dropdown);
+        await push("/users/me")
     }
 
     return (
@@ -46,7 +53,8 @@ export default function NavbarDesktop() {
                     ))}
                     {currentUser ? r.data.loginItems.map(item => (
                         <Link href={item.path}>
-                            <div className={"flex items-center justify-center relative h-12 w-30 cursor-pointer"} key={item.path}>
+                            <div className={"flex items-center justify-center relative h-12 w-30 cursor-pointer"}
+                                 key={item.path}>
                                 <p className={"text-subheadline font-medium"}>
                                     {item.title}
                                 </p>
@@ -57,7 +65,7 @@ export default function NavbarDesktop() {
                 </div>
                 <div className={"flex pl-5 pr-12 cursor-pointer"}>
                     {currentUser ? (
-                        <div  className={"relative"}>
+                        <div className={"relative"}>
                             <div onClick={() => setDropdown(!dropdown)} className={"h-12 flex items-center space-x-2"}>
                                 <Avatar src={currentUser.avatar} className={"h-8 w-8"}/>
                                 <p className={"text-base font-regular"}>
@@ -72,12 +80,14 @@ export default function NavbarDesktop() {
                                 appear
                             >
                                 <div className={"absolute bg-background w-full rounded-b-md shadow-md"}>
-                                    <div onClick={() => setDropdown(!dropdown)} className={"px-4 py-2 text-footnote hover:text-primary"}>
+                                    <div onClick={showProfile}
+                                         className={"px-4 py-2 text-footnote hover:text-primary"}>
                                         <Link href={"/users/me"}>
                                             Profile
                                         </Link>
                                     </div>
-                                    <div onClick={() => logOut()} className={"px-4 py-2 text-footnote hover:text-danger"}>
+                                    <div onClick={logOut}
+                                         className={"px-4 py-2 text-footnote hover:text-danger"}>
                                         Log out
                                     </div>
                                 </div>

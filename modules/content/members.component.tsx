@@ -36,6 +36,7 @@ export default function MembersComponent(props: MembersComponentProps) {
         setLoading(true);
         try {
             const members = await contentService.getContentMembers(courseId, content.id);
+            console.log(members);
             setLoading(false);
             setMembers(members);
         } catch (e) {
@@ -46,7 +47,7 @@ export default function MembersComponent(props: MembersComponentProps) {
 
     const getPresence = async () => {
         try {
-            const result = await presenceService.getPresence(courseId, content.id);
+            const result = await presenceService.getPresence(courseId);
             setPresentMembers(result);
         } catch (e) {
             showError(e.message);
@@ -105,12 +106,13 @@ export default function MembersComponent(props: MembersComponentProps) {
 
 
     const updatePresence = async (status: PresenceStatus) => {
-        const ids = selectedMembers.filter(m => m.role === MemberRole.STUDENT).map(m => m.id);
-        if (ids.length === 0) return;
+        const relations = selectedMembers.filter(m => m.role === MemberRole.STUDENT).map(m => m.relationId);
+
+        if (relations.length === 0) return;
         const oldData = presentMembers;
         setPresentMembers([
-            ...presentMembers.filter(m => !ids.includes(m.id)),
-            ...presentMembers.filter(m => ids.includes(m.id)).map(m => {
+            ...presentMembers.filter(m => !relations.includes(m.relationId)),
+            ...presentMembers.filter(m => relations.includes(m.relationId)).map(m => {
                 return {
                     ...m,
                     presence: status,
@@ -119,8 +121,8 @@ export default function MembersComponent(props: MembersComponentProps) {
             })
         ]);
         try {
-            const message = await presenceService.postPresence(courseId, content.id, {
-                status, ids, note: "Some note"
+            const message = await presenceService.postPresence(courseId, {
+                status, relations, note: "Some note"
             });
             showSuccess(message);
         } catch (e) {

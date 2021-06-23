@@ -29,10 +29,9 @@ export default function CreateLessonDrawer(props: CreateLessonDrawerProps) {
     const handleSubmit = async (values) => {
         setLoading(true);
         try {
-            const content = await contentService.createContent(courseId, {
+            const content = await contentService.createLesson(courseId, {
                 title: values.title,
                 description: values.description,
-                type: ContentType.LESSON,
                 index: parseInt(values.index),
                 sectionId: sectionId
             });

@@ -86,11 +86,15 @@ export default function CreateSectionDrawer(props: CreateSectionDrawerProps) {
                                     <label>
                                         {r.string.role}
                                     </label>
-                                    <Field as={"select"} name={"index"}
+                                    <Field as={"select"}
+                                           name={"index"}
                                            placeholder={r.string.type}
                                            className="select">
+                                        <option value={"0"}>
+                                            Начало
+                                        </option>
                                         {sections.map(section => (
-                                            <option key={section.id} value={section.index + 1}>
+                                            <option key={section.id} value={`${section.index + 1}`}>
                                                 {section.title}
                                             </option>
                                         ))}

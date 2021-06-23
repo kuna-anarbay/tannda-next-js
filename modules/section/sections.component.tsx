@@ -36,7 +36,7 @@ export default function SectionsComponent(props: SectionsComponentProps) {
     const [newSection, setNewSection] = useState(false);
     const [editing, setEditing] = useState(false);
     const {showError, showSuccess} = useAppData()
-    const sectionSecvice = new SectionService();
+    const sectionService = new SectionService();
 
     const handleOnDragEnd = async (result) => {
         if (!result.destination) return;
@@ -49,7 +49,7 @@ export default function SectionsComponent(props: SectionsComponentProps) {
         updateSections(items);
 
         try {
-            const message = await sectionSecvice.reorder(courseId, section.id, result.destination.index);
+            const message = await sectionService.reorder(courseId, section.id, result.destination.index);
             showSuccess(message);
         } catch (err) {
             showError(err.message);
@@ -63,7 +63,7 @@ export default function SectionsComponent(props: SectionsComponentProps) {
 
     const sectionAdded = (section: Section) => {
         sections.push(section);
-        updateSections(sections);
+        updateSections(sections.sort((a, b) => a.index - b.index));
     }
 
     const sectionEdited = (section: Section) => {

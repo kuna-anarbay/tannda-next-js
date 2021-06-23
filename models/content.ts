@@ -21,6 +21,14 @@ export class AddContentReq {
     sectionId: number;
 }
 
+
+export class AddLessonReq {
+    title: string;
+    description?: string;
+    index: number;
+    sectionId: number;
+}
+
 export class UpdateContentReq {
     title: string;
     description?: string;

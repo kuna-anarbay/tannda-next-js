@@ -26,7 +26,7 @@ export const presenceStatusName = (status: PresenceStatus) => {
 }
 
 export class PresenceReq {
-    ids: number[];
+    relations: number[];
     status: PresenceStatus;
     note?: string;
 }

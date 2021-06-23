@@ -40,7 +40,7 @@ export default function MemberRowComponent(props: MemberRowComponentProps) {
                         <Avatar src={member.avatar} className={"h-8 w-8"}/>
                     </div>
                     <div className="ml-3 text-footnote">
-                        {member.firstName} {member.lastName}
+                        {member.firstName && member.lastName ? `${member.firstName} ${member.lastName}` : "Пользователь не найден"}
                     </div>
                 </div>
             </td>

@@ -2,6 +2,7 @@ import {PresenceStatus} from "./presence";
 
 export class Member {
     id: number;
+    relationId: number;
     firstName?: string;
     lastName?: string;
     phone: string;
