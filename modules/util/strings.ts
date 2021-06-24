@@ -28,5 +28,12 @@ export const strings = {
     save: "Сохранить",
     logOut: "Выйти",
     invalidPhoneNumber: "Введите действующий номер телефона",
-    invalidPassword: "Введите надежный пароль"
+    invalidPassword: "Введите надежный пароль",
+    fullName: "Полное имя",
+    status: "Статус",
+    joinedAt: "Присоединился в",
+    activate: "Активировать",
+    archive: "Архивировать",
+    addMember: "Добавить участника",
+    members: "Участники"
 };

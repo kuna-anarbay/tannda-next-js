@@ -1,4 +1,4 @@
-import User from "../../user/user.entity";
+import User from "../../../models/user";
 import {UserRole} from "../../../models/role";
 
 export interface LoginReq {

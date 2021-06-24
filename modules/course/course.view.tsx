@@ -5,7 +5,8 @@ import ContentsComponent from "../content/contents.component";
 import {MemberRole} from "../../models/member";
 import PageHeader from "../util/page-header";
 import {Route} from "../app/route";
-import MembersComponent from "../member/members.component";
+import CourseMembersController from "../course-members/course-members.controller";
+import ContentDataController from "../content-data/content-data.controller";
 
 interface CourseViewProps {
     course: Course;
@@ -18,14 +19,18 @@ export default function CourseView(props: CourseViewProps) {
     const role = course?.member?.role;
     const [selectedTab, setSelectedTab] = useState(0);
 
+    const canEdit = () => {
+        return role !== MemberRole.STUDENT;
+    }
+
     const managerTabs = [
         {
             title: "Содержание",
-            component: <ContentsComponent role={role} courseId={id}/>
+            component: <ContentDataController canEdit={canEdit()} courseId={course.id}/>
         },
         {
             title: "Участники",
-            component: <MembersComponent role={role} courseId={id}/>
+            component: <CourseMembersController course={course}/>
         },
         // {
         //     title: "Инфо",
@@ -36,7 +41,7 @@ export default function CourseView(props: CourseViewProps) {
     const teacherTabs = [
         {
             title: "Содержание",
-            component: <ContentsComponent role={role} courseId={id}/>
+            component: <ContentDataController canEdit={canEdit()} courseId={course.id}/>
         },
         // {
         //     title: "Участники",
@@ -51,7 +56,7 @@ export default function CourseView(props: CourseViewProps) {
     const studentTabs = [
         {
             title: "Содержание",
-            component: <ContentsComponent role={role} courseId={id}/>
+            component: <ContentDataController canEdit={canEdit()} courseId={course.id}/>
         },
         {
             title: "Оценки",

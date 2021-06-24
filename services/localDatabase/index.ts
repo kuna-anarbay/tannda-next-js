@@ -1,4 +1,4 @@
-import User from "../../modules/user/user.entity";
+import User from "../../models/user";
 import {LoginRes} from "../../modules/auth/dto/login.dto";
 
 class LocalDatabase {

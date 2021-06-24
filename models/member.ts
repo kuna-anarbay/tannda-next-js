@@ -11,7 +11,7 @@ export class Member {
     presence?: PresenceStatus;
     presenceNote?: string;
     role: MemberRole;
-    createdAt?: Date;
+    joinedAt?: Date;
     presenceDate?: Date;
 }
 

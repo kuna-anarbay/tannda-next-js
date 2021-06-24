@@ -1,5 +1,5 @@
 import React, {createContext, ReactNode, useEffect, useRef, useState} from "react";
-import User from "../user/user.entity";
+import User from "../../models/user";
 import LocalDatabase from "../../services/localDatabase";
 import AuthService from "../../services/auth.service";
 import {useToasts} from "react-toast-notifications";

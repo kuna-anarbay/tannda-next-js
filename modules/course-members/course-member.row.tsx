@@ -1,39 +1,34 @@
+import {getIcon, IconType} from "../util/icon";
+import Avatar from "../util/avatar";
 import {
     getRoleName,
     getStatusColor,
     getStatusName,
     isActivatable,
-    isArchievable,
-    isDeletable,
-    Member,
+    isArchievable, isDeletable, Member,
     MemberRole
 } from "../../models/member";
-import Avatar from "../util/avatar";
-import moment from "moment";
-import {getIcon, IconType} from "../util/icon";
-import {useState} from "react";
-import {strings} from "../util/strings";
-import {string} from "prop-types";
+import {getDate} from "../util/date";
 
-interface MemberRowComponentProps {
+interface CourseMemberRowProps {
     member: Member;
-    selected: boolean;
-    selectMember: (Member) => void;
-    activateMember: (Member) => void;
-    archiveMember: (Member) => void;
-    deleteMember: (Member) => void;
+    isSelected: boolean;
+    selectMember: (member: Member) => void;
+    activateMember: (member: Member) => void;
+    archiveMember: (member: Member) => void;
+    deleteMember: (member: Member) => void;
 }
 
-export default function MemberRowComponent(props: MemberRowComponentProps) {
-    const {member, selectMember, selected, activateMember, archiveMember, deleteMember} = props;
-    const [menu, setMenu] = useState(false);
+export default function CourseMemberRow(props: CourseMemberRowProps) {
+    const {member, selectMember, isSelected, activateMember, archiveMember, deleteMember} = props;
+
 
     return (
         <tr key={member.id}
             className={"hover:bg-light cursor-pointer border-b border-border"}>
             <td className="pr-4 py-1 whitespace-nowrap">
-                <button onClick={() => selectMember(member)} className={`btn-checkbox ${selected ? "active" : ""}`}>
-                    {selected ? getIcon(IconType.Checkmark, "font-bold") : null}
+                <button onClick={() => selectMember(member)} className={`btn-checkbox ${isSelected ? "active" : ""}`}>
+                    {isSelected ? getIcon(IconType.Checkmark, "font-bold") : null}
                 </button>
             </td>
             <td className="pr-4 py-1 whitespace-nowrap">
@@ -42,7 +37,7 @@ export default function MemberRowComponent(props: MemberRowComponentProps) {
                         <Avatar src={member.avatar} className={"h-8 w-8"}/>
                     </div>
                     <div className="ml-3 text-footnote">
-                        {member.firstName && member.lastName ? `${member.firstName} ${member.lastName}` : "Пользователь не найден"}
+                        {member.id ? `${member.firstName} ${member.lastName}` : "Пользователь не найден"}
                     </div>
                 </div>
             </td>
@@ -60,26 +55,26 @@ export default function MemberRowComponent(props: MemberRowComponentProps) {
                 {getRoleName(member.role)}
             </td>
             <td className="pr-4 py-1 whitespace-nowrap text-footnote">
-                {moment(member.joinedAt).format("MMMM D YYYY, HH:mm")}
+                {getDate(member.joinedAt, "MMMM D YYYY, HH:mm")}
             </td>
             <td className="pr-4 py-1 whitespace-nowrap">
                 {member.role === MemberRole.OWNER ? null : (
                     <div className={"flex items-center space-x-2"}>
                         {isActivatable(member.status) ? (
                             <button onClick={() => activateMember(member)} className={"btn btn-xs btn-outline"}>
-                                {strings.activate}
+                                Activate
                             </button>
                         ) : null}
                         {isArchievable(member.status) ? (
                             <button onClick={() => archiveMember(member)}
                                     className={"btn btn-xs btn-outline btn-warning"}>
-                                {strings.archive}
+                                Archive
                             </button>
                         ) : null}
                         {isDeletable(member.status) ? (
                             <button onClick={() => deleteMember(member)}
                                     className={"btn btn-xs btn-outline btn-danger"}>
-                                {strings.delete}
+                                Delete
                             </button>
                         ) : null}
                     </div>

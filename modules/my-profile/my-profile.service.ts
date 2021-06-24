@@ -1,7 +1,7 @@
 import NetworkManager from "../../services/http/network-manager";
 import {URLPath} from "../../services/http/URLPath";
 import {UpdateProfileRequestDto} from "./my-profile.dto";
-import User from "../user/user.entity";
+import User from "../../models/user";
 
 export default class MyProfileService extends NetworkManager {
 
