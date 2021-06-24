@@ -3,9 +3,9 @@ import Button from "../util/button";
 import {CSSTransition} from "react-transition-group";
 import {getIcon, IconType} from "../util/icon";
 import {useAppData} from "../app/app-data-provider";
-import r from "../util/r";
 import Section from "../../models/section";
 import SectionService from "../../services/section.service";
+import {strings} from "../util/strings";
 
 interface EditSectionDrawerProps {
     courseId: number;
@@ -88,10 +88,10 @@ export default function EditSectionDrawer(props: EditSectionDrawerProps) {
                             <div className={"px-4 space-y-2.5"}>
                                 <div>
                                     <label>
-                                        {r.string.title}
+                                        {strings.title}
                                     </label>
                                     <Field name={"title"}
-                                           placeholder={r.string.title}
+                                           placeholder={strings.title}
                                            type={"text"}/>
                                 </div>
                             </div>

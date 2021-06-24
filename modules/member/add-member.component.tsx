@@ -5,9 +5,9 @@ import {getRoleName, MemberRole, memberRoles} from "../../models/member";
 import {CSSTransition} from "react-transition-group";
 import {getIcon, IconType} from "../util/icon";
 import {useAppData} from "../app/app-data-provider";
-import r from "../util/r";
 import MemberService from "../../services/member.service";
 import {IMaskInput} from 'react-imask';
+import {strings} from "../util/strings";
 
 
 interface AddMemberComponentProps {
@@ -76,24 +76,24 @@ export default function AddMemberComponent(props: AddMemberComponentProps) {
                             <div className={"px-4 space-y-2.5"}>
                                 <div>
                                     <label>
-                                        {r.string.phoneNumber}
+                                        {strings.phoneNumber}
                                     </label>
                                     <Field name={"phone"} render={({field}) => (
                                         <IMaskInput {...field}
                                                     type={"tel"}
-                                                    placeholder={r.string.phoneNumber}
+                                                    placeholder={strings.phoneNumber}
                                                     mask={"+{7} 000 000 00 00"}/>
                                     )}/>
                                 </div>
                                 <div>
                                     <label>
-                                        {r.string.role}
+                                        {strings.role}
                                     </label>
                                     <Field type={"select"}
                                            as={"select"}
                                            name={"role"}
                                            rows={3}
-                                           placeholder={r.string.role}>
+                                           placeholder={strings.role}>
                                         {memberRoles.map(role => (
                                             <option key={role} value={role}>
                                                 {getRoleName(role)}

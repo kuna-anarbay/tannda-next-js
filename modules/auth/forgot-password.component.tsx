@@ -3,10 +3,10 @@ import {Field, Form, Formik} from "formik";
 import {getIcon, IconType} from "../util/icon";
 import {useState} from "react";
 import {useAppData} from "../app/app-data-provider";
-import r from "../util/r";
 import Button from "../util/button";
 import {IMaskInput} from 'react-imask';
 import {useRouter} from "next/router";
+import {strings} from "../util/strings";
 
 export default function ForgotPasswordComponent() {
     const [phone, setPhone] = useState("");
@@ -20,7 +20,7 @@ export default function ForgotPasswordComponent() {
     const handleSubmit = async (values) => {
         setLoading(true);
         try {
-            if(step === 0) {
+            if (step === 0) {
                 const formattedPhone = values.phone.replaceAll(" ", "");
                 const message = await authService.forgotPassword(formattedPhone);
                 setPhone(formattedPhone);
@@ -59,10 +59,10 @@ export default function ForgotPasswordComponent() {
                     <div className={"space-y-8"}>
                         <div>
                             <h2 className={"text-title1 font-bold"}>
-                                {r.string.forgotPassword}
+                                {strings.forgotPassword}
                             </h2>
                             <p className={"text-base text-label-secondary"}>
-                                {r.string.registerDescription}
+                                {strings.registerDescription}
                             </p>
                         </div>
                         {step === 1 ? (
@@ -73,7 +73,7 @@ export default function ForgotPasswordComponent() {
                                         {phone}
                                     </p>
                                     <p className={"text-footnote text-label-light"}>
-                                        {r.string.phoneNotConfirmed}
+                                        {strings.phoneNotConfirmed}
                                     </p>
                                 </div>
                                 <div onClick={() => setStep(0)}>
@@ -86,15 +86,15 @@ export default function ForgotPasswordComponent() {
                                 step > 1 ? (
                                     <div>
                                         <label>
-                                            {r.string.password}
+                                            {strings.password}
                                         </label>
                                         <Field type={"password"} name={"password"}
-                                               placeholder={r.string.password}/>
+                                               placeholder={strings.password}/>
                                     </div>
                                 ) : (
                                     <div>
                                         <label>
-                                            {r.string.code}
+                                            {strings.code}
                                         </label>
                                         <Field name={"code"} render={({field}) => (
                                             <IMaskInput
@@ -103,7 +103,7 @@ export default function ForgotPasswordComponent() {
                                                 pattern={"[0-9]*"}
                                                 autoComplete={"one-time-code"}
                                                 type={"text"}
-                                                placeholder={r.string.code}
+                                                placeholder={strings.code}
                                                 mask={"000 000"}/>
                                         )}/>
                                     </div>
@@ -111,18 +111,18 @@ export default function ForgotPasswordComponent() {
                             ) : (
                                 <div>
                                     <label>
-                                        {r.string.phoneNumber}
+                                        {strings.phoneNumber}
                                     </label>
                                     <Field name={"phone"} render={({field}) => (
                                         <IMaskInput {...field}
                                                     type={"tel"}
-                                                    placeholder={r.string.phoneNumber}
+                                                    placeholder={strings.phoneNumber}
                                                     mask={"+{7} 000 000 00 00"}/>
                                     )}/>
                                 </div>
                             )}
                             <Button className={"btn btn-primary"}
-                                    title={step > 0 ? (step > 1 ? r.string.resetPassword : r.string.confirm) : r.string.sendCode}
+                                    title={step > 0 ? (step > 1 ? strings.resetPassword : strings.confirm) : strings.sendCode}
                                     loading={loading}
                                     type={"submit"}/>
                         </div>

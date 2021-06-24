@@ -3,11 +3,10 @@ import {Field, Form, Formik} from "formik";
 import {getIcon, IconType} from "../util/icon";
 import {useState} from "react";
 import {useAppData} from "../app/app-data-provider";
-import r from "../util/r";
 import Button from "../util/button";
 import {IMaskInput} from 'react-imask';
 import {useRouter} from "next/router";
-import Link from "next/link";
+import {strings} from "../util/strings";
 
 
 export default function RegisterComponent() {
@@ -57,10 +56,10 @@ export default function RegisterComponent() {
                     <div className={"space-y-8"}>
                         <div>
                             <h2 className={"text-title1 font-bold"}>
-                                {r.string.register}
+                                {strings.register}
                             </h2>
                             <p className={"text-base text-label-secondary"}>
-                                {r.string.registerDescription}
+                                {strings.registerDescription}
                             </p>
                         </div>
                         {codeSent ? (
@@ -71,7 +70,7 @@ export default function RegisterComponent() {
                                         {phone}
                                     </p>
                                     <p className={"text-footnote text-label-light"}>
-                                        {r.string.phoneNotConfirmed}
+                                        {strings.phoneNotConfirmed}
                                     </p>
                                 </div>
                                 <div onClick={() => setCodeSent(false)}>
@@ -84,7 +83,7 @@ export default function RegisterComponent() {
                                     {getIcon(IconType.Lock, "text-title3 font-medium")}
                                 </div>
                                 <p className={"text-footnote text-label-secondary"}>
-                                    {r.string.yourAccountSecure}
+                                    {strings.yourAccountSecure}
                                 </p>
                             </div>
                         )}
@@ -93,28 +92,28 @@ export default function RegisterComponent() {
                                 <div className={"space-y-4"}>
                                     <div>
                                         <label>
-                                            {r.string.firstName}
+                                            {strings.firstName}
                                         </label>
                                         <Field type={"text"} name={"firstName"}
-                                               placeholder={r.string.firstName}/>
+                                               placeholder={strings.firstName}/>
                                     </div>
                                     <div>
                                         <label>
-                                            {r.string.lastName}
+                                            {strings.lastName}
                                         </label>
                                         <Field type={"text"} name={"lastName"}
-                                               placeholder={r.string.lastName}/>
+                                               placeholder={strings.lastName}/>
                                     </div>
                                     <div>
                                         <label>
-                                            {r.string.password}
+                                            {strings.password}
                                         </label>
                                         <Field type={"password"} name={"password"}
-                                               placeholder={r.string.password}/>
+                                               placeholder={strings.password}/>
                                     </div>
                                     <div>
                                         <label>
-                                            {r.string.code}
+                                            {strings.code}
                                         </label>
                                         <Field name={"code"} render={({field}) => (
                                             <IMaskInput
@@ -123,7 +122,7 @@ export default function RegisterComponent() {
                                                 pattern={"[0-9]*"}
                                                 autoComplete={"one-time-code"}
                                                 type={"text"}
-                                                placeholder={r.string.code}
+                                                placeholder={strings.code}
                                                 mask={"000 000"}/>
                                         )}/>
                                     </div>
@@ -131,18 +130,18 @@ export default function RegisterComponent() {
                             ) : (
                                 <div>
                                     <label>
-                                        {r.string.phoneNumber}
+                                        {strings.phoneNumber}
                                     </label>
                                     <Field name={"phone"} render={({field}) => (
                                         <IMaskInput {...field}
                                                     type={"tel"}
-                                                    placeholder={r.string.phoneNumber}
+                                                    placeholder={strings.phoneNumber}
                                                     mask={"+{7} 000 000 00 00"}/>
                                     )}/>
                                 </div>
                             )}
                             <Button className={"btn btn-primary "}
-                                    title={codeSent ? r.string.register : r.string.sendCode}
+                                    title={codeSent ? strings.register : strings.sendCode}
                                     loading={loading}
                                     type={"submit"}/>
                         </div>

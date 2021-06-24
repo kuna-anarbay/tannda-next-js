@@ -6,6 +6,7 @@ import {CSSTransition} from "react-transition-group";
 import {useState} from "react";
 import AuthService from "../../services/auth.service";
 import {useRouter} from "next/router";
+import {strings} from "../util/strings";
 
 
 export default function NavbarDesktop() {
@@ -98,12 +99,12 @@ export default function NavbarDesktop() {
                             <Link href={"/auth/register"}>
                                 <button
                                     className={"btn btn-sm bg-primary-extra-light border border-primary-light text-primary"}>
-                                    {r.string.register}
+                                    {strings.register}
                                 </button>
                             </Link>
                             <Link href={"/auth/login"}>
                                 <button className={"btn btn-primary btn-sm"}>
-                                    {r.string.login}
+                                    {strings.login}
                                 </button>
                             </Link>
                         </div>

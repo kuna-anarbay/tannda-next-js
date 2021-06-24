@@ -1,6 +1,7 @@
 export const URLPath = {
     course: {
         base: "/course",
+        my: "/course/my",
         byId: (id) => `/course/${id}`,
         members: (id) => `/course/${id}/member`
     },

@@ -4,11 +4,11 @@ import {useState} from "react";
 import {CSSTransition} from "react-transition-group";
 import {getIcon, IconType} from "../util/icon";
 import {useAppData} from "../app/app-data-provider";
-import r from "../util/r";
-import {Content, ContentType} from "../../models/content";
+import {Content} from "../../models/content";
 import ContentService from "../../services/content.service";
 import {Resource} from "../../models/resource";
 import ResourceCell from "../resources/resource.cell";
+import {strings} from "../util/strings";
 
 interface CreateLessonDrawerProps {
     courseId: number;
@@ -111,20 +111,20 @@ export default function CreateLessonDrawer(props: CreateLessonDrawerProps) {
                                 <div className={"space-y-2.5"}>
                                     <div>
                                         <label>
-                                            {r.string.title}
+                                            {strings.title}
                                         </label>
                                         <Field name={"title"}
-                                               placeholder={r.string.title}
+                                               placeholder={strings.title}
                                                type={"text"}/>
                                     </div>
                                     <div>
                                         <label>
-                                            {r.string.description}
+                                            {strings.description}
                                         </label>
                                         <Field as={"textarea"}
                                                name={"description"}
                                                rows={6}
-                                               placeholder={r.string.description}
+                                               placeholder={strings.description}
                                                className="textarea"/>
                                     </div>
                                     <div>
@@ -133,7 +133,7 @@ export default function CreateLessonDrawer(props: CreateLessonDrawerProps) {
                                         </label>
                                         <Field as={"select"}
                                                name={"index"}
-                                               placeholder={r.string.type}
+                                               placeholder={strings.type}
                                                className="select">
                                             <option value={"0"}>
                                                 Начало
@@ -149,7 +149,7 @@ export default function CreateLessonDrawer(props: CreateLessonDrawerProps) {
                                 <div>
                                     <div className={"flex justify-between items-center"}>
                                         <label className={"text-footnote"}>
-                                            {r.string.resources}
+                                            {strings.resources}
                                         </label>
                                         <label
                                             htmlFor="file"

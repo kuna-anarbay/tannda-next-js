@@ -4,9 +4,9 @@ import {useState} from "react";
 import {CSSTransition} from "react-transition-group";
 import {getIcon, IconType} from "../util/icon";
 import {useAppData} from "../app/app-data-provider";
-import r from "../util/r";
 import Section from "../../models/section";
 import SectionService from "../../services/section.service";
+import {strings} from "../util/strings";
 
 interface CreateSectionDrawerProps {
     courseId: number;
@@ -76,19 +76,19 @@ export default function CreateSectionDrawer(props: CreateSectionDrawerProps) {
                             <div className={"px-4 space-y-2.5"}>
                                 <div>
                                     <label>
-                                        {r.string.title}
+                                        {strings.title}
                                     </label>
                                     <Field name={"title"}
-                                           placeholder={r.string.title}
+                                           placeholder={strings.title}
                                            type={"text"} />
                                 </div>
                                 <div>
                                     <label>
-                                        {r.string.role}
+                                        {strings.role}
                                     </label>
                                     <Field as={"select"}
                                            name={"index"}
-                                           placeholder={r.string.type}
+                                           placeholder={strings.type}
                                            className="select">
                                         <option value={"0"}>
                                             Начало

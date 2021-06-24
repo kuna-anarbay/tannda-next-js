@@ -7,13 +7,13 @@ import {LoginRequestDto} from "./login.dto";
 import {useAppData} from "../app/app-data-provider";
 
 interface LoginControllerProps {
-    loginService: LoginService;
+
 }
 
 export default function LoginController(props: LoginControllerProps) {
-    const {loginService} = props;
+    const loginService = new LoginService();
     const [loading, setLoading] = useState(false);
-    const {showError, setUser} = useAppData();
+    const {showError, validate, setUser} = useAppData();
     const {push} = useRouter();
 
     const forgotPassword = async () => {
@@ -27,7 +27,9 @@ export default function LoginController(props: LoginControllerProps) {
     const login = async (body: LoginRequestDto) => {
         setLoading(true);
         try {
+            await validate(body);
             const response = await loginService.login(body);
+            setLoading(false);
             setUser(response);
             await push(Route.courses.my);
         } catch (err) {

@@ -5,6 +5,8 @@ export const Route = {
         login: "/auth/login"
     },
     courses: {
-        my: "/courses/my"
+        my: "/courses/my",
+        new: "/courses/new",
+        id: (id: number) => `/courses/${id}`
     }
 }

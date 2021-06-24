@@ -39,7 +39,14 @@ export default abstract class NetworkManager {
 
 
     protected handleError = (error: AxiosError) => {
-        return Promise.reject(error);
+        const {response} = error;
+        console.log(error.response.data);
+        if (response && response.data && response.data.message) {
+            const message = response.data.message as string;
+            return Promise.reject(new Error(message));
+        } else {
+            return Promise.reject(error);
+        }
     };
 
 
@@ -101,5 +108,5 @@ export default abstract class NetworkManager {
         return headers;
     }
 
-    
+
 }

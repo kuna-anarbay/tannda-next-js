@@ -2,7 +2,6 @@ import {Content} from "../../models/content";
 import Section from "../../models/section";
 import {MemberRole} from "../../models/member";
 import {Field, Form, Formik} from "formik";
-import r from "../util/r";
 import ResourceCell from "../resources/resource.cell";
 import {Resource} from "../../models/resource";
 import {useState} from "react";
@@ -13,6 +12,7 @@ import ConfirmationModal from "../util/confirmation.modal";
 import useInitialProps from "../../hooks/use.initial-props";
 import {URLPath} from "../../services/http/URLPath";
 import Button from "../util/button";
+import {strings} from "../util/strings";
 
 interface ContentInfoComponentProps {
     content: Content;
@@ -111,20 +111,20 @@ export default function ContentInfoComponent(props: ContentInfoComponentProps) {
                         <div className={"space-y-2.5"}>
                             <div>
                                 <label>
-                                    {r.string.title}
+                                    {strings.title}
                                 </label>
                                 <Field name={"title"}
-                                       placeholder={r.string.title}
+                                       placeholder={strings.title}
                                        type={"text"}/>
                             </div>
                             <div>
                                 <label>
-                                    {r.string.description}
+                                    {strings.description}
                                 </label>
                                 <Field as={"textarea"}
                                        name={"description"}
                                        rows={6}
-                                       placeholder={r.string.description}
+                                       placeholder={strings.description}
                                        className="textarea"/>
                             </div>
                             <div>
@@ -133,7 +133,7 @@ export default function ContentInfoComponent(props: ContentInfoComponentProps) {
                                 </label>
                                 <Field as={"select"}
                                        name={"sectionId"}
-                                       placeholder={r.string.description}
+                                       placeholder={strings.description}
                                 >
                                     {sections ? sections.map(section => (
                                         <option key={section.id} value={section.id}>
@@ -146,7 +146,7 @@ export default function ContentInfoComponent(props: ContentInfoComponentProps) {
                         <div>
                             <div className={"flex justify-between items-center"}>
                                 <label className={"text-footnote"}>
-                                    {r.string.resources}
+                                    {strings.resources}
                                 </label>
                                 <label
                                     htmlFor="file"

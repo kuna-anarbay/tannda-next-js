@@ -5,7 +5,7 @@ import {useState} from "react";
 import Button from "../util/button";
 import ProfileService from "../../services/profile.service";
 import {useAppData} from "../app/app-data-provider";
-import r from "../util/r";
+import {strings} from "../util/strings";
 
 interface UserComponentProps {
     profile: Profile;
@@ -53,34 +53,34 @@ export default function UserComponent(props: UserComponentProps) {
                                 htmlFor="file"
                                 className="btn btn-outline btn-sm cursor-pointer"
                             >
-                                <span>{r.string.chooseImage}</span>
+                                <span>{strings.chooseImage}</span>
                                 <Field onChange={handleFile} id={"file"} type="file" name="file" className="sr-only"/>
                             </label>
                             {preview ? (
                                 <Button className={"btn btn-sm btn-danger btn-outline"} onClick={() => setPreview(null)}
-                                        title={r.string.delete}/>
+                                        title={strings.delete}/>
                             ) : null}
                         </div>
                     </div>
                     <div>
                         <label className={"block text-caption1 text-label-light"}>
-                            {r.string.firstName}
+                            {strings.firstName}
                         </label>
                         <Field name={"firstName"}
                                type={"text"}
-                               placeholder={r.string.firstName}
+                               placeholder={strings.firstName}
                                className="input-text"/>
                     </div>
                     <div>
                         <label className={"block text-caption1 text-label-light"}>
-                            {r.string.lastName}
+                            {strings.lastName}
                         </label>
                         <Field name={"lastName"}
                                type={"text"}
-                               placeholder={r.string.lastName}
+                               placeholder={strings.lastName}
                                className="input-text"/>
                     </div>
-                    <Button loading={loading} title={r.string.save} type={"submit"}
+                    <Button loading={loading} title={strings.save} type={"submit"}
                             className={"btn btn-sm btn-primary"}/>
                 </Form>
             </Formik>

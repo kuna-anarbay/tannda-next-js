@@ -1,13 +1,8 @@
-import {Member, MemberRole} from "./member";
+import {Member} from "./member";
 
 export default class Course {
     id: number;
     title: string;
     description?: string;
     member?: Member;
-}
-
-export class CourseRes {
-    course: Course;
-    role: MemberRole;
 }

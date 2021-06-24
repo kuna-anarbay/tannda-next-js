@@ -3,5 +3,5 @@ export default class User {
     firstName: string;
     lastName?: string;
     avatar?: string;
-    phone: string;
+    phone?: string;
 }
