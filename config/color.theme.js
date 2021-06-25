@@ -5,7 +5,7 @@ module.exports = {
     },
     background: {
         DEFAULT: "#ffffff",
-        secondary: "#F6F8F9"
+        secondary: "#F6F8F9",
     },
     label: {
         DEFAULT: "#252C32",
@@ -16,6 +16,9 @@ module.exports = {
     border: {
         DEFAULT: "#DDE2E4",
         secondary: "#E5E9EB"
+    },
+    white :{
+        DEFAULT: "#ffffff"
     },
     green: {
         DEFAULT: "#0D9676",
@@ -32,5 +35,15 @@ module.exports = {
     gray: {
         DEFAULT: "#252C32",
         light: "#EEF0F2"
+    },
+    landing: {
+        header: "#F6EFE8",
+        gray: "#586069",
+        green: '#22863A',
+        blue: '#5E5CE6',
+        orange: '#FF9500',
+        turquoise: '#D5FAFC',
+        white: '#F3F3F6',
+        black: '#1E2739'
     }
 }
