@@ -1,32 +1,11 @@
-.landing-yellow-box {
+.landing-about-img {
     position: absolute;
-    width: 16vw;
-    height: 16vw;
-    left: 12vw;
-    bottom: -6vw;
-
-    background: #FFD166;
-    border-radius: 3vw;
-    transform: rotate(-22deg);
+    top: 13.52%;
+    left: 12.78%;
+}
+.landing-about-img2{
+    position: absolute;
+    top:37.77%;
+    left:40.62%;
 }
 
-.landing-blue-box {
-    position: absolute;
-    width: 18vw;
-    height: 18vw;
-    right: 17vw;
-    bottom: 12vw;
-    border-radius: 50%;
-
-    background: #38DFF6;
-}
-
-.landing-product-demo {
-    width: 60vw;
-    margin: 0 auto;
-    position: absolute;
-    bottom: -10vh;
-    left: 4rem;
-    right: 4rem;
-    object-fit: cover;
-}
