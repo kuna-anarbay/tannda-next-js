@@ -1,23 +1,5 @@
-const prices = [
-    {
-        header: 'Стандарт',
-        description: 'Все необходимое, чтобы начать новый бизнес',
-        price: '12 000 ₸ / месяц',
-        features: ['Advanced Segmentation', 'Comparative Reporting', 'Customer Journey Builder + Branching Points']
-    },
-    {
-        header: 'Стандарт',
-        description: 'Все необходимое, чтобы начать новый бизнес',
-        price: '12 000 ₸ / месяц',
-        features: ['Advanced Segmentation', 'Comparative Reporting', 'Customer Journey Builder + Branching Points', 'Advanced Segmentation', 'Comparative Reporting', 'Customer Journey Builder + Branching Points']
-    },
-    {
-        header: 'Стандарт',
-        description: 'Все необходимое, чтобы начать новый бизнес',
-        price: '12 000 ₸ / месяц',
-        features: ['Advanced Segmentation', 'Comparative Reporting', 'Customer Journey Builder + Branching Points', 'Advanced Segmentation', 'Comparative Reporting', 'Customer Journey Builder + Branching Points', 'Advanced Segmentation', 'Comparative Reporting', 'Customer Journey Builder + Branching Points']
-    }
-]
+import {prices} from './prices.data'
+import {images} from '../util/landing-images'
 
 interface PriceProp {
     header: string,
@@ -37,7 +19,7 @@ function PriceCard(props: PriceProp) {
                 <h5 className={'uppercase font-normal text-footnote'}>Что включено</h5>
                 <div className={'mt-4'}>
                     {features.map(feature =>
-                        <div className={'flex items-start mt-3'}><img className={'mr-2.5'} src={'/icons/landing/check-circle.svg'}/> <p>{feature}</p></div>
+                        <div className={'flex items-start mt-3'}><img className={'mr-2.5'} src={images.checkCircle}/> <p>{feature}</p></div>
                     )}
                 </div>
             </div>
