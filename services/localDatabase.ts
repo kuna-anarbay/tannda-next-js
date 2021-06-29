@@ -5,12 +5,8 @@ class LocalDatabase {
 
     public static instance = new LocalDatabase();
 
-    private constructor() {
-    }
-
-
     //Configure
-    configure(value: LoginRes | null) {
+    configure(value: LoginRes | null): void {
         if (value) {
             if (value.refreshToken) {
                 this.setString("refreshToken", value.refreshToken);
@@ -60,7 +56,7 @@ class LocalDatabase {
         return window.localStorage.getItem(key);
     }
 
-    set = <T>(key: string, value: T) => {
+    set = <T>(key: string, value: T): void => {
         if (typeof window === 'undefined') {
             return;
         }
@@ -68,7 +64,7 @@ class LocalDatabase {
         window.localStorage.setItem(key, JSON.stringify(value));
     }
 
-    setString = (key: string, value: string) => {
+    setString = (key: string, value: string): void => {
         if (typeof window === 'undefined') {
             return;
         }
@@ -76,7 +72,7 @@ class LocalDatabase {
         window.localStorage.setItem(key, value);
     }
 
-    delete = (key: string) => {
+    delete = (key: string): void => {
         if (typeof window === 'undefined') {
             return;
         }

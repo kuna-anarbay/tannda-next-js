@@ -12,7 +12,7 @@ export class Resource {
 }
 
 
-export const bytesToSize = (size: number) => {
+export const bytesToSize = (size: number): string => {
     if (!size) return null;
     if (size === 0) return '0 Bytes';
 

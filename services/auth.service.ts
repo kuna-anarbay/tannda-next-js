@@ -10,35 +10,35 @@ export default class AuthService extends NetworkManager {
         super();
     }
 
-    login = async (body: LoginReq) => {
+    login = async (body: LoginReq): Promise<LoginRes> => {
         return await this.instance.post<LoginRes>(URLPath.auth.login, body);
     }
 
-    logOut = async () => {
+    logOut = async (): Promise<string> => {
         return await this.instance.delete<string>(URLPath.auth.logOut);
     }
 
-    refreshToken = async () => {
+    refreshToken = async (): Promise<LoginRes> => {
         return await this.instance.post<LoginRes>(URLPath.auth.refreshToken);
     }
 
-    sendCode = async (phone: string) => {
+    sendCode = async (phone: string): Promise<string> => {
         return await this.instance.post<string>(URLPath.auth.sendCode, {phone});
     }
 
-    register = async (body: RegisterReq) => {
+    register = async (body: RegisterReq): Promise<LoginRes> => {
         return await this.instance.post<LoginRes>(URLPath.auth.register, body);
     }
 
-    forgotPassword = async (phone: string) => {
+    forgotPassword = async (phone: string): Promise<string> => {
         return await this.instance.post<string>(URLPath.auth.forgotPassword, {phone});
     }
 
-    verifyPhone = async (body: VerifyPhoneReq) => {
+    verifyPhone = async (body: VerifyPhoneReq): Promise<LoginRes> => {
         return await this.instance.post<LoginRes>(URLPath.auth.verifyPhone, body);
     }
 
-    resetPassword = async (password: string) => {
+    resetPassword = async (password: string): Promise<string> => {
         return await this.instance.post<string>(URLPath.auth.resetPassword, {password})
     }
 }

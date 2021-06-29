@@ -2,12 +2,12 @@ export const URLPath = {
     course: {
         base: "/course",
         my: "/course/my",
-        byId: (id) => `/course/${id}`,
-        members: (id) => `/course/${id}/member`
+        byId: (id: number): string => `/course/${id}`,
+        members: (id: number): string => `/course/${id}/member`
     },
     member: {
-        base: (courseId) => `/course/${courseId}/member`,
-        member: (courseId, userId) => `/course/${courseId}/member/${userId}`
+        base: (courseId: number): string => `/course/${courseId}/member`,
+        member: (courseId: number, userId: number): string => `/course/${courseId}/member/${userId}`
     },
     auth: {
         sendCode: "/auth/send-code",
@@ -24,26 +24,26 @@ export const URLPath = {
         avatar: "/profile/me/avatar"
     },
     content: {
-        base: (courseId) => `course/${courseId}/content`,
-        lesson: (courseId) => `course/${courseId}/content/lesson`,
-        assignment: (courseId) => `course/${courseId}/content/assignment`,
-        exam: (courseId) => `course/${courseId}/content/assessment`,
-        byId: (courseId, contentId) => `/course/${courseId}/content/${contentId}`,
-        upload: (courseId, contentId) => `course/${courseId}/content/${contentId}/upload`,
-        status: (courseId, contentId) => `course/${courseId}/content/${contentId}/status`,
-        members: (courseId, contentId) => `course/${courseId}/content/${contentId}/member`,
-        reorder: (courseId, contentId) => `/course/${courseId}/content/${contentId}/reorder`
+        base: (courseId: number): string => `course/${courseId}/content`,
+        lesson: (courseId: number): string => `course/${courseId}/content/lesson`,
+        assignment: (courseId: number): string => `course/${courseId}/content/assignment`,
+        exam: (courseId: number): string => `course/${courseId}/content/assessment`,
+        byId: (courseId: number, contentId: number): string => `/course/${courseId}/content/${contentId}`,
+        upload: (courseId: number, contentId: number): string => `course/${courseId}/content/${contentId}/upload`,
+        status: (courseId: number, contentId: number): string => `course/${courseId}/content/${contentId}/status`,
+        members: (courseId: number, contentId: number): string => `course/${courseId}/content/${contentId}/member`,
+        reorder: (courseId: number, contentId: number): string => `/course/${courseId}/content/${contentId}/reorder`
     },
     section: {
-        base: (courseId) => `course/${courseId}/section`,
-        byId: (courseId, sectionId) => `/course/${courseId}/section/${sectionId}`,
-        reorder: (courseId, sectionId) => `/course/${courseId}/section/${sectionId}/reorder`
+        base: (courseId: number): string => `course/${courseId}/section`,
+        byId: (courseId: number, sectionId: number): string => `/course/${courseId}/section/${sectionId}`,
+        reorder: (courseId: number, sectionId: number): string => `/course/${courseId}/section/${sectionId}/reorder`
     },
     presence: {
-        base: (courseId) => `course/${courseId}/presence`
+        base: (courseId: number): string => `course/${courseId}/presence`
     },
     submission: {
-        base: (courseId) => `course/${courseId}/submission`,
-        byId: (courseId, relationId) => `course/${courseId}/submission/${relationId}`
+        base: (courseId: number): string => `course/${courseId}/submission`,
+        byId: (courseId: number, relationId: number): string => `course/${courseId}/submission/${relationId}`
     }
 }

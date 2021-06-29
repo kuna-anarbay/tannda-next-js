@@ -7,7 +7,7 @@ import {UserRole} from "../../models/role.entity";
 import {LoginResponseDto} from "../login/login.dto";
 import {validate} from "class-validator";
 import Course from "../../models/course.entity";
-import {MemberEntity} from "../../models/member.entity";
+import {Member} from "../../models/member.entity";
 import Section from "../../models/section.entity";
 import {Content} from "../../models/content.entity";
 
@@ -36,7 +36,7 @@ export enum CacheItem {
 export function AppDataProvider({children}: { children: ReactNode }) {
     const cache = useRef({
         courses: Array<Course>(),
-        members: Array<MemberEntity>(),
+        members: Array<Member>(),
         sections: Array<Section>(),
         contents: Array<Content>()
     });

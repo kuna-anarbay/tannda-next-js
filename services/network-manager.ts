@@ -4,7 +4,7 @@ import config from "../config";
 
 
 declare module "axios" {
-    interface AxiosResponse<T = any> extends Promise<T> {
+    interface AxiosResponse<T> extends Promise<T> {
     }
 }
 
@@ -30,15 +30,15 @@ export default abstract class NetworkManager {
     }
 
 
-    public formDataHeaders = () => {
-        let headers = this.defaultHeaders();
+    public formDataHeaders = (): { [key: string]: string } => {
+        const headers = this.defaultHeaders();
         headers["Content-Type"] = "multipart/form-data";
 
         return headers;
     }
 
 
-    protected handleError = (error: AxiosError) => {
+    protected handleError = (error: AxiosError): Promise<void> => {
         const {response} = error;
         if (response && response.data && response.data.message) {
             const message = response.data.message as string;
@@ -94,8 +94,8 @@ export default abstract class NetworkManager {
     };
 
 
-    private defaultHeaders = () => {
-        let headers: any = {
+    private defaultHeaders = (): { [key: string]: string } => {
+        const headers: { [key: string]: string } = {
             "Content-Type": "application/json"
         };
         const data = LocalDatabase.instance.getUser();

@@ -1,20 +1,20 @@
-import {MemberEntity} from "../../models/member.entity";
+import {Member} from "../../models/member.entity";
 import {GetIcon, IconType} from "../util/icon";
 import Spinner from "../util/spinner.component";
 import {strings} from "../util/strings";
 import CourseMemberRow from "./course-member.row";
 
 interface CourseMembersViewProps {
-    members: MemberEntity[];
+    members: Member[];
     refresh: () => void;
     loading: boolean;
     isAllSelected: boolean;
-    isSelected: (member: MemberEntity) => boolean;
+    isSelected: (member: Member) => boolean;
     selectAll: () => void;
-    selectMember: (member: MemberEntity) => void;
-    activateMember: (member: MemberEntity) => void;
-    archiveMember: (member: MemberEntity) => void;
-    deleteMember: (member: MemberEntity) => void;
+    selectMember: (member: Member) => void;
+    activateMember: (member: Member) => void;
+    archiveMember: (member: Member) => void;
+    deleteMember: (member: Member) => void;
     addNewMember: () => void;
 }
 

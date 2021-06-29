@@ -4,7 +4,7 @@ import {URLPath} from "../../services/URLPath";
 
 export class AddCourseMemberService extends NetworkManager {
 
-    addCourseMember = async (courseId: number, body: AddCourseMemberRequestDto) => {
+    addCourseMember = async (courseId: number, body: AddCourseMemberRequestDto): Promise<string> => {
         return await this.instance.post<string>(URLPath.member.base(courseId), body);
     }
 

@@ -1,12 +1,12 @@
 import NetworkManager from "../../services/network-manager";
-import {MemberEntity, MemberRole, MemberStatus} from "../../models/member.entity";
+import {Member, MemberRole, MemberStatus} from "../../models/member.entity";
 import {URLPath} from "../../services/URLPath";
 import {UpdateMemberStatusRequestDTO} from "./course-members.dto";
 
 export default class CourseMembersService extends NetworkManager {
 
     getMembers = async (courseId: number, role?: MemberRole, status?: MemberStatus) => {
-        return this.instance.get<MemberEntity[]>(URLPath.member.base(courseId), {
+        return this.instance.get<Member[]>(URLPath.member.base(courseId), {
             params: {role, status}
         });
     }

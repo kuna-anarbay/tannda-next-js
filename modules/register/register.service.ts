@@ -6,7 +6,7 @@ export default class RegisterService extends NetworkManager {
 
     }
 
-    register = async (body) => {
+    register = async () => {
 
     }
 }

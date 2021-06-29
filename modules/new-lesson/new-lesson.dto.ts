@@ -1,4 +1,4 @@
-import {IsNotEmpty, IsNumber, IsOptional, IsString, Length, MaxLength, MinLength} from "class-validator";
+import {IsNumber, IsOptional, IsString, Length} from "class-validator";
 
 export class CreateLessonRequestDto {
 

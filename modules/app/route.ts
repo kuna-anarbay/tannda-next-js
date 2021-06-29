@@ -7,6 +7,6 @@ export const Route = {
     courses: {
         my: "/courses/my",
         new: "/courses/new",
-        id: (id: number) => `/courses/${id}`
+        id: (id: number): string => `/courses/${id}`
     }
 }

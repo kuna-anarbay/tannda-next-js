@@ -2,7 +2,7 @@ import ContentMembersService from "./content-members.service";
 import {CacheItem, useAppData} from "../app/app-data-provider";
 import {useEffect, useState} from "react";
 import {ContentMember} from "../../models/content-member.entity";
-import {MemberEntity} from "../../models/member.entity";
+import {Member} from "../../models/member.entity";
 import ContentMembersView from "./content-members.view";
 import {ContentStatus} from "../../models/content.entity";
 import PresenceModal from "../presence/presence.modal";
@@ -22,7 +22,7 @@ export default function ContentMembersController(props: ContentMembersController
     const contentMembersService = new ContentMembersService();
     const {showError, getItem, validate} = useAppData();
     const [contentMembers, setContentMembers] = useState(Array<ContentMember>());
-    const [members, setMembers] = useState(getItem(CacheItem.MEMBERS) ?? Array<MemberEntity>());
+    const [members, setMembers] = useState(getItem(CacheItem.MEMBERS) ?? Array<Member>());
     const [selectedMembers, setSelectedMembers] = useState(Array<ContentMember>());
     const [loading, setLoading] = useState(false);
     const [presenceModal, setPresenceModal] = useState(false);

@@ -11,8 +11,4 @@ export class UpdateProfileRequestDto {
     @IsOptional()
     lastName?: string;
 
-    constructor(values) {
-        this.firstName = values.firstName;
-        this.lastName = values.lastName;
-    }
 }

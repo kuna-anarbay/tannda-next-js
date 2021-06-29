@@ -1,4 +1,4 @@
-export class MemberEntity {
+export class Member {
     id: number;
     relationId: number;
     firstName?: string;
@@ -9,12 +9,6 @@ export class MemberEntity {
     role: MemberRole;
     joinedAt?: Date;
 }
-
-export class AddMemberDto {
-    phone: string;
-    role: MemberRole;
-}
-
 
 /**
  *  MEMBER ROLES
@@ -54,15 +48,15 @@ export enum MemberStatus {
     REJECTED = 'rejected'
 }
 
-export const isActivatable = (status: MemberStatus) => {
+export const isActivatable = (status: MemberStatus): boolean => {
     return status === MemberStatus.ARCHIVED;
 }
 
-export const isArchievable = (status: MemberStatus) => {
+export const isArchievable = (status: MemberStatus): boolean => {
     return status === MemberStatus.ACTIVE;
 }
 
-export const isDeletable = (status: MemberStatus) => {
+export const isDeletable = (status: MemberStatus): boolean => {
     return status !== MemberStatus.REJECTED;
 }
 

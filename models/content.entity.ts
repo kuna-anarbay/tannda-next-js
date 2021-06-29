@@ -21,29 +21,6 @@ export class Content {
     submission?: Submission;
 }
 
-export class AddContentReq {
-    title: string;
-    description?: string;
-    type: ContentType;
-    index: number;
-    sectionId: number;
-}
-
-
-export class AddLessonReq {
-    title: string;
-    description?: string;
-    index: number;
-    sectionId: number;
-}
-
-export class UpdateContentReq {
-    title: string;
-    description?: string;
-    sectionId: number;
-}
-
-
 export enum ContentType {
     SECTION = 'section',
     LESSON = 'lesson',
@@ -62,7 +39,7 @@ export const ContentStatusCases: ContentStatus[] = [
 ]
 
 
-export const contentStatusName = (status: ContentStatus) => {
+export const contentStatusName = (status: ContentStatus): string => {
     switch (status) {
         case ContentStatus.ACTIVE:
             return "Доступен";

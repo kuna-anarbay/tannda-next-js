@@ -14,7 +14,7 @@ export default class MyProfileService extends NetworkManager {
     }
 
     async updateAvatar(file: File) {
-        let formData = new FormData();
+        const formData = new FormData();
         formData.append("file", file);
         return await this.multipart.put<string>(URLPath.profile.avatar, formData, {
             onUploadProgress: progressEvent => console.log(progressEvent.loaded)

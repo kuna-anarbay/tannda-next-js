@@ -1,4 +1,4 @@
-import {IsArray, IsDate, IsNumber, IsOptional} from "class-validator";
+import {IsArray, IsDate, IsNumber} from "class-validator";
 import {CreateAnswerRequestDto} from "../answer/answer.dto";
 import {Type} from "class-transformer";
 

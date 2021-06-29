@@ -18,7 +18,7 @@ export const presenceStatusCases: PresenceStatus[] = [
     PresenceStatus.TIME_OFF
 ]
 
-export const presenceStatusName = (status: PresenceStatus) => {
+export const presenceStatusName = (status: PresenceStatus): string => {
     switch (status) {
         case PresenceStatus.PRESENT:
             return "Присутствует";
@@ -31,10 +31,4 @@ export const presenceStatusName = (status: PresenceStatus) => {
         default:
             return null;
     }
-}
-
-export class PresenceReq {
-    relations: number[];
-    status: PresenceStatus;
-    note?: string;
 }
