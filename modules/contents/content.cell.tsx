@@ -1,6 +1,7 @@
 import ResourceCell from "../resources/resource.cell";
 import {Content} from "../../models/content";
 import {getIcon, IconType} from "../util/icon";
+import {urlify} from "../util/urlify";
 
 interface ContentCellProps {
     showContent: (content: Content) => void;
@@ -16,11 +17,12 @@ export default function ContentCell(props: ContentCellProps) {
     return (
         <div ref={provided.innerRef}
              {...provided.draggableProps}
-             className={"space-y-5 cursor-pointer"}>
+             className={"space-y-5"}>
             <div className={"space-y-2"}>
                 <div className={"space-y-1"}>
                     <div className={"flex items-center space-x-3 justify-between"}>
-                        <h3 onClick={() => showContent(content)} className={"font-semibold flex-grow hover:text-primary text-title3"}>
+                        <h3 onClick={() => showContent(content)}
+                            className={"font-semibold flex-grow hover:text-primary text-title3 cursor-pointer"}>
                             {content.title}
                         </h3>
                         {isEditing ? (
@@ -35,7 +37,7 @@ export default function ContentCell(props: ContentCellProps) {
                     </a>
                     {!isEditing ? (
                         <p className={"text-subheadline text-label"}>
-                            {content.description}
+                            <div dangerouslySetInnerHTML={{__html: urlify(content.description)}}/>
                         </p>
                     ) : null}
                 </div>
