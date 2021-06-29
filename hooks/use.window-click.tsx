@@ -18,10 +18,9 @@ export default function Hideable(props: HideableProps)  {
 }
 
 
-function useWindowClick(ref, handleClick?: () => void) {
+const useWindowClick = (ref, handleClick?: () => void) => {
     useEffect(() => {
-
-        function handleClickOutside(event) {
+        const handleClickOutside = (event) => {
             if (ref.current && !ref.current.contains(event.target)) {
                 if (handleClick) handleClick();
             }
@@ -29,7 +28,6 @@ function useWindowClick(ref, handleClick?: () => void) {
 
         document.addEventListener("mousedown", handleClickOutside);
         return () => {
-            // Unbind the event listener on clean up
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);

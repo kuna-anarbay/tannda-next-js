@@ -3,15 +3,11 @@
 @tailwind utilities;
 
 /* Custom styles */
-@import "globals.css";
 @import "button.css";
-@import "navbar.css";
-@import "form.css";
 @import "breadcrumb.css";
 @import "spinner.css";
 @import "animation.css";
 @import "landing.css";
-@import "shadow.css";
 @import "custom.css";
 @import "tab.css";
 @import "base.css";
