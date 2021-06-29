@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@babel/core": "^7.14.6",
     "@babel/runtime": "^7.12.5",
     "@reduxjs/toolkit": "^1.5.0",
     "@tailwindcss/forms": "^0.3.2",
