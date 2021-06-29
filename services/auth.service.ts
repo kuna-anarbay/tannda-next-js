@@ -1,8 +1,8 @@
 import {LoginReq, LoginRes} from "../modules/auth/dto/login.dto";
-import {URLPath} from "./http/URLPath";
+import {URLPath} from "./URLPath";
 import {RegisterReq} from "../modules/auth/dto/register.dto";
 import {VerifyPhoneReq} from "../modules/auth/dto/verify-phone.dto";
-import NetworkManager from "./http/network-manager";
+import NetworkManager from "./network-manager";
 
 export default class AuthService extends NetworkManager {
 

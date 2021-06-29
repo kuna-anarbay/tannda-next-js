@@ -1,6 +1,6 @@
 import AuthService from "../../services/auth.service";
 import {Field, Form, Formik} from "formik";
-import {getIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../util/icon";
 import {useState} from "react";
 import {useAppData} from "../app/app-data-provider";
 import Button from "../util/button";
@@ -77,7 +77,7 @@ export default function ForgotPasswordComponent() {
                                     </p>
                                 </div>
                                 <div onClick={() => setStep(0)}>
-                                    {getIcon(IconType.Pencil, "text-title3 font-medium text-primary")}
+                                    {GetIcon(IconType.Pencil, "text-title3 font-medium text-primary")}
                                 </div>
                             </div>
                         ) : null}

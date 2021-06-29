@@ -1,5 +1,5 @@
-import NetworkManager from "../../services/http/network-manager";
-import {URLPath} from "../../services/http/URLPath";
+import NetworkManager from "../../services/network-manager";
+import {URLPath} from "../../services/URLPath";
 import {ReorderSectionRequestDto} from "./sections.dto";
 
 export default class SectionsService extends NetworkManager {

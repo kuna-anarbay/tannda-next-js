@@ -1,5 +1,5 @@
-import NetworkManager from "../../services/http/network-manager";
-import {URLPath} from "../../services/http/URLPath";
+import NetworkManager from "../../services/network-manager";
+import {URLPath} from "../../services/URLPath";
 import {ReorderContentRequestDto} from "./contents.dto";
 
 export default class ContentsService extends NetworkManager {

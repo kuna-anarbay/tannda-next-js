@@ -2,7 +2,7 @@ import Section from "../../models/section";
 import {CSSTransition} from "react-transition-group";
 import {Field, FieldArray, Form, Formik} from "formik";
 import {CreateExamRequestDto} from "./new-exam.dto";
-import {getIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../util/icon";
 import {strings} from "../util/strings";
 import Button from "../util/button";
 import ResourceCell from "../resources/resource.cell";
@@ -59,7 +59,7 @@ export default function NewExamView(props: NewExamViewProps) {
                                     className={"relative flex items-center justify-center px-4 border-b border-border"}>
                                     <div onClick={close}
                                          className={"cursor-pointer absolute right-4 flex items-center justify-center p-1 rounded-full bg-background-secondary"}>
-                                        {getIcon(IconType.XMark, "text-primary")}
+                                        {GetIcon(IconType.XMark, "text-primary")}
                                     </div>
                                     <div className={"py-4"}>
                                         <p className={"text-subheadline"}>

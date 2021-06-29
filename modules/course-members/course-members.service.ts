@@ -1,6 +1,6 @@
-import NetworkManager from "../../services/http/network-manager";
+import NetworkManager from "../../services/network-manager";
 import {Member, MemberRole, MemberStatus} from "../../models/member";
-import {URLPath} from "../../services/http/URLPath";
+import {URLPath} from "../../services/URLPath";
 import {UpdateMemberStatusRequestDTO} from "./course-members.dto";
 
 export default class CourseMembersService extends NetworkManager {

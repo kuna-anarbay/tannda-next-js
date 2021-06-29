@@ -1,7 +1,7 @@
 import {CSSTransition} from "react-transition-group";
 import {Field, Form, Formik} from "formik";
 import {getRoleName, MemberRole, memberRoles} from "../../models/member";
-import {getIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../util/icon";
 import {strings} from "../util/strings";
 import Button from "../util/button";
 import {IMaskInput} from 'react-imask';
@@ -47,7 +47,7 @@ export default function AddCourseMemberView(props: AddCourseMemberViewProps) {
                             <div className={"relative flex items-center justify-center px-4 border-b border-border"}>
                                 <div onClick={close}
                                      className={"cursor-pointer absolute right-4 flex items-center justify-center p-1 rounded-full bg-primary-extra-light"}>
-                                    {getIcon(IconType.XMark, "text-primary")}
+                                    {GetIcon(IconType.XMark, "text-primary")}
                                 </div>
                                 <div className={"py-4"}>
                                     <p className={"text-subheadline"}>

@@ -1,4 +1,4 @@
-import {getIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../util/icon";
 import Section from "../../models/section";
 import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd';
 import SectionCell from "./section.cell";
@@ -41,11 +41,11 @@ export default function SectionsView(props: SectionsViewProps) {
                 </h3>
                 <div className={"flex space-x-2"}>
                     <button onClick={reload} className={"btn btn-sm btn-outline"}>
-                        {getIcon(IconType.Sync, loading ? "animate-spin" : null)}
+                        {GetIcon(IconType.Sync, loading ? "animate-spin" : null)}
                     </button>
                     {canEdit ? (
                         <button onClick={setEditing} className={"btn btn-sm btn-outline"}>
-                            {getIcon(IconType.Pencil)}
+                            {GetIcon(IconType.Pencil)}
                         </button>
                     ) : null}
                     {canEdit ? (

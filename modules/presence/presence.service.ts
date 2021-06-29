@@ -1,6 +1,6 @@
-import NetworkManager from "../../services/http/network-manager";
+import NetworkManager from "../../services/network-manager";
 import {Member} from "../../models/member";
-import {URLPath} from "../../services/http/URLPath";
+import {URLPath} from "../../services/URLPath";
 import {PresenceRequestDto} from "./presence.dto";
 
 export default class PresenceService extends NetworkManager {

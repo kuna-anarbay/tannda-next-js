@@ -1,5 +1,5 @@
 import {CSSTransition} from "react-transition-group";
-import {getIcon, IconType} from "./icon";
+import {GetIcon, IconType} from "./icon";
 
 interface ModalProps {
     open: boolean;
@@ -36,7 +36,7 @@ export default function Modal(props: ModalProps) {
                         className={"relative flex items-center justify-center border-b border-border"}>
                         <div onClick={close}
                              className={"cursor-pointer absolute right-4 flex items-center justify-center p-1 rounded-full bg-background-secondary"}>
-                            {getIcon(IconType.XMark, "text-primary")}
+                            {GetIcon(IconType.XMark, "text-primary")}
                         </div>
                         <div className={"py-4"}>
                             <p className={"text-subheadline"}>

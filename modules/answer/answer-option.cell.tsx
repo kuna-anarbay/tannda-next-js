@@ -1,7 +1,7 @@
 import {QuestionType} from "../../models/question";
 import {QuestionOption} from "../../models/question-option";
 import {Field} from "formik";
-import {getIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../util/icon";
 
 interface AnswerOptionCellProps {
     name: string;
@@ -33,7 +33,7 @@ export default function AnswerOptionCell(props: AnswerOptionCellProps) {
                         <button type={"button"}
                                 onClick={() => form.setFieldValue(name, getOptions())}
                                 className={`btn-checkbox ${options.includes(option.id) ? "active" : ""}`}>
-                            {getIcon(options.includes(option.id) ? IconType.Checkmark : null)}
+                            {GetIcon(options.includes(option.id) ? IconType.Checkmark : null)}
                         </button>
                     )}
                 </Field>

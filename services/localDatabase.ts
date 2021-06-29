@@ -1,5 +1,5 @@
-import User from "../../models/user";
-import {LoginRes} from "../../modules/auth/dto/login.dto";
+import User from "../models/user";
+import {LoginRes} from "../modules/auth/dto/login.dto";
 
 class LocalDatabase {
 

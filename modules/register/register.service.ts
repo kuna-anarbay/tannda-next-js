@@ -1,4 +1,4 @@
-import NetworkManager from "../../services/http/network-manager";
+import NetworkManager from "../../services/network-manager";
 
 export default class RegisterService extends NetworkManager {
 

@@ -1,7 +1,7 @@
 import {getRoleName} from "../../models/member";
 import Avatar from "../util/avatar";
 import {ContentMember} from "../../models/content-member";
-import {getIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../util/icon";
 import {ContentStatus, contentStatusName} from "../../models/content";
 import {getDate} from "../util/date";
 import {presenceStatusName} from "../../models/presence";
@@ -21,7 +21,7 @@ export default function ContentMemberRow(props: ContentMemberRowProps) {
             className={"hover:bg-light cursor-pointer border-b border-border"}>
             <td className="pr-4 py-1 whitespace-nowrap">
                 <button onClick={() => selectMember(member)} className={`btn-checkbox ${isSelected ? "active" : ""}`}>
-                    {isSelected ? getIcon(IconType.Checkmark, "font-bold") : null}
+                    {isSelected ? GetIcon(IconType.Checkmark, "font-bold") : null}
                 </button>
             </td>
             <td className="pr-4 py-1 whitespace-nowrap">

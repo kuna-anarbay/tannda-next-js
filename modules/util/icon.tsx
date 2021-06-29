@@ -1,71 +1,54 @@
 import {
-    IoArrowForward,
-    IoBook,
     IoCheckmark,
-    IoChevronBack,
     IoChevronDown,
     IoChevronForward,
     IoChevronUp,
     IoClose,
     IoCloudUpload,
     IoEllipsisHorizontal,
-    IoLanguageOutline,
     IoLockClosed,
     IoMenu,
     IoPencil,
     IoPersonSharp,
     IoReaderOutline,
-    IoSearch,
-    IoSync,
-    IoWarning
+    IoSync
 } from "react-icons/io5";
 
 export enum IconType {
     ChevronDown,
-    LanguageOutline,
     ChevronRight,
     XMark,
-    Warning,
     ChevronUp,
-    Search,
     Menu,
     User,
-    ChevronLeft,
     File,
-    Book,
     Sync,
     Lock,
     Pencil,
-    ArrowRight,
     Checkmark,
     Ellipsis,
     Upload
 }
 
-const icons = (className?: string) => {
+const Icons = (className?: string) => {
     return [
         <IoChevronDown className={className}/>,
-        <IoLanguageOutline className={className}/>,
         <IoChevronForward className={className}/>,
         <IoClose className={className}/>,
-        <IoWarning className={className}/>,
         <IoChevronUp className={className}/>,
-        <IoSearch className={className}/>,
         <IoMenu className={className}/>,
         <IoPersonSharp className={className}/>,
-        <IoChevronBack className={className}/>,
         <IoReaderOutline className={className}/>,
-        <IoBook className={className}/>,
         <IoSync className={className}/>,
         <IoLockClosed className={className}/>,
         <IoPencil className={className}/>,
-        <IoArrowForward className={className}/>,
         <IoCheckmark className={className}/>,
         <IoEllipsisHorizontal className={className}/>,
         <IoCloudUpload className={className}/>
     ]
 }
 
-export const getIcon = (type: IconType, className?: string) => {
-    return icons(className)[type];
+export const GetIcon = (type: IconType, className?: string) => {
+    return Icons(className)[type];
 }
+

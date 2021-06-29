@@ -1,6 +1,6 @@
 import {bytesToSize, Resource} from "../../models/resource";
 import {resourceIcon} from "./resource.icon";
-import {getIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../util/icon";
 
 interface ResourceCellProps {
     resource: Resource;
@@ -28,7 +28,7 @@ export default function ResourceCell(props: ResourceCellProps) {
             </a>
             {remove ? (
                 <div onClick={() => remove(resource)} className={"rounded-full p-1 bg-background-secondary"}>
-                    {getIcon(IconType.XMark, "text-footnote text-red")}
+                    {GetIcon(IconType.XMark, "text-footnote text-red")}
                 </div>
             ) : null}
         </div>

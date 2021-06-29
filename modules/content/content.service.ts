@@ -1,6 +1,6 @@
-import NetworkManager from "../../services/http/network-manager";
+import NetworkManager from "../../services/network-manager";
 import {ContentSection} from "../../models/content";
-import {URLPath} from "../../services/http/URLPath";
+import {URLPath} from "../../services/URLPath";
 import CourseService from "../course/course.service";
 
 export default class ContentService extends NetworkManager {

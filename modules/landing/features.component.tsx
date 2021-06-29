@@ -1,4 +1,4 @@
-import {getIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../util/icon";
 
 export default function FeaturesComponent() {
 
@@ -15,7 +15,7 @@ export default function FeaturesComponent() {
                     { [1, 2, 3, 4, 5].map(() => (
                         <div className={"flex items-center space-x-4"}>
                             <div className={"rounded-md border border-border p-3"}>
-                                {getIcon(IconType.Menu, "text-title3 text-primary")}
+                                {GetIcon(IconType.Menu, "text-title3 text-primary")}
                             </div>
                             <div className={"space-y-1"}>
                                 <h4 className={"text-base font-medium"}>

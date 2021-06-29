@@ -2,7 +2,7 @@ import {allQuestionTypes, QuestionType} from "../../models/question";
 import {CreateQuestionRequestDto} from "../new-exam/new-exam.dto";
 import {Field, FieldArray} from "formik";
 import QuestionOptionCell from "../question-option/question-option.cell";
-import {getIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../util/icon";
 
 interface QuestionCellProps {
     index: number;
@@ -21,7 +21,7 @@ export default function QuestionCell(props: QuestionCellProps) {
                 </p>
                 <div onClick={() => remove(index)}
                      className={"cursor-pointer flex items-center justify-center p-1 rounded-full bg-background"}>
-                    {getIcon(IconType.XMark, "text-red")}
+                    {GetIcon(IconType.XMark, "text-red")}
                 </div>
             </div>
             <Field name={`questions[${index}].title`} type={"text"}/>

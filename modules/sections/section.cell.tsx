@@ -1,5 +1,5 @@
 import Section from "../../models/section";
-import {getIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../util/icon";
 import {CSSTransition} from "react-transition-group";
 
 interface SectionCellProps {
@@ -38,11 +38,11 @@ export default function SectionCell(props: SectionCellProps) {
                     <div className={"flex items-center space-x-1 pr-4"}>
                         <button
                             className={"p-1.5 border border-border rounded-1.5 hover:bg-background-secondary"}  {...provided.dragHandleProps}>
-                            {getIcon(IconType.Menu, "text-base hover:text-primary")}
+                            {GetIcon(IconType.Menu, "text-base hover:text-primary")}
                         </button>
                         <button onClick={() => editSection(section)}
                                 className={"p-1.5 border border-border rounded-1.5 text-orange hover:bg-background-secondary"}>
-                            {getIcon(IconType.Ellipsis, "text-base")}
+                            {GetIcon(IconType.Ellipsis, "text-base")}
                         </button>
                     </div>
                 </CSSTransition>

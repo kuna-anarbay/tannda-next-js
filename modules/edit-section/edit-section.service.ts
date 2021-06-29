@@ -1,6 +1,6 @@
-import NetworkManager from "../../services/http/network-manager";
+import NetworkManager from "../../services/network-manager";
 import Section from "../../models/section";
-import {URLPath} from "../../services/http/URLPath";
+import {URLPath} from "../../services/URLPath";
 import {EditSectionRequestDto} from "./edit-section.dto";
 
 export default class EditSectionService extends NetworkManager {

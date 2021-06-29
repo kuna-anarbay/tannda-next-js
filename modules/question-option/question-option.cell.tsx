@@ -1,4 +1,4 @@
-import {getIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../util/icon";
 import {Field} from "formik";
 
 interface QuestionOptionCellProps {
@@ -24,7 +24,7 @@ export default function QuestionOptionCell(props: QuestionOptionCellProps) {
             </Field>
             <div onClick={() => remove(index)}
                  className={"cursor-pointer flex items-center justify-center p-1 rounded-full bg-background-secondary"}>
-                {getIcon(IconType.XMark, "text-primary")}
+                {GetIcon(IconType.XMark, "text-primary")}
             </div>
         </div>
     )

@@ -1,5 +1,5 @@
 import {Member} from "../../models/member";
-import {getIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../util/icon";
 import Spinner from "../util/spinner.component";
 import {strings} from "../util/strings";
 import CourseMemberRow from "./course-member.row";
@@ -46,7 +46,7 @@ export default function CourseMembersView(props: CourseMembersViewProps) {
                         </div>
                         <div className={"flex space-x-2"}>
                             <button className={"btn btn-sm btn-outline"} onClick={refresh}>
-                                {getIcon(IconType.Sync)}
+                                {GetIcon(IconType.Sync)}
                             </button>
                             <button onClick={addNewMember} type={"button"}
                                     className={"btn btn-sm btn-outline"}>
@@ -67,7 +67,7 @@ export default function CourseMembersView(props: CourseMembersViewProps) {
                                         >
                                             <button onClick={() => selectAll()}
                                                     className={`btn-checkbox ${isAllSelected ? "active" : ""}`}>
-                                                {isAllSelected ? getIcon(IconType.Checkmark, "font-bold") : null}
+                                                {isAllSelected ? GetIcon(IconType.Checkmark, "font-bold") : null}
                                             </button>
                                         </th>
                                         <th

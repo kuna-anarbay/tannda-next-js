@@ -1,7 +1,7 @@
-import NetworkManager from "../../services/http/network-manager";
+import NetworkManager from "../../services/network-manager";
 import {CreateLessonRequestDto} from "./new-lesson.dto";
 import {Content} from "../../models/content";
-import {URLPath} from "../../services/http/URLPath";
+import {URLPath} from "../../services/URLPath";
 import {Resource} from "../../models/resource";
 
 export default class NewLessonService extends NetworkManager {

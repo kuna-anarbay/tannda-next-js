@@ -1,4 +1,4 @@
-import {getIcon, IconType} from "./icon";
+import {GetIcon, IconType} from "./icon";
 
 interface AvatarProps {
     src: string | null | undefined;
@@ -15,7 +15,7 @@ export default function Avatar(props: AvatarProps) {
     ) : (
         <div
             className={"rounded-full text-center flex items-center justify-center bg-primary w-8 h-8 border border-label-light border-opacity-10 " + className}>
-            {getIcon(IconType.User, "text-base text-background")}
+            {GetIcon(IconType.User, "text-base text-background")}
         </div>
     );
 }

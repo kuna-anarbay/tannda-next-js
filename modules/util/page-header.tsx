@@ -1,5 +1,4 @@
 import Breadcrumb, {BreadcrumbItem} from "./breadcrumb";
-import Text from "./text.component";
 
 
 interface PageHeaderProps {
@@ -20,9 +19,10 @@ export default function PageHeader(props: PageHeaderProps) {
                         {title}
                     </h2>
                 </div>
-                {buttonTitle ? <button onClick={() => handleClick()} type={"button"} className={"btn btm-sm btn-outline"}>
-                    {buttonTitle}
-                </button> : null}
+                {buttonTitle ?
+                    <button onClick={() => handleClick()} type={"button"} className={"btn btm-sm btn-outline"}>
+                        {buttonTitle}
+                    </button> : null}
             </div>
             <Breadcrumb items={items}/>
         </div>

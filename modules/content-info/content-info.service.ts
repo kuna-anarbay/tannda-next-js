@@ -1,4 +1,4 @@
-import NetworkManager from "../../services/http/network-manager";
+import NetworkManager from "../../services/network-manager";
 import SubmissionService from "../submission/submission.service";
 
 export default class ContentInfoService extends NetworkManager {

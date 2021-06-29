@@ -1,7 +1,6 @@
-import {getIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../util/icon";
 import {Resource} from "../../models/resource";
 import ResourceCell from "../resources/resource.cell";
-import {Field} from "formik";
 
 interface UploadBoxProps {
     file?: { resource: Resource, questionId: number, file: File };
@@ -25,7 +24,7 @@ export default function UploadBox(props: UploadBoxProps) {
                 >
                     <div>
                         <div className={"flex justify-center"}>
-                            {getIcon(IconType.Upload, "text-title2 text-center")}
+                            {GetIcon(IconType.Upload, "text-title2 text-center")}
                         </div>
                         <p className={"font-medium text-base"}>
                             Загрузить файл

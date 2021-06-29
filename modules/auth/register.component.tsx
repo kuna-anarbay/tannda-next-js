@@ -1,6 +1,6 @@
 import AuthService from "../../services/auth.service";
 import {Field, Form, Formik} from "formik";
-import {getIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../util/icon";
 import {useState} from "react";
 import {useAppData} from "../app/app-data-provider";
 import Button from "../util/button";
@@ -74,13 +74,13 @@ export default function RegisterComponent() {
                                     </p>
                                 </div>
                                 <div onClick={() => setCodeSent(false)}>
-                                    {getIcon(IconType.Pencil, "text-title3 font-medium cursor-pointer text-primary")}
+                                    {GetIcon(IconType.Pencil, "text-title3 font-medium cursor-pointer text-primary")}
                                 </div>
                             </div>
                         ) : (
                             <div className={"bg-background-secondary space-x-3 flex items-center rounded-lg p-4"}>
                                 <div>
-                                    {getIcon(IconType.Lock, "text-title3 font-medium")}
+                                    {GetIcon(IconType.Lock, "text-title3 font-medium")}
                                 </div>
                                 <p className={"text-footnote text-label-secondary"}>
                                     {strings.yourAccountSecure}

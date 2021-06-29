@@ -1,6 +1,6 @@
 import ResourceCell from "../resources/resource.cell";
 import {Content} from "../../models/content";
-import {getIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../util/icon";
 import {urlify} from "../util/urlify";
 
 interface ContentCellProps {
@@ -28,7 +28,7 @@ export default function ContentCell(props: ContentCellProps) {
                         {isEditing ? (
                             <button
                                 className={"p-1.5 border border-border rounded-1.5 bg-background hover:bg-background-secondary"}  {...provided.dragHandleProps}>
-                                {getIcon(IconType.Menu, "text-base hover:text-primary")}
+                                {GetIcon(IconType.Menu, "text-base hover:text-primary")}
                             </button>
                         ) : null}
                     </div>

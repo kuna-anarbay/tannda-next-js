@@ -1,4 +1,4 @@
-import {getIcon, IconType} from "./icon";
+import {GetIcon, IconType} from "./icon";
 import {useState} from "react";
 import Hideable from "../../hooks/use.window-click";
 
@@ -22,7 +22,7 @@ export default function Dropdown(props: DropdownProps) {
                     <p>
                         {title}
                     </p>
-                    {getIcon(open ? IconType.ChevronUp : IconType.ChevronDown)}
+                    {GetIcon(open ? IconType.ChevronUp : IconType.ChevronDown)}
                 </button>
                 {open ? (
                     <div

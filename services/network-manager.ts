@@ -1,6 +1,6 @@
 import axios, {AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse} from "axios";
-import LocalDatabase from "../localDatabase";
-import config from "../../config";
+import LocalDatabase from "./localDatabase";
+import config from "../config";
 
 
 declare module "axios" {

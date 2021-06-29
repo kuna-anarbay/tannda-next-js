@@ -1,6 +1,6 @@
 import {Content} from "../../models/content";
 import {ContentType} from "../enum/content-type.enum";
-import {getIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../util/icon";
 import ContentCell from "./content.cell";
 import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd';
 import Dropdown from "../util/dropdown";
@@ -28,7 +28,7 @@ export default function ContentsView(props: ContentsViewProps) {
                 {canEdit ? (
                     <div className={"flex space-x-2"}>
                         <button onClick={setEditing} className={"btn btn-sm btn-outline"}>
-                            {getIcon(IconType.Pencil)}
+                            {GetIcon(IconType.Pencil)}
                         </button>
                         <Dropdown title={strings.addLesson} children={[
                             {

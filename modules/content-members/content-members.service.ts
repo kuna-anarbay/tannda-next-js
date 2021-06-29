@@ -1,6 +1,6 @@
-import NetworkManager from "../../services/http/network-manager";
+import NetworkManager from "../../services/network-manager";
 import {ContentMember} from "../../models/content-member";
-import {URLPath} from "../../services/http/URLPath";
+import {URLPath} from "../../services/URLPath";
 import CourseMembersService from "../course-members/course-members.service";
 import {ContentStatusRequestDto} from "./content-members.dto";
 import {MemberRole, MemberStatus} from "../../models/member";

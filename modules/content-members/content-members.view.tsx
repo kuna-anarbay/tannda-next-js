@@ -1,4 +1,4 @@
-import {getIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../util/icon";
 import ContentMemberRow from "./content-member.row";
 import {ContentMember} from "../../models/content-member";
 import {ContentStatus, ContentStatusCases, contentStatusName} from "../../models/content";
@@ -45,7 +45,7 @@ export default function ContentMembersView(props: ContentMembersViewProps) {
                 </div>
                 <div className={"flex items-center space-x-2"}>
                     <button className={"btn btn-outline"} onClick={reload}>
-                        {getIcon(IconType.Sync, loading ? "animate-spin" : null)}
+                        {GetIcon(IconType.Sync, loading ? "animate-spin" : null)}
                     </button>
                     <button className={"btn btn-sm btn-outline"} onClick={updatePresence}>
                         Update presence
@@ -83,7 +83,7 @@ export default function ContentMembersView(props: ContentMembersViewProps) {
                                 >
                                     <button onClick={() => selectAll()}
                                             className={`btn-checkbox ${isAllSelected ? "active" : ""}`}>
-                                        {isAllSelected ? getIcon(IconType.Checkmark, "font-bold") : null}
+                                        {isAllSelected ? GetIcon(IconType.Checkmark, "font-bold") : null}
                                     </button>
                                 </th>
                                 <th

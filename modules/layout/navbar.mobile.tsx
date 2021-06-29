@@ -1,5 +1,5 @@
 import r from "../util/r";
-import {getIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../util/icon";
 import {useAppData} from "../app/app-data-provider";
 import Link from "next/link";
 import {useRouter} from "next/router";
@@ -22,7 +22,7 @@ export default function NavbarMobile() {
                 </div>
                 <div className={"flex justify-between relative z-40"}>
                     <button onClick={() => setMenu(!menu)} className={"flex items-center px-4 cursor-pointer"}>
-                        {getIcon(IconType.Menu, "text-title2")}
+                        {GetIcon(IconType.Menu, "text-title2")}
                     </button>
                     <Link href={"/users/me"}>
                         <div

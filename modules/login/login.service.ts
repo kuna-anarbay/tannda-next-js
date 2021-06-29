@@ -1,6 +1,6 @@
-import NetworkManager from "../../services/http/network-manager";
+import NetworkManager from "../../services/network-manager";
 import {LoginRequestDto, LoginResponseDto} from "./login.dto";
-import {URLPath} from "../../services/http/URLPath";
+import {URLPath} from "../../services/URLPath";
 
 
 export default class LoginService extends NetworkManager {
