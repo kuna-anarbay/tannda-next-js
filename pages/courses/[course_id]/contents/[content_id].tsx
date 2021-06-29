@@ -1,4 +1,5 @@
 import ContentController from "../../../../modules/content/content.controller";
+import {GetServerSideProps} from "next";
 
 interface ContentPageProps {
     courseId: number;
@@ -10,10 +11,11 @@ export default function ContentPage(props: ContentPageProps) {
     return <ContentController contentId={contentId} courseId={courseId}/>
 }
 
-
-ContentPage.getInitialProps = ({query: {course_id, content_id}}) => {
+export const getServerSideProps: GetServerSideProps = async ({params: {course_id, content_id}}) => {
     return {
-        courseId: course_id,
-        contentId: content_id
+        props: {
+            courseId: parseInt(course_id as string),
+            contentId: parseInt(content_id as string),
+        }
     }
 }
