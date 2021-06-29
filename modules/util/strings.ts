@@ -35,5 +35,10 @@ export const strings = {
     activate: "Активировать",
     archive: "Архивировать",
     addMember: "Добавить участника",
-    members: "Участники"
+    members: "Участники",
+    lessons: "Уроки",
+    addLesson: "Добавить урок",
+    lesson: "Урок",
+    assignment: "Задание",
+    exam: "Экзамен"
 };

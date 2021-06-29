@@ -30,7 +30,7 @@ export default function Dropdown(props: DropdownProps) {
                         {children.map(child => (
                             <div
                                 onClick={child.action}
-                                className={"px-4 py-1.5 text-footnote cursor-pointer rounded-t-1.5 hover:bg-background-secondary"}>
+                                className={"px-4 py-1 text-footnote cursor-pointer rounded-t-1.5 hover:bg-background-secondary"}>
                                 {child.title}
                             </div>
                         ))}

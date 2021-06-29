@@ -1,3 +1,9 @@
+export class Presence {
+    status: PresenceStatus;
+    note?: string;
+    updatedAt: Date;
+}
+
 export enum PresenceStatus {
     PRESENT = "present",
     ABSENT = "absent",
@@ -22,6 +28,8 @@ export const presenceStatusName = (status: PresenceStatus) => {
             return "Заболел";
         case PresenceStatus.TIME_OFF:
             return "Отпросился";
+        default:
+            return null;
     }
 }
 

@@ -25,7 +25,7 @@ export default function SectionCell(props: SectionCellProps) {
         <li
             ref={provided.innerRef}
             {...provided.draggableProps}
-            className={`text-footnote cursor-pointer hover:text-primary ${isSelected ? "text-primary font-semibold" : ""}`}>
+            className={`text-footnote cursor-pointer hover:text-primary ${isSelected ? "text-primary bg-background-secondary" : ""}`}>
             <div className={"flex items-center justify-between space-x-1"}>
                 <div onClick={() => selectSection(section)} className={"px-4 py-2 flex-grow"}>
                     {section.index + 1}. {section.title}

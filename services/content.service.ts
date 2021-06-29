@@ -3,7 +3,7 @@ import {AddContentReq, AddLessonReq, Content, ContentSection, ContentStatus, Upd
 import {URLPath} from "./http/URLPath";
 import {SectionData} from "../models/section";
 import {Resource} from "../models/resource";
-import {ContentMember} from "../models/content-member.";
+import {ContentMember} from "../models/content-member";
 
 export default class ContentService extends NetworkManager {
 
@@ -62,8 +62,6 @@ export default class ContentService extends NetworkManager {
     }
 
 
-    reorder = async (courseId: number, contentId: number, index: number) => {
-        return await this.instance.put<string>(URLPath.content.reorder(courseId, contentId), {index});
-    }
+
 
 }

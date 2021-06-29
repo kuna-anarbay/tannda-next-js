@@ -18,7 +18,7 @@ export default function ResourceCell(props: ResourceCellProps) {
                          src={resourceIcon(resource.originalName)}/>
                 </ div>
                 <div>
-                    <p className={"text-footnote"}>
+                    <p className={"text-footnote text-label"}>
                         {resource.originalName}
                     </p>
                     <p className={"text-caption1 text-label-secondary"}>

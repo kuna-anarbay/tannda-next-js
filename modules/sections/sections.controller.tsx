@@ -32,14 +32,14 @@ export default function SectionsController(props: SectionsControllerProps) {
         const oldOrder = sections;
         const items = Array.from(sections);
         const section = sections[result.source.index];
-        if(result.source.index > result.destination.index) {
+        if (result.source.index > result.destination.index) {
             items[result.source.index].index = result.destination.index;
-            for(let i = result.destination.index; i < result.source.index; i++) {
+            for (let i = result.destination.index; i < result.source.index; i++) {
                 items[i].index += 1;
             }
         } else {
             items[result.source.index].index = result.destination.index;
-            for(let i = result.destination.index; i > result.source.index; i--) {
+            for (let i = result.destination.index; i > result.source.index; i--) {
                 items[i].index -= 1;
             }
         }
@@ -60,13 +60,13 @@ export default function SectionsController(props: SectionsControllerProps) {
     const editSection = (section: Section) => {
         setEditingSection(section);
         setEditSectionState(EditSectionState.EDIT);
-        setEditSectionModal(!editSectionModal)
+        setEditSectionModal(true)
     }
 
     const createSection = () => {
         setEditingSection(null);
         setEditSectionState(EditSectionState.CREATE);
-        setEditSectionModal(!editSectionModal)
+        setEditSectionModal(true);
     }
 
     const sectionEdited = (section: Section) => {
@@ -85,6 +85,10 @@ export default function SectionsController(props: SectionsControllerProps) {
         sectionsUpdated([...sections, section]);
     }
 
+    const closeSectionModal = () => {
+        setEditSectionModal(false)
+    }
+
     return (
         <div>
             <SectionsView canEdit={canEdit}
@@ -101,9 +105,10 @@ export default function SectionsController(props: SectionsControllerProps) {
             <EditSectionController state={editSectionState}
                                    courseId={courseId}
                                    open={editSectionModal}
-                                   close={() => setEditSectionModal(!editSectionModal)}
+                                   close={closeSectionModal}
                                    sectionEdited={sectionEdited}
                                    sectionDeleted={sectionDeleted}
+                                   section={editingSection}
                                    sectionAdded={sectionAdded}/>
         </div>
     )

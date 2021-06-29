@@ -1,17 +1,23 @@
 import {
+    IoArrowForward,
+    IoBook,
+    IoCheckmark,
+    IoChevronBack,
     IoChevronDown,
     IoChevronForward,
     IoChevronUp,
     IoClose,
+    IoCloudUpload,
+    IoEllipsisHorizontal,
     IoLanguageOutline,
-    IoSearch,
-    IoWarning,
+    IoLockClosed,
     IoMenu,
+    IoPencil,
     IoPersonSharp,
-    IoChevronBack,
     IoReaderOutline,
-    IoBook,
-    IoSync, IoLockClosed, IoPencil, IoArrowForward, IoCheckbox, IoCheckmark, IoEllipsisHorizontal
+    IoSearch,
+    IoSync,
+    IoWarning
 } from "react-icons/io5";
 
 export enum IconType {
@@ -32,7 +38,8 @@ export enum IconType {
     Pencil,
     ArrowRight,
     Checkmark,
-    Ellipsis
+    Ellipsis,
+    Upload
 }
 
 const icons = (className?: string) => {
@@ -41,20 +48,21 @@ const icons = (className?: string) => {
         <IoLanguageOutline className={className}/>,
         <IoChevronForward className={className}/>,
         <IoClose className={className}/>,
-        <IoWarning className={className} />,
-        <IoChevronUp className={className} />,
-        <IoSearch className={className} />,
-        <IoMenu className={className} />,
-        <IoPersonSharp className={className} />,
-        <IoChevronBack className={className} />,
-        <IoReaderOutline className={className} />,
-        <IoBook className={className} />,
-        <IoSync className={className} />,
-        <IoLockClosed className={className} />,
-        <IoPencil className={className} />,
-        <IoArrowForward className={className} />,
-        <IoCheckmark className={className} />,
-        <IoEllipsisHorizontal className={className} />
+        <IoWarning className={className}/>,
+        <IoChevronUp className={className}/>,
+        <IoSearch className={className}/>,
+        <IoMenu className={className}/>,
+        <IoPersonSharp className={className}/>,
+        <IoChevronBack className={className}/>,
+        <IoReaderOutline className={className}/>,
+        <IoBook className={className}/>,
+        <IoSync className={className}/>,
+        <IoLockClosed className={className}/>,
+        <IoPencil className={className}/>,
+        <IoArrowForward className={className}/>,
+        <IoCheckmark className={className}/>,
+        <IoEllipsisHorizontal className={className}/>,
+        <IoCloudUpload className={className}/>
     ]
 }
 

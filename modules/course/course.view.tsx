@@ -1,7 +1,6 @@
 import Course from "../../models/course";
 import Tab from "../util/tab";
 import {useState} from "react";
-import ContentsComponent from "../content/contents.component";
 import {MemberRole} from "../../models/member";
 import PageHeader from "../util/page-header";
 import {Route} from "../app/route";
@@ -57,15 +56,7 @@ export default function CourseView(props: CourseViewProps) {
         {
             title: "Содержание",
             component: <ContentDataController canEdit={canEdit()} courseId={course.id}/>
-        },
-        {
-            title: "Оценки",
-            component: <ContentsComponent role={role} courseId={id}/>
-        },
-        {
-            title: "Посещаемость",
-            component: <ContentsComponent role={role} courseId={id}/>
-        },
+        }
     ]
 
     const getTabs = () => {

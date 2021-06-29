@@ -75,6 +75,7 @@ export default function EditSectionController(props: EditSectionControllerProps)
                             open={open}
                             close={close}
                             state={state}
+                            section={section}
                             deleteSection={deleteSection}
                             editSection={handleSubmit}/>
 }

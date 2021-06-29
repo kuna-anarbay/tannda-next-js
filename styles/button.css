@@ -43,4 +43,16 @@
     @apply border-primary bg-primary text-background;
   }
 
+  .btn-radio {
+    @apply border flex items-center cursor-pointer justify-center font-medium border-border rounded-full bg-background-secondary h-4 w-4;
+  }
+
+  .btn-radio.active {
+    @apply border-primary;
+  }
+
+  .btn-radio.active > * {
+    @apply rounded-full h-2.5 w-2.5 bg-primary;
+  }
+
 }

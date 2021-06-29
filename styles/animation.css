@@ -90,6 +90,36 @@
 }
 
 
+/**
+    Modal contents
+ */
+/* This fires as soon as the element enters the dorm */
+.modal-content-enter,
+.modal-content-appear {
+    /*We give the list the initial dimension of the list button*/
+    z-index: -1;
+    transform: translateY(-100%);
+}
+
+/* This is where we can add the transition*/
+.modal-content-enter-active,
+.modal-content-appear-active {
+    transform: translateY(0%);
+    transition: all 400ms;
+}
+
+/* This fires as soon as the this.state.showList is false */
+.modal-content-exit {
+    transform: translateY(0%);
+}
+
+/* fires as element leaves the DOM*/
+.modal-content-exit-active {
+    transform: translateY(-100%);
+    transition: all 400ms;
+}
+
+
 
 /**
     dropdown-animation

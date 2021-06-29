@@ -26,6 +26,8 @@ export const URLPath = {
     content: {
         base: (courseId) => `course/${courseId}/content`,
         lesson: (courseId) => `course/${courseId}/content/lesson`,
+        assignment: (courseId) => `course/${courseId}/content/assignment`,
+        exam: (courseId) => `course/${courseId}/content/assessment`,
         byId: (courseId, contentId) => `/course/${courseId}/content/${contentId}`,
         upload: (courseId, contentId) => `course/${courseId}/content/${contentId}/upload`,
         status: (courseId, contentId) => `course/${courseId}/content/${contentId}/status`,
@@ -39,5 +41,9 @@ export const URLPath = {
     },
     presence: {
         base: (courseId) => `course/${courseId}/presence`
+    },
+    submission: {
+        base: (courseId) => `course/${courseId}/submission`,
+        byId: (courseId, relationId) => `course/${courseId}/submission/${relationId}`
     }
 }

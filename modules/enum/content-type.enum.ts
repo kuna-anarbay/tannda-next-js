@@ -1,5 +1,5 @@
 export enum ContentType {
-    SECTION = "section",
+    EXAM = "exam",
     LESSON = "lesson",
     ASSIGNMENT = "assignment"
 }

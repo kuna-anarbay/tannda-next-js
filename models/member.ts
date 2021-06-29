@@ -1,5 +1,3 @@
-import {PresenceStatus} from "./presence";
-
 export class Member {
     id: number;
     relationId: number;
@@ -8,11 +6,8 @@ export class Member {
     phone: string;
     avatar?: string;
     status: MemberStatus;
-    presence?: PresenceStatus;
-    presenceNote?: string;
     role: MemberRole;
     joinedAt?: Date;
-    presenceDate?: Date;
 }
 
 export class AddMemberDto {

@@ -40,7 +40,6 @@ export default abstract class NetworkManager {
 
     protected handleError = (error: AxiosError) => {
         const {response} = error;
-        console.log(error.response.data);
         if (response && response.data && response.data.message) {
             const message = response.data.message as string;
             return Promise.reject(new Error(message));

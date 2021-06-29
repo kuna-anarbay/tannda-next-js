@@ -16,11 +16,6 @@ export class LoginRequestDto {
     })
     readonly password: string;
 
-
-    constructor(values) {
-        this.username = values.username;
-        this.password = values.password;
-    }
 }
 
 export interface LoginResponseDto {

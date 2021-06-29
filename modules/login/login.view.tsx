@@ -8,12 +8,11 @@ import {strings} from "../util/strings";
 interface LoginViewProps {
     forgotPassword: () => void
     register: () => void;
-    loading: boolean;
     login: (body: LoginRequestDto) => void;
 }
 
 export default function LoginView(props: LoginViewProps) {
-    const {forgotPassword, loading, login, register} = props;
+    const {forgotPassword, login, register} = props;
 
     const loginDefaultValues = {
         username: "+7",
@@ -23,56 +22,57 @@ export default function LoginView(props: LoginViewProps) {
     return (
         <div className={"px-4 mx-auto md:w-4/12 py-20"}>
             <Formik initialValues={loginDefaultValues}
-                    onSubmit={(values => login(new LoginRequestDto(values)))}>
-                <Form>
-                    <div className={"space-y-8"}>
-                        <div>
-                            <h2 className={"text-title1 font-bold"}>
-                                {strings.login}
-                            </h2>
-                            <p className={"text-base text-label-secondary"}>
-                                {strings.loginDescription}
-                            </p>
-                        </div>
-                        <div className={"space-y-4"}>
+                    onSubmit={login}>
+                { ({ isSubmitting }) => (
+                    <Form>
+                        <div className={"space-y-8"}>
                             <div>
-                                <label>
-                                    {strings.phoneNumber}
-                                </label>
-                                <Field name={"username"} render={({field}) => (
-                                    <IMaskInput {...field}
-                                                name={"username"}
-                                                required={true}
-                                                type={"tel"}
-                                                placeholder={strings.phoneNumber}
-                                                mask={"+{7} 000 000 00 00"}/>
-                                )}/>
-                                <ErrorAlert name={"username"}/>
+                                <h2 className={"text-title1 font-bold"}>
+                                    {strings.login}
+                                </h2>
+                                <p className={"text-base text-label-secondary"}>
+                                    {strings.loginDescription}
+                                </p>
                             </div>
-                            <div>
-                                <label>
-                                    {strings.password}
-                                </label>
-                                <Field type={"password"} name={"password"}
-                                       placeholder={strings.password}/>
-                                <ErrorAlert name={"password"}/>
-                            </div>
-                            <div className={"text-right text-primary text-footnote"}>
-                                <a onClick={forgotPassword}>
-                                    {strings.forgotPassword}
-                                </a>
-                            </div>
-                            <Button className={"btn btn-primary"}
-                                    title={strings.login}
-                                    loading={loading}
-                                    type={"submit"}/>
-                            <div className={"text-center text-footnote"}>
-                                {strings.noAccount} <a onClick={register}><a
-                                className={"text-primary"}>{strings.register}</a></a>
+                            <div className={"space-y-4"}>
+                                <div>
+                                    <label>
+                                        {strings.phoneNumber}
+                                    </label>
+                                    <Field name={"username"} render={({field}) => (
+                                        <IMaskInput {...field}
+                                                    name={"username"}
+                                                    required={true}
+                                                    type={"tel"}
+                                                    placeholder={strings.phoneNumber}
+                                                    mask={"+{7} 000 000 00 00"}/>
+                                    )}/>
+                                </div>
+                                <div>
+                                    <label>
+                                        {strings.password}
+                                    </label>
+                                    <Field type={"password"}
+                                           name={"password"}
+                                           placeholder={strings.password}/>
+                                </div>
+                                <div className={"text-right text-primary text-footnote"}>
+                                    <a onClick={forgotPassword}>
+                                        {strings.forgotPassword}
+                                    </a>
+                                </div>
+                                <Button className={"btn btn-primary"}
+                                        title={strings.login}
+                                        loading={isSubmitting}
+                                        type={"submit"}/>
+                                <div className={"text-center text-footnote"}>
+                                    {strings.noAccount} <a onClick={register}><a
+                                    className={"text-primary"}>{strings.register}</a></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </Form>
+                    </Form>
+                )}
             </Formik>
         </div>
     )

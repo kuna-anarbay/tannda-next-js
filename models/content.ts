@@ -1,5 +1,9 @@
 import {Resource} from "./resource";
 import Section from "./section";
+import {QuestionType} from "./question";
+import {Presence} from "./presence";
+import {Grade} from "./grade";
+import {Submission} from "./submission";
 
 export class Content {
     id: number;
@@ -11,6 +15,10 @@ export class Content {
     sectionId: number;
     status?: ContentStatus;
     resources?: Resource[];
+    questionType?: QuestionType;
+    presence?: Presence;
+    grade?: Grade;
+    submission?: Submission;
 }
 
 export class AddContentReq {
@@ -64,8 +72,8 @@ export const contentStatusName = (status: ContentStatus) => {
 }
 
 
-
 export class ContentSection {
     content: Content;
     section: Section;
+    relationId?: number;
 }

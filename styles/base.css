@@ -8,14 +8,12 @@ body {
 }
 
 
-
 /**
     HR
  */
 hr {
     border-color: #E5E9EB;
 }
-
 
 
 /**
@@ -48,10 +46,13 @@ input:focus, textarea:focus, select:focus {
     rgba(0, 0, 0, 0) 0px 0px 0px 0px !important;
 }
 
+input.field-sm, textarea.field-sm, select.field-sm {
+    @apply border border-border text-footnote px-2 py-1 rounded-1.5 !important;
+}
+
 form label {
     @apply block text-caption1 text-label-secondary mb-0.5;
 }
-
 
 
 /**
