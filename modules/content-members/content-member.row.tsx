@@ -1,10 +1,10 @@
-import {getRoleName} from "../../models/member";
+import {getRoleName} from "../../models/member.entity";
 import Avatar from "../util/avatar";
-import {ContentMember} from "../../models/content-member";
+import {ContentMember} from "../../models/content-member.entity";
 import {GetIcon, IconType} from "../util/icon";
-import {ContentStatus, contentStatusName} from "../../models/content";
+import {ContentStatus, contentStatusName} from "../../models/content.entity";
 import {getDate} from "../util/date";
-import {presenceStatusName} from "../../models/presence";
+import {presenceStatusName} from "../../models/presence.entity";
 
 interface ContentMemberRowProps {
     isLesson: boolean;

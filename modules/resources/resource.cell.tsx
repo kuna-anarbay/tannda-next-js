@@ -1,4 +1,4 @@
-import {bytesToSize, Resource} from "../../models/resource";
+import {bytesToSize, Resource} from "../../models/resource.entity";
 import {resourceIcon} from "./resource.icon";
 import {GetIcon, IconType} from "../util/icon";
 

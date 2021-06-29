@@ -1,5 +1,5 @@
-import {QuestionType} from "../../models/question";
-import {QuestionOption} from "../../models/question-option";
+import {QuestionType} from "../../models/question.entity";
+import {QuestionOption} from "../../models/question-option.entity";
 import {Field} from "formik";
 import {GetIcon, IconType} from "../util/icon";
 

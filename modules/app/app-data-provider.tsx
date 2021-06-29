@@ -1,15 +1,15 @@
 import React, {createContext, ReactNode, useEffect, useRef, useState} from "react";
-import User from "../../models/user";
+import User from "../../models/user.entity";
 import LocalDatabase from "../../services/localDatabase";
 import AuthService from "../../services/auth.service";
 import {useToasts} from "react-toast-notifications";
-import {UserRole} from "../../models/role";
+import {UserRole} from "../../models/role.entity";
 import {LoginResponseDto} from "../login/login.dto";
 import {validate} from "class-validator";
-import Course from "../../models/course";
-import {Member} from "../../models/member";
-import Section from "../../models/section";
-import {Content} from "../../models/content";
+import Course from "../../models/course.entity";
+import {MemberEntity} from "../../models/member.entity";
+import Section from "../../models/section.entity";
+import {Content} from "../../models/content.entity";
 
 
 type AppDataType = {
@@ -36,7 +36,7 @@ export enum CacheItem {
 export function AppDataProvider({children}: { children: ReactNode }) {
     const cache = useRef({
         courses: Array<Course>(),
-        members: Array<Member>(),
+        members: Array<MemberEntity>(),
         sections: Array<Section>(),
         contents: Array<Content>()
     });

@@ -1,8 +1,8 @@
 import NetworkManager from "../../services/network-manager";
 import {CreateExamRequestDto} from "./new-exam.dto";
-import {Content} from "../../models/content";
+import {Content} from "../../models/content.entity";
 import {URLPath} from "../../services/URLPath";
-import {Resource} from "../../models/resource";
+import {Resource} from "../../models/resource.entity";
 
 export default class NewExamService extends NetworkManager {
 

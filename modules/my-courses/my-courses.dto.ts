@@ -1,5 +1,5 @@
 import {IsEnum} from "class-validator";
-import {MemberStatus} from "../../models/member";
+import {MemberStatus} from "../../models/member.entity";
 
 export class UserResponseRequestDto {
 

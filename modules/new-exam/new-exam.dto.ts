@@ -1,5 +1,5 @@
 import {IsArray, IsBoolean, IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString, Length} from "class-validator";
-import {QuestionType} from "../../models/question";
+import {QuestionType} from "../../models/question.entity";
 import {Type} from "class-transformer";
 
 export class CreateExamRequestDto {

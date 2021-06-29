@@ -1,5 +1,5 @@
 import ContentService from "./content.service";
-import {MemberRole} from "../../models/member";
+import {MemberRole} from "../../models/member.entity";
 import {useEffect, useState} from "react";
 import ContentView from "./content.view";
 import {CacheItem, useAppData} from "../app/app-data-provider";

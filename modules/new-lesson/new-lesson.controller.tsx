@@ -1,11 +1,11 @@
-import Section from "../../models/section";
+import Section from "../../models/section.entity";
 import NewLessonView from "./new-lesson.view";
 import {CreateLessonRequestDto} from "./new-lesson.dto";
 import {useState} from "react";
 import {useAppData} from "../app/app-data-provider";
 import NewLessonService from "./new-lesson.service";
-import {Resource} from "../../models/resource";
-import {Content} from "../../models/content";
+import {Resource} from "../../models/resource.entity";
+import {Content} from "../../models/content.entity";
 
 interface NewLessonControllerProps {
     sections: Section[];

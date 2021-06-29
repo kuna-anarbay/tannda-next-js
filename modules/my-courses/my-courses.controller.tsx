@@ -1,11 +1,11 @@
 import MyCoursesService from "./my-courses.service";
 import {useEffect, useState} from "react";
-import Course from "../../models/course";
+import Course from "../../models/course.entity";
 import MyCoursesView from "./my-courses.view";
 import {CacheItem, useAppData} from "../app/app-data-provider";
 import {useRouter} from "next/router";
 import {Route} from "../app/route";
-import {MemberStatus} from "../../models/member";
+import {MemberStatus} from "../../models/member.entity";
 
 interface MyCoursesControllerProps {
 

@@ -1,4 +1,4 @@
-import User from "../../models/user";
+import User from "../../models/user.entity";
 import {UpdateProfileRequestDto} from "./my-profile.dto";
 import {Field, Form, Formik} from "formik";
 import Avatar from "../util/avatar";

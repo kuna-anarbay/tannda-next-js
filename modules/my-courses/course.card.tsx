@@ -1,5 +1,5 @@
-import Course from "../../models/course";
-import {getRoleName, MemberStatus} from "../../models/member";
+import Course from "../../models/course.entity";
+import {getRoleName, MemberStatus} from "../../models/member.entity";
 
 interface CourseCardProps {
     course: Course;

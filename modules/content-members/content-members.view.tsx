@@ -1,7 +1,7 @@
 import {GetIcon, IconType} from "../util/icon";
 import ContentMemberRow from "./content-member.row";
-import {ContentMember} from "../../models/content-member";
-import {ContentStatus, ContentStatusCases, contentStatusName} from "../../models/content";
+import {ContentMember} from "../../models/content-member.entity";
+import {ContentStatus, ContentStatusCases, contentStatusName} from "../../models/content.entity";
 import Dropdown from "../util/dropdown";
 
 interface ContentMembersViewProps {

@@ -1,6 +1,6 @@
 import {CSSTransition} from "react-transition-group";
 import {Field, Form, Formik} from "formik";
-import {getRoleName, MemberRole, memberRoles} from "../../models/member";
+import {getRoleName, MemberRole, memberRoles} from "../../models/member.entity";
 import {GetIcon, IconType} from "../util/icon";
 import {strings} from "../util/strings";
 import Button from "../util/button";

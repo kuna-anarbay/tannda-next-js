@@ -1,5 +1,5 @@
 import NetworkManager from "../../services/network-manager";
-import {ContentSection} from "../../models/content";
+import {ContentSection} from "../../models/content.entity";
 import {URLPath} from "../../services/URLPath";
 import CourseService from "../course/course.service";
 

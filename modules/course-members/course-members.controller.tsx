@@ -1,8 +1,8 @@
-import Course from "../../models/course";
+import Course from "../../models/course.entity";
 import CourseMembersService from "./course-members.service";
 import {useEffect, useState} from "react";
 import {CacheItem, useAppData} from "../app/app-data-provider";
-import {Member, MemberStatus} from "../../models/member";
+import {MemberEntity, MemberStatus} from "../../models/member.entity";
 import CourseMembersView from "./course-members.view";
 import AddCourseMemberController from "../add-course-member/add-course-member.controller";
 
@@ -15,8 +15,8 @@ export default function CourseMembersController(props: CourseMemberControllerPro
     const courseMemberService = new CourseMembersService();
     const {getItem, setItem, showError} = useAppData();
     const [loading, setLoading] = useState(false);
-    const [members, setMembers] = useState(getItem(CacheItem.MEMBERS) ?? Array<Member>());
-    const [selectedMembers, setSelectedMembers] = useState(Array<Member>());
+    const [members, setMembers] = useState(getItem(CacheItem.MEMBERS) ?? Array<MemberEntity>());
+    const [selectedMembers, setSelectedMembers] = useState(Array<MemberEntity>());
     const [newMemberModal, setNewMemberModal] = useState(false);
 
     useEffect(() => {
@@ -40,11 +40,11 @@ export default function CourseMembersController(props: CourseMemberControllerPro
         return selectedMembers.length === members.length;
     }
 
-    const isSelected = (member: Member) => {
+    const isSelected = (member: MemberEntity) => {
         return !!selectedMembers.find(m => m.id === member.id);
     }
 
-    const selectMember = (member: Member) => {
+    const selectMember = (member: MemberEntity) => {
         if (isSelected(member)) {
             setSelectedMembers(selectedMembers.filter(m => m.id !== member.id))
         } else {
@@ -52,7 +52,7 @@ export default function CourseMembersController(props: CourseMemberControllerPro
         }
     }
 
-    const activateMember = async (member: Member) => {
+    const activateMember = async (member: MemberEntity) => {
         const index = members.findIndex(m => m.id === member.id);
         if (!index) return;
         members[index].status = MemberStatus.ACTIVE;
@@ -66,7 +66,7 @@ export default function CourseMembersController(props: CourseMemberControllerPro
         }
     }
 
-    const archiveMember = async (member: Member) => {
+    const archiveMember = async (member: MemberEntity) => {
         const index = members.findIndex(m => m.id === member.id);
         if (!index) return;
         members[index].status = MemberStatus.ARCHIVED;
@@ -80,7 +80,7 @@ export default function CourseMembersController(props: CourseMemberControllerPro
         }
     }
 
-    const deleteMember = async (member: Member) => {
+    const deleteMember = async (member: MemberEntity) => {
         setMembers(members.filter(m => m.id !== member.id));
         try {
             await courseMemberService.deleteMember(course.id, member.id);

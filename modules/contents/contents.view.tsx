@@ -1,4 +1,4 @@
-import {Content} from "../../models/content";
+import {Content} from "../../models/content.entity";
 import {ContentType} from "../enum/content-type.enum";
 import {GetIcon, IconType} from "../util/icon";
 import ContentCell from "./content.cell";

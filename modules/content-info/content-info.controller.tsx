@@ -1,9 +1,9 @@
 import ContentInfoView from "./content-info.view";
-import {Content} from "../../models/content";
+import {Content} from "../../models/content.entity";
 import ContentInfoService from "./content-info.service";
 import {useAppData} from "../app/app-data-provider";
 import {useState} from "react";
-import {Question} from "../../models/question";
+import {Question} from "../../models/question.entity";
 
 interface ContentInfoControllerProps {
     courseId: number;

@@ -5,18 +5,18 @@ import {
     getStatusColor,
     getStatusName,
     isActivatable,
-    isArchievable, isDeletable, Member,
+    isArchievable, isDeletable, MemberEntity,
     MemberRole
-} from "../../models/member";
+} from "../../models/member.entity";
 import {getDate} from "../util/date";
 
 interface CourseMemberRowProps {
-    member: Member;
+    member: MemberEntity;
     isSelected: boolean;
-    selectMember: (member: Member) => void;
-    activateMember: (member: Member) => void;
-    archiveMember: (member: Member) => void;
-    deleteMember: (member: Member) => void;
+    selectMember: (member: MemberEntity) => void;
+    activateMember: (member: MemberEntity) => void;
+    archiveMember: (member: MemberEntity) => void;
+    deleteMember: (member: MemberEntity) => void;
 }
 
 export default function CourseMemberRow(props: CourseMemberRowProps) {

@@ -1,4 +1,4 @@
-import Section from "../../models/section";
+import Section from "../../models/section.entity";
 import {CSSTransition} from "react-transition-group";
 import {Field, Form, Formik} from "formik";
 import {CreateLessonRequestDto} from "./new-lesson.dto";
@@ -6,7 +6,7 @@ import {GetIcon, IconType} from "../util/icon";
 import {strings} from "../util/strings";
 import Button from "../util/button";
 import ResourceCell from "../resources/resource.cell";
-import {Resource} from "../../models/resource";
+import {Resource} from "../../models/resource.entity";
 
 interface NewLessonViewProps {
     loading: boolean;

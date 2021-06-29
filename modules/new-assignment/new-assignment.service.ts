@@ -1,8 +1,8 @@
 import NetworkManager from "../../services/network-manager";
 import {CreateAssignmentRequestDto} from "./new-assignment.dto";
-import {Content} from "../../models/content";
+import {Content} from "../../models/content.entity";
 import {URLPath} from "../../services/URLPath";
-import {Resource} from "../../models/resource";
+import {Resource} from "../../models/resource.entity";
 
 export default class NewAssignmentService extends NetworkManager {
 

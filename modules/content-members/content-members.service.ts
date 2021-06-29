@@ -1,9 +1,9 @@
 import NetworkManager from "../../services/network-manager";
-import {ContentMember} from "../../models/content-member";
+import {ContentMember} from "../../models/content-member.entity";
 import {URLPath} from "../../services/URLPath";
 import CourseMembersService from "../course-members/course-members.service";
 import {ContentStatusRequestDto} from "./content-members.dto";
-import {MemberRole, MemberStatus} from "../../models/member";
+import {MemberRole, MemberStatus} from "../../models/member.entity";
 import PresenceService from "../presence/presence.service";
 import {PresenceRequestDto} from "../presence/presence.dto";
 import {SubmissionRequestDto} from "../submission/submission.dto";

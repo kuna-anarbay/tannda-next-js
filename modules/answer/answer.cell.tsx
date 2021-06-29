@@ -1,9 +1,9 @@
-import {Question, QuestionType} from "../../models/question";
+import {Question, QuestionType} from "../../models/question.entity";
 import AnswerOptionCell from "./answer-option.cell";
 import UploadBox from "../upload/upload.box";
 import {CreateAnswerRequestDto} from "./answer.dto";
 import {Field} from "formik";
-import {Resource} from "../../models/resource";
+import {Resource} from "../../models/resource.entity";
 
 interface AnswerCellProps {
     question: Question;

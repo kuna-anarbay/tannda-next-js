@@ -1,5 +1,5 @@
-import {QuestionOption} from "./question-option";
-import {Answer} from "./answer";
+import {QuestionOption} from "./question-option.entity";
+import {Answer} from "./answer.entity";
 
 export class Question {
     id: number;

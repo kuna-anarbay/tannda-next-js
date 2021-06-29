@@ -1,4 +1,4 @@
-import {Content} from "../../models/content";
+import {Content} from "../../models/content.entity";
 import {ContentType} from "../enum/content-type.enum";
 import ContentsView from "./contents.view";
 import ContentsService from "./contents.service";

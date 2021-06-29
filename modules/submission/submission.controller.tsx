@@ -1,8 +1,8 @@
 import {SubmitRequestDto} from "./submission.dto";
-import {Question} from "../../models/question";
+import {Question} from "../../models/question.entity";
 import SubmissionView from "./submission.view";
 import {useState} from "react";
-import {Resource} from "../../models/resource";
+import {Resource} from "../../models/resource.entity";
 import {useAppData} from "../app/app-data-provider";
 import SubmissionService from "./submission.service";
 

@@ -1,4 +1,4 @@
-export class Member {
+export class MemberEntity {
     id: number;
     relationId: number;
     firstName?: string;

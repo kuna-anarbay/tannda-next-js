@@ -1,5 +1,5 @@
 import {GetIcon, IconType} from "../util/icon";
-import {Resource} from "../../models/resource";
+import {Resource} from "../../models/resource.entity";
 import ResourceCell from "../resources/resource.cell";
 
 interface UploadBoxProps {

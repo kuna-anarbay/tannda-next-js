@@ -1,5 +1,5 @@
 import NetworkManager from "../../services/network-manager";
-import {SectionData} from "../../models/section";
+import {SectionData} from "../../models/section.entity";
 import {URLPath} from "../../services/URLPath";
 
 export default class ContentDataService extends NetworkManager {

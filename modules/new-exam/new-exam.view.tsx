@@ -1,4 +1,4 @@
-import Section from "../../models/section";
+import Section from "../../models/section.entity";
 import {CSSTransition} from "react-transition-group";
 import {Field, FieldArray, Form, Formik} from "formik";
 import {CreateExamRequestDto} from "./new-exam.dto";
@@ -6,9 +6,9 @@ import {GetIcon, IconType} from "../util/icon";
 import {strings} from "../util/strings";
 import Button from "../util/button";
 import ResourceCell from "../resources/resource.cell";
-import {Resource} from "../../models/resource";
+import {Resource} from "../../models/resource.entity";
 import QuestionCell from "../question/question.cell";
-import {QuestionType} from "../../models/question";
+import {QuestionType} from "../../models/question.entity";
 
 interface NewExamViewProps {
     loading: boolean;

@@ -1,4 +1,4 @@
-import Section from "../../models/section";
+import Section from "../../models/section.entity";
 import SectionsService from "./sections.service";
 import SectionsView from "./sections.view";
 import {useState} from "react";

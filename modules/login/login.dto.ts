@@ -1,5 +1,5 @@
-import User from "../../models/user";
-import {UserRole} from "../../models/role";
+import User from "../../models/user.entity";
+import {UserRole} from "../../models/role.entity";
 import {IsPhoneNumber, Matches} from "class-validator";
 import {strings} from "../util/strings";
 

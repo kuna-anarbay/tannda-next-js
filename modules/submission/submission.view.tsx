@@ -1,7 +1,7 @@
-import {Question} from "../../models/question";
+import {Question} from "../../models/question.entity";
 import {SubmitRequestDto} from "./submission.dto";
 import {FieldArray, Form, Formik} from "formik";
-import {Resource} from "../../models/resource";
+import {Resource} from "../../models/resource.entity";
 import Button from "../util/button";
 import AnswerCell from "../answer/answer.cell";
 

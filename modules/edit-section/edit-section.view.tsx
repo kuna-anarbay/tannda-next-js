@@ -1,5 +1,5 @@
 import {EditSectionState} from "./edit-section.enum";
-import Section from "../../models/section";
+import Section from "../../models/section.entity";
 import {CSSTransition} from "react-transition-group";
 import {Field, Form, Formik} from "formik";
 import {GetIcon, IconType} from "../util/icon";

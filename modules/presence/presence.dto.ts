@@ -1,5 +1,5 @@
 import {IsArray, IsEnum, IsOptional, IsString} from "class-validator";
-import {PresenceStatus} from "../../models/presence";
+import {PresenceStatus} from "../../models/presence.entity";
 
 
 export class PresenceRequestDto {

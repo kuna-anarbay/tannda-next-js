@@ -1,6 +1,6 @@
 import Modal from "../util/modal";
 import {Field, Form, Formik} from "formik";
-import {ContentMember} from "../../models/content-member";
+import {ContentMember} from "../../models/content-member.entity";
 import {strings} from "../util/strings";
 import Button from "../util/button";
 import {SubmissionRequestDto} from "./submission.dto";

@@ -1,9 +1,9 @@
-import {Resource} from "./resource";
-import Section from "./section";
-import {QuestionType} from "./question";
-import {Presence} from "./presence";
-import {Grade} from "./grade";
-import {Submission} from "./submission";
+import {Resource} from "./resource.entity";
+import Section from "./section.entity";
+import {QuestionType} from "./question.entity";
+import {Presence} from "./presence.entity";
+import {Grade} from "./grade.entity";
+import {Submission} from "./submission.entity";
 
 export class Content {
     id: number;

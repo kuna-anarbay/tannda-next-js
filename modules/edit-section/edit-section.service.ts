@@ -1,5 +1,5 @@
 import NetworkManager from "../../services/network-manager";
-import Section from "../../models/section";
+import Section from "../../models/section.entity";
 import {URLPath} from "../../services/URLPath";
 import {EditSectionRequestDto} from "./edit-section.dto";
 

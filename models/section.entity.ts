@@ -1,4 +1,4 @@
-import {Content} from "./content";
+import {Content} from "./content.entity";
 
 export default class Section {
     id: number;

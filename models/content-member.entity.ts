@@ -1,8 +1,8 @@
-import {ContentStatus} from "./content";
-import {Member, MemberRole} from "./member";
-import {Presence} from "./presence";
-import {Grade} from "./grade";
-import {Submission} from "./submission";
+import {ContentStatus} from "./content.entity";
+import {MemberEntity, MemberRole} from "./member.entity";
+import {Presence} from "./presence.entity";
+import {Grade} from "./grade.entity";
+import {Submission} from "./submission.entity";
 
 export class ContentMember {
     id: number;
@@ -16,7 +16,7 @@ export class ContentMember {
     grade?: Grade;
     submission?: Submission;
 
-    constructor(member: Member) {
+    constructor(member: MemberEntity) {
         this.id = member.id;
         this.firstName = member.firstName;
         this.lastName = member.lastName;

@@ -1,4 +1,4 @@
-import Section from "../../models/section";
+import Section from "../../models/section.entity";
 import {GetIcon, IconType} from "../util/icon";
 import {CSSTransition} from "react-transition-group";
 

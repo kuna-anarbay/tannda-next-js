@@ -1,7 +1,7 @@
 import NetworkManager from "../../services/network-manager";
-import Course from "../../models/course";
+import Course from "../../models/course.entity";
 import {URLPath} from "../../services/URLPath";
-import {MemberStatus} from "../../models/member";
+import {MemberStatus} from "../../models/member.entity";
 import {UserResponseRequestDto} from "./my-courses.dto";
 
 export default class MyCoursesService extends NetworkManager {

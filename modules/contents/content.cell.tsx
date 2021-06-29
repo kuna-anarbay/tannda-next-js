@@ -1,5 +1,5 @@
 import ResourceCell from "../resources/resource.cell";
-import {Content} from "../../models/content";
+import {Content} from "../../models/content.entity";
 import {GetIcon, IconType} from "../util/icon";
 import {urlify} from "../util/urlify";
 

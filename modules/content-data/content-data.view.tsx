@@ -1,5 +1,5 @@
-import Section from "../../models/section";
-import {Content} from "../../models/content";
+import Section from "../../models/section.entity";
+import {Content} from "../../models/content.entity";
 import SectionsController from "../sections/sections.controller";
 import ContentsController from "../contents/contents.controller";
 import {ContentType} from "../enum/content-type.enum";

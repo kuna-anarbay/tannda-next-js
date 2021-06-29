@@ -1,4 +1,4 @@
-import Section from "../../models/section";
+import Section from "../../models/section.entity";
 import {CSSTransition} from "react-transition-group";
 import {Field, Form, Formik} from "formik";
 import {CreateAssignmentRequestDto} from "./new-assignment.dto";
@@ -6,8 +6,8 @@ import {GetIcon, IconType} from "../util/icon";
 import {strings} from "../util/strings";
 import Button from "../util/button";
 import ResourceCell from "../resources/resource.cell";
-import {Resource} from "../../models/resource";
-import {QuestionType} from "../../models/question";
+import {Resource} from "../../models/resource.entity";
+import {QuestionType} from "../../models/question.entity";
 
 interface NewAssignmentViewProps {
     loading: boolean;

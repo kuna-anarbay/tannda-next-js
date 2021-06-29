@@ -1,7 +1,7 @@
 import NetworkManager from "../../services/network-manager";
 import {SubmissionRequestDto, SubmitRequestDto} from "./submission.dto";
 import {URLPath} from "../../services/URLPath";
-import {Question} from "../../models/question";
+import {Question} from "../../models/question.entity";
 
 export default class SubmissionService extends NetworkManager {
 

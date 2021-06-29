@@ -1,7 +1,7 @@
-import Course from "../../models/course";
+import Course from "../../models/course.entity";
 import PageHeader from "../util/page-header";
-import {isManager, UserRole} from "../../models/role";
-import {MemberStatus} from "../../models/member";
+import {isManager, UserRole} from "../../models/role.entity";
+import {MemberStatus} from "../../models/member.entity";
 import CourseCard from "./course.card";
 import Spinner from "../util/spinner.component";
 

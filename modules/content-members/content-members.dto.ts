@@ -1,5 +1,5 @@
 import {IsArray, IsEnum, IsOptional} from "class-validator";
-import {ContentStatus} from "../../models/content";
+import {ContentStatus} from "../../models/content.entity";
 
 export class ContentStatusRequestDto {
     

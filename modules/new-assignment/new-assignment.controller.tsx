@@ -1,11 +1,11 @@
-import Section from "../../models/section";
+import Section from "../../models/section.entity";
 import NewAssignmentView from "./new-assignment.view";
 import {CreateAssignmentRequestDto} from "./new-assignment.dto";
 import {useState} from "react";
 import {useAppData} from "../app/app-data-provider";
 import NewAssignmentService from "./new-assignment.service";
-import {Resource} from "../../models/resource";
-import {Content} from "../../models/content";
+import {Resource} from "../../models/resource.entity";
+import {Content} from "../../models/content.entity";
 
 interface NewAssignmentControllerProps {
     sections: Section[];

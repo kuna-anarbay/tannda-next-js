@@ -1,5 +1,5 @@
 import NetworkManager from "../../services/network-manager";
-import Course from "../../models/course";
+import Course from "../../models/course.entity";
 import {URLPath} from "../../services/URLPath";
 
 export default class CourseService extends NetworkManager {

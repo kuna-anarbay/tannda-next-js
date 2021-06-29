@@ -1,6 +1,6 @@
 import Tab from "../util/tab";
-import {Content, ContentType} from "../../models/content";
-import Course from "../../models/course";
+import {Content, ContentType} from "../../models/content.entity";
+import Course from "../../models/course.entity";
 import ContentMembersController from "../content-members/content-members.controller";
 import {Route} from "../app/route";
 import PageHeader from "../util/page-header";

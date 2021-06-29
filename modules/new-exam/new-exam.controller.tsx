@@ -1,11 +1,11 @@
-import Section from "../../models/section";
+import Section from "../../models/section.entity";
 import NewExamView from "./new-exam.view";
 import {CreateExamRequestDto} from "./new-exam.dto";
 import {useState} from "react";
 import {useAppData} from "../app/app-data-provider";
 import NewExamService from "./new-exam.service";
-import {Resource} from "../../models/resource";
-import {Content} from "../../models/content";
+import {Resource} from "../../models/resource.entity";
+import {Content} from "../../models/content.entity";
 
 interface NewExamControllerProps {
     sections: Section[];

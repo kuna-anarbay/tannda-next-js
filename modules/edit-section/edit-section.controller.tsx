@@ -1,4 +1,4 @@
-import Section from "../../models/section";
+import Section from "../../models/section.entity";
 import {EditSectionState} from "./edit-section.enum";
 import EditSectionView from "./edit-section.view";
 import {EditSectionRequestDto} from "./edit-section.dto";

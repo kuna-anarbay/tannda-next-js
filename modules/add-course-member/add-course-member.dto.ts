@@ -1,4 +1,4 @@
-import {MemberRole} from "../../models/member";
+import {MemberRole} from "../../models/member.entity";
 import {IsEnum, IsNotEmpty, IsPhoneNumber, IsString} from "class-validator";
 
 export class AddCourseMemberRequestDto {
