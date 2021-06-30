@@ -25,9 +25,6 @@ module.exports = {
                 "75": "18.75rem",
                 "screen": "100vw"
             },
-            padding: {
-                "0.75": ""
-            },
             fontSize: {
                 caption2: "0.625rem",
                 caption1: "0.75rem",

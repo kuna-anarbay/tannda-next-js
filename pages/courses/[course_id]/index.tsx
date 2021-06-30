@@ -10,10 +10,8 @@ export default function CoursePage(props: CoursePageProps) {
     return <CourseController courseId={courseId}/>
 }
 
-export const getStaticProps: GetStaticProps = async ({params: {course_id}}) => {
+CoursePage.getInitialProps = ({query: {course_id}}) => {
     return {
-        props: {
-            courseId: parseInt(course_id as string)
-        }
+        courseId: parseInt(course_id)
     }
 }

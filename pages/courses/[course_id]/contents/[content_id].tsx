@@ -11,12 +11,10 @@ export default function ContentPage(props: ContentPageProps) {
     return <ContentController contentId={contentId} courseId={courseId}/>
 }
 
-export const getStaticProps: GetStaticProps = async ({params: {course_id, content_id}}) => {
+
+ContentPage.getInitialProps = ({query: {course_id, content_id}}) => {
     return {
-        props: {
-            courseId: parseInt(course_id as string),
-            contentId: parseInt(content_id as string)
-        }
+        courseId: parseInt(course_id),
+        contentId: parseInt(content_id)
     }
 }
-
