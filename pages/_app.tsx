@@ -4,7 +4,7 @@ import Navbar from "../modules/layout/navbar.component";
 import {ToastProvider} from "react-toast-notifications";
 import {AppDataProvider} from "../modules/app/app-data-provider";
 
-function App({Component, pageProps}) {
+export default function App({Component, pageProps}) {
 
     return (
         <ToastProvider>
@@ -17,6 +17,4 @@ function App({Component, pageProps}) {
         </ToastProvider>
     )
 }
-
-export default App;
 
