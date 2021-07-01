@@ -1,10 +1,12 @@
-const colors = require("./config/color.theme.js");
+const colors    = require("./config/color.theme"),
+      fontSizes = require("./config/font-size.theme");
 
 module.exports = {
     purge: false,
-    darkMode: false, // or 'media' or 'class'
+    darkMode: false,
     theme: {
         colors: colors,
+        fontSizes: fontSizes,
         extend: {
             borderRadius: {
                 "1": "0.25rem",
@@ -24,18 +26,6 @@ module.exports = {
                 "30": "7.5rem",
                 "75": "18.75rem",
                 "screen": "100vw"
-            },
-            fontSize: {
-                caption2: "0.625rem",
-                caption1: "0.75rem",
-                footnote: "0.875rem",
-                subheadline: "0.9375rem",
-                base: "1rem",
-                title3: "1.25rem",
-                title2: "1.5rem",
-                title1: "1.75rem",
-                largeTitle: "2.25rem",
-                header: "3rem"
             },
             inset: {
                 "75": "18.75rem",

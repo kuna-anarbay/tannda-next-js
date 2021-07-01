@@ -13,7 +13,7 @@ export default function CourseCard(props: CourseCardProps) {
     return (
         <div
             onClick={() => openCourse(course)}
-            className={"px-4 py-3 shadow-card cursor-pointer rounded-md md:rounded-lg hover:bg-muted md:hover:bg-background hover:text-primary"}>
+            className={"px-4 py-3 shadow-card cursor-pointer rounded-md md:rounded-lg hover:bg-muted hover:bg-background hover:text-primary"}>
             <div
                 className={"space-y-1"}>
                 <div>
