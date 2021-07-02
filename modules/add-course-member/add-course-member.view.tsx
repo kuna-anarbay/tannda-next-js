@@ -1,8 +1,8 @@
 import {CSSTransition} from "react-transition-group";
 import {Field, Form, Formik} from "formik";
 import {getRoleName, MemberRole, memberRoles} from "../../models/member.entity";
-import {GetIcon, IconType} from "../util/icon";
-import {strings} from "../util/strings";
+import {GetIcon, IconType} from "../../resources/icon";
+import {strings} from "../../resources/strings";
 import Button from "../util/button";
 import {IMaskInput} from 'react-imask';
 import {AddCourseMemberRequestDto} from "./add-course-member.dto";

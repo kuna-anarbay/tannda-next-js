@@ -1,4 +1,4 @@
-import {GetIcon, IconType} from "./icon";
+import {GetIcon, IconType} from "../../resources/icon";
 
 interface AvatarProps {
     src: string | null | undefined;

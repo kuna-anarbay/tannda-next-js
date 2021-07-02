@@ -1,5 +1,5 @@
 import {CSSTransition} from "react-transition-group";
-import {GetIcon, IconType} from "./icon";
+import {GetIcon, IconType} from "../../resources/icon";
 
 interface ModalProps {
     open: boolean;

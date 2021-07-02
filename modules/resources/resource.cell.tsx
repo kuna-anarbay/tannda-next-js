@@ -1,6 +1,6 @@
 import {bytesToSize, Resource} from "../../models/resource.entity";
 import {resourceIcon} from "./resource.icon";
-import {GetIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../../resources/icon";
 
 interface ResourceCellProps {
     resource: Resource;

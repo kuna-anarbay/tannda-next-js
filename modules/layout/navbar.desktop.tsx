@@ -1,4 +1,3 @@
-import r from "../util/r";
 import Link from "next/link";
 import {useAppData} from "../app/app-data-provider";
 import Avatar from "../util/avatar";
@@ -6,7 +5,10 @@ import {CSSTransition} from "react-transition-group";
 import {useState} from "react";
 import AuthService from "../../services/auth.service";
 import {useRouter} from "next/router";
-import {strings} from "../util/strings";
+import {strings} from "../../resources/strings";
+import {images} from "../../resources/images";
+import {layoutData} from "./layout.data";
+import {Route} from "../app/route";
 
 
 export default function NavbarDesktop() {
@@ -27,7 +29,7 @@ export default function NavbarDesktop() {
 
     const showProfile = async () => {
         setDropdown(!dropdown);
-        await push("/users/me")
+        await push(Route.users.me);
     }
 
     return (
@@ -37,11 +39,10 @@ export default function NavbarDesktop() {
                 <div className={"flex items-center"}>
                     <div className={"pl-12 pr-5 py-2 h-12"}>
                         <Link href={"/"}>
-                            <img className={"h-full cursor-pointer"} src={r.image.logoIconText.val}
-                                 alt={r.image.logoIconText.alt}/>
+                            <img className={"h-full cursor-pointer"} src={images.logoIconText} alt={""}/>
                         </Link>
                     </div>
-                    {r.data.navbarItems.map(item => (
+                    {layoutData.navbarItems.map(item => (
                         <Link href={item.path}>
                             <div className={"flex items-center justify-center relative h-12 w-30 cursor-pointer"}
                                  key={item.path}>
@@ -52,7 +53,7 @@ export default function NavbarDesktop() {
                             </div>
                         </Link>
                     ))}
-                    {currentUser ? r.data.loginItems.map(item => (
+                    {currentUser ? layoutData.loginItems.map(item => (
                         <Link href={item.path}>
                             <div className={"flex items-center justify-center relative h-12 w-30 cursor-pointer"}
                                  key={item.path}>

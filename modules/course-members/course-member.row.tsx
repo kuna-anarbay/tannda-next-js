@@ -1,4 +1,4 @@
-import {GetIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../../resources/icon";
 import Avatar from "../util/avatar";
 import {
     getRoleName,
@@ -8,7 +8,7 @@ import {
     isArchievable, isDeletable, Member,
     MemberRole
 } from "../../models/member.entity";
-import {getDate} from "../util/date";
+import {getDate} from "../../helpers/date";
 
 interface CourseMemberRowProps {
     member: Member;

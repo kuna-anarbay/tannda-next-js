@@ -3,7 +3,7 @@ import {PresenceRequestDto} from "./presence.dto";
 import Modal from "../util/modal";
 import {Field, Form, Formik} from "formik";
 import {ContentMember} from "../../models/content-member.entity";
-import {strings} from "../util/strings";
+import {strings} from "../../resources/strings";
 import Button from "../util/button";
 
 interface PresenceModalProps {

@@ -1,4 +1,4 @@
-import {GetIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../../resources/icon";
 import ContentMemberRow from "./content-member.row";
 import {ContentMember} from "../../models/content-member.entity";
 import {ContentStatus, ContentStatusCases, contentStatusName} from "../../models/content.entity";

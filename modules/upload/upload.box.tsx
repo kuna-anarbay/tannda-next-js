@@ -1,4 +1,4 @@
-import {GetIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../../resources/icon";
 import {Resource} from "../../models/resource.entity";
 import ResourceCell from "../resources/resource.cell";
 

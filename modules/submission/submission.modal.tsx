@@ -1,11 +1,11 @@
 import Modal from "../util/modal";
 import {Field, Form, Formik} from "formik";
 import {ContentMember} from "../../models/content-member.entity";
-import {strings} from "../util/strings";
+import {strings} from "../../resources/strings";
 import Button from "../util/button";
 import {SubmissionRequestDto} from "./submission.dto";
 import DatePicker from "react-datepicker";
-import {getDate} from "../util/date";
+import {getDate} from "../../helpers/date";
 import "react-datepicker/dist/react-datepicker.css";
 
 interface SubmissionModalProps {

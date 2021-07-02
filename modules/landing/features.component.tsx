@@ -1,4 +1,4 @@
-import {GetIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../../resources/icon";
 
 export default function FeaturesComponent() {
 

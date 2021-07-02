@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {GetIcon, IconType} from "./icon";
+import {GetIcon, IconType} from "../../resources/icon";
 
 export interface BreadcrumbItem {
     title: string;

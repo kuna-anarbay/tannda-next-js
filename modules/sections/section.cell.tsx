@@ -1,5 +1,5 @@
 import Section from "../../models/section.entity";
-import {GetIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../../resources/icon";
 import {CSSTransition} from "react-transition-group";
 
 interface SectionCellProps {

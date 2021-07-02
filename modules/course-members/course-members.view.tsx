@@ -1,7 +1,7 @@
 import {Member} from "../../models/member.entity";
-import {GetIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../../resources/icon";
 import Spinner from "../util/spinner.component";
-import {strings} from "../util/strings";
+import {strings} from "../../resources/strings";
 import CourseMemberRow from "./course-member.row";
 
 interface CourseMembersViewProps {

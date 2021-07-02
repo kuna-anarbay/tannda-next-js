@@ -1,4 +1,4 @@
-import {GetIcon, IconType} from "./icon";
+import {GetIcon, IconType} from "../../resources/icon";
 import {useState} from "react";
 import Hideable from "../../hooks/use.window-click";
 

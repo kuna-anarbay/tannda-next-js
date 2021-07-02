@@ -3,7 +3,7 @@ import Button from "../util/button";
 import {IMaskInput} from 'react-imask';
 import {LoginRequestDto} from "./login.dto";
 import ErrorAlert from "../util/error.alert";
-import {strings} from "../util/strings";
+import {strings} from "../../resources/strings";
 
 interface LoginViewProps {
     forgotPassword: () => void

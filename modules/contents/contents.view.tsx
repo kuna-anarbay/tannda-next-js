@@ -1,10 +1,10 @@
 import {Content} from "../../models/content.entity";
 import {ContentType} from "../enum/content-type.enum";
-import {GetIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../../resources/icon";
 import ContentCell from "./content.cell";
 import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd';
 import Dropdown from "../util/dropdown";
-import {strings} from "../util/strings";
+import {strings} from "../../resources/strings";
 
 interface ContentsViewProps {
     contents: Content[];

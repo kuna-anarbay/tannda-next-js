@@ -2,7 +2,7 @@ import {allQuestionTypes, QuestionType} from "../../models/question.entity";
 import {CreateQuestionRequestDto} from "../new-exam/new-exam.dto";
 import {Field, FieldArray} from "formik";
 import QuestionOptionCell from "../question-option/question-option.cell";
-import {GetIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../../resources/icon";
 
 interface QuestionCellProps {
     index: number;

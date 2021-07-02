@@ -1,4 +1,4 @@
-import {GetIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../../resources/icon";
 import Section from "../../models/section.entity";
 import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd';
 import SectionCell from "./section.cell";

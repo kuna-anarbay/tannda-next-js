@@ -1,11 +1,12 @@
-import r from "../util/r";
-import {GetIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../../resources/icon";
 import {useAppData} from "../app/app-data-provider";
 import Link from "next/link";
 import {useRouter} from "next/router";
 import {useState} from "react";
 import {CSSTransition} from "react-transition-group";
 import Avatar from "../util/avatar";
+import {images} from "../../resources/images";
+import {layoutData} from "./layout.data";
 
 export default function NavbarMobile() {
     const {currentUser} = useAppData();
@@ -18,7 +19,7 @@ export default function NavbarMobile() {
             <div
                 className="bg-background h-12 fixed top-0 inset-x-0 z-30 border-b border-border shadow-md ">
                 <div className={"absolute inset-0 bg-background flex items-center z-40 justify-center py-0.5"}>
-                    <img className={"h-full"} src={r.image.logoSquare.val} alt={r.image.logoSquare.alt}/>
+                    <img className={"h-full"} src={images.logoSquare} alt={""}/>
                 </div>
                 <div className={"flex justify-between relative z-40"}>
                     <button onClick={() => setMenu(!menu)} className={"flex items-center px-4 cursor-pointer"}>
@@ -50,7 +51,7 @@ export default function NavbarMobile() {
                     appear
                 >
                     <div className={"py-2 space-y-1 border-b border-border bg-background shadow-md"}>
-                        {r.data.navbarItems.map(item => (
+                        {layoutData.navbarItems.map(item => (
                             <Link href={item.path}>
                                 <div
                                     className={"flex items-center justify-center relative cursor-pointer py-2 hover:bg-muted"}
@@ -61,7 +62,7 @@ export default function NavbarMobile() {
                                 </div>
                             </Link>
                         ))}
-                        {currentUser ? r.data.loginItems.map(item => (
+                        {currentUser ? layoutData.loginItems.map(item => (
                             <Link href={item.path}>
                                 <div
                                     className={"flex items-center justify-center relative cursor-pointer py-2 hover:bg-muted"}

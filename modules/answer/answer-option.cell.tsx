@@ -1,7 +1,7 @@
 import {QuestionType} from "../../models/question.entity";
 import {QuestionOption} from "../../models/question-option.entity";
 import {Field} from "formik";
-import {GetIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../../resources/icon";
 
 interface AnswerOptionCellProps {
     name: string;

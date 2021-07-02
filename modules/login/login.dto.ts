@@ -1,7 +1,7 @@
 import User from "../../models/user.entity";
 import {UserRole} from "../../models/role.entity";
 import {IsPhoneNumber, Matches} from "class-validator";
-import {strings} from "../util/strings";
+import {strings} from "../../resources/strings";
 
 export class LoginRequestDto {
 

@@ -1,7 +1,7 @@
 import {Content} from "../../models/content.entity";
 import ResourceCell from "../resources/resource.cell";
 import {presenceStatusName} from "../../models/presence.entity";
-import {getDate} from "../util/date";
+import {getDate} from "../../helpers/date";
 import {Question} from "../../models/question.entity";
 import SubmissionController from "../submission/submission.controller";
 

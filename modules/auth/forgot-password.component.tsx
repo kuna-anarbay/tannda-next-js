@@ -1,12 +1,12 @@
 import AuthService from "../../services/auth.service";
 import {Field, Form, Formik} from "formik";
-import {GetIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../../resources/icon";
 import {useState} from "react";
 import {useAppData} from "../app/app-data-provider";
 import Button from "../util/button";
 import {IMaskInput} from 'react-imask';
 import {useRouter} from "next/router";
-import {strings} from "../util/strings";
+import {strings} from "../../resources/strings";
 
 export default function ForgotPasswordComponent() {
     const [phone, setPhone] = useState("");

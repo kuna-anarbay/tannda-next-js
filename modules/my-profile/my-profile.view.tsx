@@ -2,7 +2,7 @@ import User from "../../models/user.entity";
 import {UpdateProfileRequestDto} from "./my-profile.dto";
 import {Field, Form, Formik} from "formik";
 import Avatar from "../util/avatar";
-import {strings} from "../util/strings";
+import {strings} from "../../resources/strings";
 import Button from "../util/button";
 
 interface MyProfileViewProps {

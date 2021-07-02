@@ -6,7 +6,7 @@ module.exports = {
     darkMode: false,
     theme: {
         colors: colors,
-        fontSizes: fontSizes,
+        fontSize: fontSizes,
         extend: {
             borderRadius: {
                 "1": "0.25rem",

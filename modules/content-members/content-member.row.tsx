@@ -1,9 +1,9 @@
 import {getRoleName} from "../../models/member.entity";
 import Avatar from "../util/avatar";
 import {ContentMember} from "../../models/content-member.entity";
-import {GetIcon, IconType} from "../util/icon";
+import {GetIcon, IconType} from "../../resources/icon";
 import {ContentStatus, contentStatusName} from "../../models/content.entity";
-import {getDate} from "../util/date";
+import {getDate} from "../../helpers/date";
 import {presenceStatusName} from "../../models/presence.entity";
 
 interface ContentMemberRowProps {
