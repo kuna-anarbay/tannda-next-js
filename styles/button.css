@@ -1,6 +1,10 @@
 @layer components {
   .btn-primary {
-    @apply text-background bg-primary border-primary border;
+    @apply text-background bg-primary border-primary border hover:bg-primary-light;
+  }
+
+  .btn-dark {
+    @apply text-background bg-gray-900 border-gray-900 border hover:bg-gray-800;
   }
 
   .btn-outline {
@@ -25,6 +29,10 @@
 
   .btn {
     @apply text-subheadline font-medium px-4 py-1.5 rounded-1.5;
+  }
+
+  .btn-lg {
+    @apply text-base font-medium px-5 py-2 rounded-1.5;
   }
 
   .btn-sm {

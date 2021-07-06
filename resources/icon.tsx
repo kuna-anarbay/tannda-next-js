@@ -1,4 +1,5 @@
 import {
+    IoArrowForward,
     IoCheckmark,
     IoChevronDown,
     IoChevronForward,
@@ -27,7 +28,8 @@ export enum IconType {
     Pencil,
     Checkmark,
     Ellipsis,
-    Upload
+    Upload,
+    ArrowRight
 }
 
 const Icons = (className?: string) => {
@@ -44,7 +46,8 @@ const Icons = (className?: string) => {
         <IoPencil className={className}/>,
         <IoCheckmark className={className}/>,
         <IoEllipsisHorizontal className={className}/>,
-        <IoCloudUpload className={className}/>
+        <IoCloudUpload className={className}/>,
+        <IoArrowForward className={className}/>
     ]
 }
 

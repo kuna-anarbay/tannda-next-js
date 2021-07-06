@@ -1,23 +1,24 @@
 import {ResourceType} from "./resource.enum";
-import r from "../util/r";
+import {images} from "../../resources/images";
+
 
 export const resourceIcon = (name: string) => {
     const type = name.split('.').pop().toLowerCase() as ResourceType;
     switch (type) {
         case ResourceType.DOC:
         case ResourceType.DOCX:
-            return r.image.file.doc;
+            return images.file.doc;
         case ResourceType.JPEG:
         case ResourceType.JPG:
         case ResourceType.PNG:
-            return r.image.file.image;
+            return images.file.image;
         case ResourceType.PDF:
-            return r.image.file.pdf;
+            return images.file.pdf;
         case ResourceType.PPT:
         case ResourceType.PPTX:
-            return r.image.file.presentation;
+            return images.file.presentation;
         case ResourceType.XLS:
         case ResourceType.XLSX:
-            return r.image.file.sheets;
+            return images.file.sheets;
     }
 }

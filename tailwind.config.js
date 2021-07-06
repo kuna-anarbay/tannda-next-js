@@ -5,9 +5,9 @@ module.exports = {
     purge: false,
     darkMode: false,
     theme: {
-        colors: colors,
-        fontSize: fontSizes,
         extend: {
+            colors: colors,
+            fontSize: fontSizes,
             borderRadius: {
                 "1": "0.25rem",
                 "1.5": "0.375rem",

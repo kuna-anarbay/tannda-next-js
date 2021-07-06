@@ -1,7 +1,8 @@
 module.exports = {
     clear: "transparent",
     primary: {
-        DEFAULT: "#054EA1"
+        DEFAULT: "#0351C1",
+        light: "#0456cb"
     },
     background: {
         DEFAULT: "#ffffff",
@@ -15,7 +16,8 @@ module.exports = {
     },
     border: {
         DEFAULT: "#DDE2E4",
-        secondary: "#E5E9EB"
+        secondary: "#E5E9EB",
+        dark: "#111827"
     },
     green: {
         DEFAULT: "#0D9676",

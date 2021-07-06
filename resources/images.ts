@@ -15,6 +15,7 @@ export const images = {
         appleTouch: "/favicon/apple-touch-icon.png",
         favicon: "/favicon/favicon.ico",
         favicon16: "/favicon/favicon-16x16.ico",
-        favicon32: "/favicon/favicon-32x32.ico",
-    }
+        favicon32: "/favicon/favicon-32x32.ico"
+    },
+    manifest: "/files/files.json"
 };

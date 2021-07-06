@@ -1,4 +1,7 @@
 export const strings = {
+    appTitle: "Tañda | В поисках совершенства",
+    appDescription: "Сосредоточьтесь только на обучении. Мы позаботимся обо всем остальном",
+    landingTitle: "В поисках совершенства",
     aboutUs: "Про нас",
     courses: "Курсы",
     login: "Войти",
